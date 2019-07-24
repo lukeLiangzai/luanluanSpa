@@ -8,7 +8,7 @@
         @click-left="onClickLeft"
         @click-right="onClickRight"
         />
-    <div>{{msg}}</div>
+    <div><img src="../../assets/img/nav-bar1.png" alt="">11</div>
     </div>
 </template>
 

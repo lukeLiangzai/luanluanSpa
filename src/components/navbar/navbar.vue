@@ -1,10 +1,11 @@
 <template>
-    <div class="navBox">
-      <div v-for="(items,index) in navBarType" :key="index" @click="didClickedItem(index)" v-bind:class="{actives: actives[index]}">
-        <svg class="icon" aria-hidden="true" :font-size="items.iconSize">
+    <div class="navBox flex">
+      <div class='flex flex-column align-center justify-center' v-for="(items,index) in navBarType" :key="index" @click="didClickedItem(index)" v-bind:class="{actives: actives[index]}">
+        <!-- <svg class="icon" aria-hidden="true" :font-size="items.iconSize">
           <use :xlink:href="items.icon"></use>
-        </svg>
-        <span>{{items.title}}</span>
+        </svg> -->
+        <img :src="items.src" alt="">
+        <span :style="actives[index] ? items.iconColor : ''">{{items.title}}</span>
       </div>
     </div>
 </template>
@@ -19,32 +20,32 @@ export default {
         {
           value:0
           ,title:'首页'
-          ,icon:'#icon-fenlei-'
-          ,iconSize:'22px'
+          ,src: require('../../assets/img/nav-bar1.png')
+          ,iconColor:'color:#ffc600'
         }
         ,{
           value:1
           ,title:'医院'
-          ,icon:'#icon-yiyuan1'
-          ,iconSize:'26px'
+          ,src: require('../../assets/img/nav-bar2.png')
+          ,iconColor:'color:#95cef9'
         }
         ,{
           value:2
           ,title:'服务'
-          ,icon:'#icon-fuwu'
-          ,iconSize:'22px'
+          ,src: require('../../assets/img/nav-bar3.png')
+          ,iconColor:'color:#ffc600'
         }
         ,{
           value:3
           ,title:'资讯'
-          ,icon:'#icon-lyq-zixun'
-          ,iconSize:'22px'
+          ,src: require('../../assets/img/nav-bar4.png')
+          ,iconColor:'color:#2c9ef4'
         }
         ,{
           value:2
           ,title:'我的'
-          ,icon:'#icon-wode-'
-          ,iconSize:'22px'
+          ,src: require('../../assets/img/nav-bar5.png')
+          ,iconColor:'color:#ff4858'
         }
       ]
     }
@@ -69,36 +70,37 @@ export default {
 <style lang="scss">
   .navBox{
     width:100vw;
-    height: 1.5625rem;
+    height: 1.466667rem;
     position: fixed;
     bottom:0;
     background-color: #fff;
     box-shadow: 0 -0.026667rem .066667rem rgba(51,51,51,.1);
     z-index: 9999;
-    display: flex;
     div{
       width: 25%;
-      height: auto;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-direction: column;
+      height: 100%;
       color: #909090;
       text-decoration: none;
-      padding-bottom: .2rem;
-      svg{
-        color: #909090;
-      }
       span{
-        margin-top: .066667rem
+        margin-top: .133333rem;
+        font-size:.24rem
+      }
+      img{
+        height: .586667rem;
+        transform: scale(1);
+        transition: all .2s linear;
+        transform-origin: center;
+        -webkit-transform-origin: center;
+        -moz-transform-origin: center;
+        -o-transform-origin: center;
       }
     }
-    div.actives{
-      color: #14b6c4!important;
-      svg{
-        color: #14b6c4!important;
+    div:active{
+      img{
+        transform: scale(0.9);
       }
     }
   }
+  
 </style>
 
