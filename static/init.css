@@ -26,6 +26,24 @@ textarea{resize:none;}
     object-fit: cover;
 }
 
+input::-webkit-input-placeholder{ /*WebKit browsers*/
+    color:rgba(197,197,201,1);
+    font-family:"PingFang SC";
+    font-weight: 400;
+}
+
+input::-moz-input-placeholder{ /*Mozilla Firefox*/
+    color:rgba(197,197,201,1);
+    font-weight: 400;
+    font-family:"PingFang SC";
+}
+
+input::-ms-input-placeholder{ /*Internet Explorer*/ 
+    color:rgba(197,197,201,1);
+    font-weight: 400;
+    font-family:"PingFang SC";
+}
+
 /* ------
     flex布局
     ------*/

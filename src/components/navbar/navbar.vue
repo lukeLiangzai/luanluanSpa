@@ -74,7 +74,7 @@ export default {
     position: fixed;
     bottom:0;
     background-color: #fff;
-    box-shadow: 0 -0.026667rem .066667rem rgba(51,51,51,.1);
+    box-shadow: 0px 0px .133333rem 0px #EBEBEB;
     z-index: 9999;
     div{
       width: 25%;
