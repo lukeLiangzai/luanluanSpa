@@ -1,9 +1,6 @@
 <template>
     <div class="navBox flex">
       <div class='flex flex-column align-center justify-center' v-for="(items,index) in navBarType" :key="index" @click="didClickedItem(index)" v-bind:class="{actives: actives[index]}">
-        <!-- <svg class="icon" aria-hidden="true" :font-size="items.iconSize">
-          <use :xlink:href="items.icon"></use>
-        </svg> -->
         <img :src="items.src" alt="">
         <span :style="actives[index] ? items.iconColor : ''">{{items.title}}</span>
       </div>

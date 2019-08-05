@@ -1,29 +1,25 @@
 <template>
-    <div>
+    <div class="main">
         <van-nav-bar
-            title="标题"
+            title="IVF成功率计算器"
             left-text=""
             right-text=""
             left-arrow
             @click-left="onClickLeft"
             @click-right="onClickRight"
             />
-        {{mag}}
-        <hosSerListLi></hosSerListLi>
     </div>
 </template>
 
 <script>
-import hosSerListLi from "../layout/hosSerListLi"
 export default {
-    name:'Hospital',
     components:{
-        hosSerListLi
     },
+    name:"Ivfcalc",
     data(){
-        return{
-            mag:'这里是医院',
-            item: 1
+        return {
+            msg:'这里是我的',
+            item: 4
         }
     },
     methods:{
@@ -36,4 +32,9 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+
+</style>
+
+
 

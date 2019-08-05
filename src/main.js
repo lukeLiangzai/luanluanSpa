@@ -8,19 +8,14 @@ import qs from 'qs'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import $ from 'jquery';
-import { Tag } from 'vant';
-import { Tabbar, TabbarItem } from 'vant';
 import store from './store'
+import { Lazyload } from 'vant';
 
-import { NavBar } from 'vant';
-
-Vue.use(NavBar);
-
-Vue.use(Tag);
+// options 为可选参数，无则不传
+Vue.use(Lazyload);
 
 Vue.use(Vant);
 
-Vue.use(Tabbar).use(TabbarItem);
 
 Vue.prototype.$axios=axios;
 Vue.prototype.$qs=qs;

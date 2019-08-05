@@ -1,11 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Index from '@/components/index'
-// import Hospital from '@/components/hospital'
-// import Information from '@/components/information'
-// import Personal from '@/components/personal'
-// import Service from '@/components/service'
 import EnterElement from '@/components/enterElement'
+import Ivfcalc from '@/components/layout/ivfcalc'
 
 Vue.use(Router)
 
@@ -15,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'EnterElement',
       component: EnterElement
+    }
+    ,{
+      path: '/ivfcalc',
+      name: 'Ivfcalc',
+      component: Ivfcalc
     }
     // ,{
     //   path: '/hospital',
