@@ -15,7 +15,7 @@
         </div>
         
         <div class='row-nav'> 
-            <van-grid>
+            <van-grid :border="false">
                 <van-grid-item
                     v-for="(value,index2) in iconList"
                     :key="index2"
@@ -124,7 +124,6 @@ export default {
     }
     .row-nav {
         width: calc(100% - .8rem);
-        height: 2.133333rem;
         background-color: #fff;
         border-radius: .133333rem;
         padding: 0 .266667rem;
