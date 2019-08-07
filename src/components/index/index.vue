@@ -1,9 +1,11 @@
 <template>
     <div class="main">
-        <div class='head-nav flex align-center'>
-            <img src="../../assets/img/icon-bao.png" alt="">
+        <div class='head-nav flex align-center' :style="{backgroundColor : headOpacity}">
+            <img src="../../assets/img/icon-bao.png" alt="" v-if="imgIsshow">
+            <img src="../../assets/img/icon-bao-gray.png" alt="" v-else>
             <input type="text" class='flex-auto' placeholder="泰国杰特宁医院">
-            <img src="../../assets/img/icon-customer.png" alt="">
+            <img src="../../assets/img/icon-customer.png" alt="" v-if="imgIsshow">
+            <img src="../../assets/img/icon-customer-gray.png" alt="" v-else>
         </div>
         <div class='banner'>
             <van-swipe :autoplay="3000">
@@ -41,8 +43,9 @@
                     <p>孪娈海外七月好孕节</p>
                     <img src="../../assets/img/icon-niuer.png" alt="">
                 </div>
-            </div>
+            </div> 
         </div>
+        <div style='width:100%;height:600px;'></div>
     </div>
 </template>
 
@@ -54,34 +57,55 @@ export default {
         return {
             msg:'这里是首页',
             images:[//轮播图
-                {srcImg: require("../../assets/img/banner-test2.png")},
-                {srcImg: require("../../assets/img/banner-test2.png")},
-                {srcImg: require("../../assets/img/banner-test2.png")},
+                {srcImg: require("../../assets/img/banner-img2.png")},
+                {srcImg: require("../../assets/img/banner-img2.png")},
+                {srcImg: require("../../assets/img/banner-img2.png")},
             ],
             iconList:[
                 {icon:require("../../assets/img/icon-row-nav1.png"),text:'医院'},
                 {icon:require("../../assets/img/icon-row-nav2.png"),text:'服务'},
                 {icon:require("../../assets/img/icon-row-nav3.png"),text:'医生'},
                 {icon:require("../../assets/img/icon-row-nav4.png"),text:'反馈'},
-            ]
+            ],
+            headOpacity:"rgba(250,250,250,0)",
+            imgIsshow:true
         }
     },
     methods:{
-
+        handleScroll(e){
+            let scrollNum = e.target.scrollTop
+            if(scrollNum < 50){
+                this.imgIsshow = true
+            }else if(scrollNum > 50){
+                this.imgIsshow = false
+            }
+            if(scrollNum < 100){
+                this.headOpacity = "rgba(250,250,250,"+scrollNum/100+")"
+            }else if(scrollNum > 100){
+                this.headOpacity = "rgba(250,250,250,1)"
+            }
+        }
     },
     mounted(){
-        
+        window.addEventListener('scroll',this.handleScroll,true)
     }
 }
 </script>
 <style lang="scss" scoped>
     .main{
         background-color: #F7F5F5;
+        height: 100%;
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        overflow: auto;
     }
     .head-nav{
         width: 100%;
         height: 1.333333rem;
-        background-color: #14b6c4;
+        background-color: transparent;
         position: fixed;
         left: 0;
         top: 0;
@@ -116,8 +140,7 @@ export default {
     }
     .banner{
         width: 100%;
-        max-height: 5.066667rem;
-        margin-top: 1.333333rem;
+        max-height: 5.786667rem;
         img{
             width: 100vw;
         }
@@ -132,6 +155,7 @@ export default {
         color: rgba(141,141,141,1);
         position: relative;
         z-index: 2;
+        box-shadow: 0 -0.026667rem .346667rem rgba(0,0,0,.08);
     }
     .active-card {
         font-size: .373333rem;
