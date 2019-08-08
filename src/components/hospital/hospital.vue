@@ -10,7 +10,7 @@
             <a><img src="../../assets/img/icon-04.png" alt="">费用估算</a>
         </div>
         <van-dropdown-menu>
-            <van-dropdown-item v-model="value1" :options="option1"/>
+            <van-dropdown-item v-model="value1" :options="option1" ref="recommended" @click="toggle" class="noIcon active"/>
             <van-dropdown-item v-model="value2" :options="option2" />
             <van-dropdown-item v-model="value3" :options="option3" />
             <van-dropdown-item v-model="value4" :options="option4" />
@@ -35,19 +35,22 @@ export default {
                 { text: '推荐', value: 0 },
             ]
             ,option2: [
-                { text: '默认排序', value: 0 },
-                { text: '好评排序', value: 1 },
-                { text: '销量排序', value: 2 },
+                { text: '国家', value: 0 },
+                { text: '泰国', value: 1 },
+                { text: '柬埔寨', value: 2 },
+                { text: '马来西亚', value: 3 },
+                { text: '俄罗斯', value: 4 },
+                { text: '美国', value: 5 },
             ]
             ,option3: [
-                { text: '默认排序', value: 0 },
-                { text: '好评排序', value: 1 },
-                { text: '销量排序', value: 2 },
+                { text: '类型', value: 0 },
+                { text: '综合型医院', value: 1 },
+                { text: '生殖专科医院', value: 2 },
             ]
             ,option4: [
-                { text: '默认排序', value: 0 },
-                { text: '好评排序', value: 1 },
-                { text: '销量排序', value: 2 },
+                { text: '排序', value: 0 },
+                { text: '人气优先', value: 1 },
+                { text: '价格优先', value: 2 },
             ]
         }
     },
@@ -57,7 +60,13 @@ export default {
         },
         onClickRight() {
             // Toast('按钮');
+        },
+        toggle(){
+            this.$refs.recommended.toggle(false);
+            console.log(1);
         }
+    },
+    mounted(){
     }
 }
 </script>
@@ -143,6 +152,12 @@ export default {
     a:nth-child(2){
         background-color: #62A9F8;
     }
+}
+.noIcon::after {
+    display: none;
+}
+.van-dropdown-menu__title.active {
+    color: rgb(25, 137, 250);
 }
 </style>
 
