@@ -1,20 +1,25 @@
 <template>
     <div class='main'>
-        <div class='head-nav flex align-center justify-between bg-white fixed'>
+        <div class='head-nav flex align-center justify-between bg-white fixed' ref="headNav">
             <span class='bold text-black'>医院</span>
             <input type="text" placeholder="泰国杰特宁医院">
             <img src="../../assets/img/icon-01.png" alt="">
         </div>
         <div class='cards flex justify-between'>
-            <a><img src="../../assets/img/icon-03.png" alt="">测成功率</a>
+            <a @click="toIvfcalc"><img src="../../assets/img/icon-03.png" alt="">测成功率</a>
             <a><img src="../../assets/img/icon-04.png" alt="">费用估算</a>
         </div>
-        <van-dropdown-menu>
-            <van-dropdown-item v-model="value1" :options="option1" ref="recommended" @click="toggle" class="noIcon active"/>
-            <van-dropdown-item v-model="value2" :options="option2" />
-            <van-dropdown-item v-model="value3" :options="option3" />
-            <van-dropdown-item v-model="value4" :options="option4" />
-        </van-dropdown-menu>
+        <div class='placeholder-box' ref="placeholderBox">
+            <van-dropdown-menu :class="{'fixed-nav' : isActive}">
+                <van-dropdown-item v-model="value1" :options="option1" ref="recommended"  class="noIcon active"/>
+                <van-dropdown-item v-model="value2" :options="option2" />
+                <van-dropdown-item v-model="value3" :options="option3" />
+                <van-dropdown-item v-model="value4" :options="option4" />
+            </van-dropdown-menu>
+        </div>
+        <div class="hospital-list">
+            <hosSerListLi v-for="(items,index) in option2" :key="index"></hosSerListLi>
+        </div>
     </div>
 </template>
 
@@ -52,22 +57,29 @@ export default {
                 { text: '人气优先', value: 1 },
                 { text: '价格优先', value: 2 },
             ]
+            ,isActive: false
         }
     },
     methods:{
-        onClickLeft() {
-            // Toast('返回');
+        placeholderScroll(e){
+            let scrollNum = e.target.scrollTop
+            let placeholderBox=this.$refs.placeholderBox.offsetTop - this.$refs.headNav.offsetHeight
+            if(scrollNum >= placeholderBox){
+                this.isActive = true
+            }else if(scrollNum < placeholderBox){
+                this.isActive = false
+            }
         },
-        onClickRight() {
-            // Toast('按钮');
-        },
-        toggle(){
-            this.$refs.recommended.toggle(false);
-            console.log(1);
+        toIvfcalc(){
+            this.$router.push({path:'/ivfcalc'})
         }
     },
     mounted(){
-    }
+        window.addEventListener('scroll',this.placeholderScroll,true)
+    },
+    beforeDestroy() {
+        window.removeEventListener("scroll",this.placeholderScroll,true)
+    },
 }
 </script>
 <style lang="scss" scoped>
@@ -80,6 +92,18 @@ export default {
     right:0;
     bottom:0;
     overflow: auto;
+    .placeholder-box{
+        width: 100%;
+        height: 50px;
+        background-color: #fff;
+        margin: .266667rem 0;
+        div.fixed-nav{
+            position: fixed;
+            top: 1.333333rem;
+            left: 0;
+            width: 100%;
+        }
+    }
 }
 .head-nav{
     width: 100%;
@@ -88,6 +112,7 @@ export default {
     top: 0;
     left: 0;
     z-index: 1;
+    background-color: #fff;
     span{
         font-size:.64rem;
     }

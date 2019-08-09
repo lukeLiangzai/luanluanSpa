@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import EnterElement from '@/components/enterElement'
 import Ivfcalc from '@/components/layout/ivfcalc'
+import Ivfcalcsucc from '@/components/layout/ivfcalcsucc'
 
 Vue.use(Router)
 
@@ -17,26 +18,11 @@ export default new Router({
       name: 'Ivfcalc',
       component: Ivfcalc
     }
-    // ,{
-    //   path: '/hospital',
-    //   name: 'Hospital',
-    //   component: Hospital
-    // }
-    // ,{
-    //   path: '/information',
-    //   name: 'Information',
-    //   component: Information
-    // }
-    // ,{
-    //   path: '/personal',
-    //   name: 'Personal',
-    //   component: Personal
-    // }
-    // ,{
-    //   path: '/service',
-    //   name: 'Service',
-    //   component: Service
-    // }
+    ,{
+      path: '/ivfcalcsucc',
+      name: 'Ivfcalcsucc',
+      component: Ivfcalcsucc
+    }
     
   ]
 })
