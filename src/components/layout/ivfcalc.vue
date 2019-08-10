@@ -28,6 +28,7 @@
             </div>
 
             <div class="calc-btn" @click="calculate('All')">马上测试</div>
+            <router-link to=""></router-link>
         </div>
         
     </div>
@@ -275,6 +276,7 @@ export default {
                     // $(".succ_num").text(prob);
                     // successfully(true);
                     console.log(prob);
+                    this.$router.push({path:`/ivfcalcsucc/${prob}`})
                 }
                 }
         }

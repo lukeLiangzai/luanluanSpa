@@ -16,11 +16,12 @@ export default new Router({
     ,{
       path: '/ivfcalc',
       name: 'Ivfcalc',
-      component: Ivfcalc
+      component: Ivfcalc,
     }
     ,{
-      path: '/ivfcalcsucc',
+      path: '/ivfcalcsucc/:succval',
       name: 'Ivfcalcsucc',
+      props:true,
       component: Ivfcalcsucc
     }
     

@@ -31,6 +31,9 @@ export default {
         }
         ,onSelect(){}
         ,onCancel(){}
+    },
+    mounted(){
+        console.log(this.$router.params)
     }
 }
 </script>
