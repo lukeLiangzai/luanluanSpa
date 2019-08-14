@@ -15,32 +15,27 @@ export default {
       actives: [ true , false , false , false , false],
       navBarType:[
         {
-          value:0
-          ,title:'首页'
+          title:'首页'
           ,src: require('../../assets/img/nav-bar1.png')
           ,iconColor:'color:#ffc600'
         }
         ,{
-          value:1
-          ,title:'医院'
+          title:'医院'
           ,src: require('../../assets/img/nav-bar2.png')
           ,iconColor:'color:#95cef9'
         }
         ,{
-          value:2
-          ,title:'服务'
+          title:'发现'
           ,src: require('../../assets/img/nav-bar3.png')
           ,iconColor:'color:#ffc600'
         }
         ,{
-          value:3
-          ,title:'资讯'
+          title:'套餐'
           ,src: require('../../assets/img/nav-bar4.png')
           ,iconColor:'color:#2c9ef4'
         }
         ,{
-          value:2
-          ,title:'我的'
+          title:'我的'
           ,src: require('../../assets/img/nav-bar5.png')
           ,iconColor:'color:#ff4858'
         }
@@ -53,7 +48,6 @@ export default {
           return false;
         });
       this.actives[tag] = true;
-      // this.$store.state.navBarNum=tag;
       this.$emit("navBarNum",tag);
     }
   },

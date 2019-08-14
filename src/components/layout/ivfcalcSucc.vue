@@ -4,7 +4,7 @@
         <div class="successfully">
             <div class="card-block flex flex-column align-center block1">
                 <p>您的成功率为</p>
-                <div class="succ_num">44.3</div>
+                <div class="succ_num">{{succ_val}}</div>
                 <div class="block-btn">重新测试</div>
                 <span>小娈所测数据仅供参考，具体情况因人而异</span>
             </div>
@@ -23,6 +23,7 @@ export default {
     name:"Ivfcalcsucc",
     data(){
         return {
+            succ_val:this.$route.params.succval
         }
     },
     methods:{
@@ -33,7 +34,6 @@ export default {
         ,onCancel(){}
     },
     mounted(){
-        console.log(this.$router.params)
     }
 }
 </script>

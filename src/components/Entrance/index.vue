@@ -2,8 +2,8 @@
     <div>
         <indexTemplate v-if="this.toNavnum===0"></indexTemplate>
         <hospitalTemplate v-if="this.toNavnum===1"></hospitalTemplate>
-        <serviceTemplate v-if="this.toNavnum===2"></serviceTemplate>
-        <informationTemplate v-if="this.toNavnum===3"></informationTemplate>
+        <informationTemplate v-if="this.toNavnum===2"></informationTemplate>
+        <serviceTemplate v-if="this.toNavnum===3"></serviceTemplate>
         <personalTemplate v-if="this.toNavnum===4"></personalTemplate>
     </div>
 </template>
