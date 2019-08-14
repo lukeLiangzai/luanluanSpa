@@ -67,8 +67,8 @@ export default {
                 {icon:require("../../assets/img/icon-row-nav3.png"),text:'医生'},
                 {icon:require("../../assets/img/icon-row-nav4.png"),text:'反馈'},
             ],
-            headOpacity:"rgba(250,250,250,0)",
-            imgIsshow:true
+            headOpacity : "rgba(250,250,250,0)",
+            imgIsshow : true
         }
     },
     methods:{
@@ -79,10 +79,10 @@ export default {
             }else if(scrollNum > 50){
                 this.imgIsshow = false
             }
-            if(scrollNum < 100){
+            if(scrollNum < 98){
                 this.headOpacity = "rgba(250,250,250,"+scrollNum/100+")"
-            }else if(scrollNum > 100){
-                this.headOpacity = "rgba(250,250,250,1)"
+            }else if(scrollNum > 98){
+                this.headOpacity = "rgba(250,250,250,.98)"
             }
         }
     },

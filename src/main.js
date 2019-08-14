@@ -9,6 +9,9 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 import store from './store'
 import { Lazyload } from 'vant';
+import { Dialog } from 'vant';
+
+Vue.use(Dialog);
 
 // options 为可选参数，无则不传
 Vue.use(Lazyload);

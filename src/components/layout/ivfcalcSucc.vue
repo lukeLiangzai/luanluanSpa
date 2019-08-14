@@ -4,8 +4,8 @@
         <div class="successfully">
             <div class="card-block flex flex-column align-center block1">
                 <p>您的成功率为</p>
-                <div class="succ_num">44.3</div>
-                <div class="block-btn">重新测试</div>
+                <div class="succ_num">{{succ_num}}</div>
+                <div class="block-btn" @click="onClickLeft">重新测试</div>
                 <span>小娈所测数据仅供参考，具体情况因人而异</span>
             </div>
             <div class="card-block flex flex-column align-center justify-center end-block">
@@ -23,17 +23,17 @@ export default {
     name:"Ivfcalcsucc",
     data(){
         return {
+            succ_num: this.$route.params.succval
         }
     },
     methods:{
         onClickLeft() {
-            this.$router.push({path:'/'})
+            this.$router.push('/ivfcalc');
         }
         ,onSelect(){}
         ,onCancel(){}
     },
     mounted(){
-        console.log(this.$router.params)
     }
 }
 </script>
@@ -61,19 +61,11 @@ export default {
 }
 
     .successfully{
-        // position: fixed;
-        // top: 0;
-        // left: 0;
-        // bottom: 0;
-        // right: 0;
         min-height: calc(100vh - 1.28rem);
         width: 100vw;
         padding-top: .4rem;
         background-color: #F7F5F5;
         box-sizing: border-box;
-        // transform: translateX(100%);
-        // transition: all .3s linear;
-        /* display: none; */
     }
     .card-block{
         width: 100%;

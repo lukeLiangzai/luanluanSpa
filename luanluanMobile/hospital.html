@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head design-width="750">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>孪娈海外-医院</title>
+    <script src="assets/js/auto-size.js"></script><!--设置字体大小-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/jquery1.42.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="hospital-root">
+        <div class='head-nav flex align-center justify-between bg-white fixed'>
+            <span class='bold text-black'>医院</span>
+            <input type="text" placeholder="泰国杰特宁医院">
+            <img src="assets/img/icon-01.png" alt="">
+        </div>
+        <div class='cards flex justify-between'>
+            <a href="./calculator.html"><img src="assets/img/icon-03.png" alt="">测成功率</a>
+            <a><img src="assets/img/icon-04.png" alt="">费用估算</a>
+        </div>
+        <div class='placeholder-box'>
+            <!-- <div class='classification-nav flex justify-between align-center'>
+                <div class='dropdown-items'>推荐</div>
+                <div class='dropdown-items dropdown-popup'>类型</div>
+                <div class="popup-model">
+                    <div class='options-list'>
+                        <div class="options-items">
+                            <div class='item-text'>综合性医院</div>
+                            <label class="bui-radios-label bui-radios-anim">
+                                <input type="radio" name='test'><div class="bui-radios"></div>
+                            </label>
+                        </div>
+                        <div class="options-items">
+                            <div class='item-text'>生殖专科医院</div>
+                            <label class="bui-radios-label bui-radios-anim">
+                                <input type="radio" name='test'><div class="bui-radios"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class='popup-model-mask'></div>
+                </div>
+                <div class='dropdown-items icon-sorting'>预约</div>
+                <div class='dropdown-items icon-sorting-up icon-sorting-down'>价格</div>
+            </div> -->
+        </div>
+        <div class='hospital-list'>
+            <a href="./hospital-show.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column flex-auto'>
+                    <p class="title">医院详情</p>
+                    <div class='row-1 flex justify-between'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰一在预约即可享受一万泰一在预约即可享受一万泰一万泰一万泰铢优惠</p>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">活动</div>
+                        <p>杰特宁医院实地考察杰特宁医院杰特宁医院</p>
+                    </div>
+                </div>
+            </a>
+            <a href='./server-show.html' class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">服务详情</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </a>
+            <a href="./order-details.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">订单详情</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </a>
+            <a href="./orderList.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">订单列表</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </a>
+            <a href="./confirm-order.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">确认订单</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                    <div class='row-3 flex align-center'>
+                        <div class="tag-square">活动</div>
+                        <p>杰特宁医院实地考察</p>
+                    </div>
+                </div>
+            </a>
+            <a href="./calculator.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">IVF计算器</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </a>
+            <a href="./information-show.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">文章内页</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </a>
+            <a href="./login.html" class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">登录页</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </a>
+            <div class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">杰特宁医院</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </div>
+            <div class='list-items'>
+                <div class='left-img img-box'><img src="assets/img/hos-img.png" alt=""></div>
+                <div class='right-introduce flex flex-column'>
+                    <p class="title">杰特宁医院</p>
+                    <div class='row-1 flex'>
+                        <div class='score flex'>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i class='active'></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                        <div class='price-row flex align-end'>
+                            <i>&yen;</i>
+                            <p>90000</p>
+                            <span>/周期</span>
+                        </div>
+                    </div>
+                    <div class='row-2 flex align-center'>
+                        <div class="tag-square">预约</div>
+                        <p>现在预约即可享受一万泰铢优惠</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class='nav-bar flex align-center'>
+            <a href="./index.html" class='nav-bar-item'>
+                <img src="assets/img/nav-bar1.png" alt="">
+                <span>推荐</span>
+            </a>
+            <a href="./hospital.html" class='nav-bar-item'>
+                <img src="assets/img/nav-bar2.png" alt="">
+                <span>医院</span>
+            </a>
+            <a href="./information.html" class='nav-bar-item'>
+                <img src="assets/img/nav-bar3.png" alt="">
+                <span>发现</span>
+            </a>
+            <a href="./serve.html" class='nav-bar-item'>
+                <img src="assets/img/nav-bar4.png" alt="">
+                <span>套餐</span>
+            </a>
+            <a href="./personal.html" class='nav-bar-item'>
+                <img src="assets/img/nav-bar5.png" alt="">
+                <span>我的</span>
+            </a>
+        </footer>
+        
+    </div>
+</body>
+<script>
+    console.log(!IntersectionObserver);
+    // $(window).scroll(function(){
+    //     var topp = $(document).scrollTop();
+
+    //     var classification = $('.classification-nav');
+    //     var headNav = $('.head-nav').height();
+    //     var vallues = ($('.placeholder-box').offset().top) - headNav;
+    //     if(topp >= vallues){
+    //         classification.css({'position':'fixed','top': headNav+'px'});
+    //     }else{
+    //         classification.css({'position':'static'});
+    //     }
+    // });
+    // //记录是否阻止滚动
+    // var disableScroll = false;
+ 
+    // window.addEventListener('touchmove', function(e){
+    //     if(disableScroll){
+    //         e.preventDefault();
+    //     }
+    // }, { passive: false })
+
+    // $(".classification-nav .dropdown-items").click(e=>{
+    //     var that = $(e.target);
+    //     var headNav = $('.head-nav').height();
+    //     var vallues = ($('.placeholder-box').offset().top) - headNav;
+
+    //     if(that.hasClass("dropdown-popup") && !that.hasClass("dropdown-items--down")){
+    //         $("html,body").stop().animate({ scrollTop: vallues }, 200);
+
+    //         setTimeout(function(){
+    //             $('.popup-model').show().addClass('active');
+    //         },200);
+
+    //         disableScroll = true;
+    //     }else{
+    //         $('.popup-model').fadeOut(200).removeClass('active');
+    //         disableScroll = false;
+    //     }
+
+    //     if(that.hasClass("dropdown-items--down")){
+    //         $(".classification-nav .dropdown-items").removeClass('dropdown-items--down');
+    //     }else{
+    //         $(".classification-nav .dropdown-items").removeClass('dropdown-items--down');
+    //         that.addClass('dropdown-items--down');
+    //     }
+
+    // });
+    // // 遮罩层
+    // $('.popup-model-mask').click(e=>{
+    //     var that=$(e.target);
+    //     $(".classification-nav .dropdown-items").removeClass('dropdown-items--down');
+    //     $('.popup-model').fadeOut(200).removeClass('active');
+    //     disableScroll = false;
+    // });
+    // // 选项
+    // $('.popup-model input').click(e=>{
+    //     var that=$(e.target);
+    //     var options=that.parent('label').prev('.item-text').text();
+    //     $('.dropdown-items--down').text(options);
+
+    //     setTimeout(function(){
+    //         $('.popup-model').fadeOut(200).removeClass('active');
+    //         $(".classification-nav .dropdown-items").removeClass('dropdown-items--down');
+    //         disableScroll = false;
+    //     },200); 
+    // })
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head design-width="750">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>孪娈海外-医院</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <script src="assets/js/auto-size.js"></script><!--设置字体大小-->
+    <script src="assets/js/jquery1.42.min.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+        
+</head>
+<body>
+    <div id="information-show">
+        <div class='head-box'>
+            <div class='head-row1 flex align-center justify-between'>
+                <div class='left'onclick="javascript :history.back(-1)"></div>
+                <div class='right'></div>
+            </div>
+            <div class='head-row2 flex align-center justify-center'><span>文章详情</span></div>
+        </div>
+        <div class="module-banner" style='background-image: url(assets/img/order-testimg.png);'>
+            <p>试管婴儿为什么也会发生宫外孕？</p>
+            <div class="flex align-center"><img src="assets/img/luanluan-logo.png" alt="">试管资讯</div>
+        </div>
+        <div class="content-text">
+            <div>      在众多不孕不育患者中，女方占大多数，像患有子宫内膜异位、输卵管堵塞、子宫肌腺症等都会影响生育，但都可以先调理再进行试管婴儿辅助生育。而有一种疾病，地中海贫血，由于带有遗传性，且无法进行进行调理治愈，只能通过试管婴儿技术来辅助生育，且是第三代试管婴儿。</div>
+            <img src="assets/img/order-testimg.png" alt="">
+            <div>      在众多不孕不育患者中，女方占大多数，像患有子宫内膜异位、输卵管堵塞、子宫肌腺症等都会影响生育，但都可以先调理再进行试管婴儿辅助生育。而有一种疾病，地中海贫血，由于带有遗传性，且无法进行进行调理治愈，只能通过试管婴儿技术来辅助生育，且是第三代试管婴儿。</div>
+            <img src="assets/img/order-testimg.png" alt="">
+            <div>      在众多不孕不育患者中，女方占大多数，像患有子宫内膜异位、输卵管堵塞、子宫肌腺症等都会影响生育，但都可以先调理再进行试管婴儿辅助生育。而有一种疾病，地中海贫血，由于带有遗传性，且无法进行进行调理治愈，只能通过试管婴儿技术来辅助生育，且是第三代试管婴儿。</div>
+            <img src="assets/img/order-testimg.png" alt="">
+        </div>
+    </div>
+    <footer class='information-show-foo flex align-center justify-between'>
+        <div class="left">2019-04-18</div>
+        <div class="right flex ">
+            <div class='block-icon flex align-center justify-center'>
+                <img src="assets/img/icon-eye.png" alt="">
+                <span>2</span>
+            </div>
+            <div class='block-icon flex align-center justify-center'>
+                <img src="assets/img/icon-good.png" alt="">
+                <span>2</span>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    $(function() {
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if (scrollTop < 100) {
+                $('.head-box .head-row2').css({"opacity":scrollTop/100});
+                if (scrollTop > 10) {
+                    $('.head-box .head-row1 div').addClass('active');
+                }else{
+                    $('.head-box .head-row1 div').removeClass('active');
+                }
+            }
+            if (scrollTop > 100) {
+                $('.head-box .head-row2').css({"opacity": 1});
+                $('.head-box .head-row1 div').addClass('active');
+            }
+        });
+       
+    })
+</script>
+</html>

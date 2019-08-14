@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'EnterElement',
-      component: EnterElement
+      component: EnterElement,
     }
     ,{
       path: '/ivfcalc',
@@ -21,8 +21,7 @@ export default new Router({
     ,{
       path: '/ivfcalcsucc/:succval',
       name: 'Ivfcalcsucc',
-      props:true,
-      component: Ivfcalcsucc
+      component: Ivfcalcsucc,
     }
     
   ]

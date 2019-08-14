@@ -1,0 +1,441 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="applicable-device" content="mobile">
+    <meta charset="utf-8">
+    <title>柒月健康试管婴儿成功率测试</title>
+    <script type="text/javascript" src="ivfpredict.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body id="page5">
+    <div id="main">
+      <div style="text-align:center">
+        <h1>IVF成功率计算器</h1>
+      </div>
+      <div class="sm"> 本试管婴儿成功率计算器只能计算女性的基本情况来进行测试，请务必选择您的真实的情况
+        在最后，你会看到一个摘要页面，在那里你会可以改变您的答案，并重新计算您的试管婴儿成功率。 </div>
+      <div class="wrapper">
+      <div id='calc01'>
+        <div class="sm">
+          <div class="yuan"><span class="left">第一题：请选择您的年龄</span><span class="right">1/9</span></div>
+          <form name='ageform' action='javascript: void(0)'>
+            <fieldset>
+              <ol>
+                <li>
+                  <label for="age1"><b>请选择女性的年龄:</b></label>
+                  <select id="age1" name="age" size="1" onChange="agecheck();">
+                    <option value="-1">请选择</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                  </select>
+                </li>
+              </ol>
+            </fieldset>
+          </form>
+        </div>
+        <div class="hx">
+          <p class="next"> <a class="x" href='javascript:showcalc02()'>下一步</a> </p>
+        </div>
+      </div>
+    </div>
+      <div id='calc02' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第二题：您尝试怀孕有几年了？</span><span class="right">2/9</span></div>
+        <form name='durform' action='javascript: void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="dur1">几年没有怀孕</label>
+                <select id="dur1" name="dur" size="1" onChange="trycheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">少于一年</option>
+                  <option value="1">1 年</option>
+                  <option value="2">2 年</option>
+                  <option value="3">3 年</option>
+                  <option value="4">4 年</option>
+                  <option value="5">5 年</option>
+                  <option value="6">6 年</option>
+                  <option value="7">7 年</option>
+                  <option value="8">8 年</option>
+                  <option value="9">9 年</option>
+                  <option value="10">10 年</option>
+                  <option value="11">11 年</option>
+                  <option value="12">12 年</option>
+                  <option value="13">12年以上</option>
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"><a class="s" href='javascript:showcalc01()'>上一步</a><a class="x" href='javascript:showcalc03()'>下一步</a> </p>
+      </div>
+    </div>
+      <div id='calc03' style = 'display:none'>
+        <div class="sm">
+          <div class="yuan"><span class="left">第三题：本次试管婴儿您是选择自己卵子的方式是：</span><span class="right">3/9</span></div>
+            <form name='srcform' action='javascript: void(0)'>
+            <fieldset>
+              <ol>
+                <li>
+                  <label for="src1">自己的卵子还是卵子捐赠 </label>
+                  <select id="src1" name="src" size="1" onChange="srccheck()">
+                    <option value="-1">请选择</option>
+                    <option value="1">自己的</option>
+                    <option value="0">卵子捐赠</option>
+                  </select>
+                </li>
+              </ol>
+            </fieldset>
+          </form>
+          </div>
+          <div class="hx">
+            <p class="next"> <a class="s" href='javascript:showcalc02()'>上一步</a><a class="x" href='javascript:showcalc04()'>下一步</a> </p>
+          </div>
+        </div>
+    </div>
+    <div id='calc04' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第四题：你本次做试管婴儿的主要原因？</span><span class="right">4/9</span></div>
+        <form name='causeform' action='javascript:void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="cause1">你本次做试管婴儿的主要原因：</label>
+                <select id="cause1" name="cause" size="1" onChange="causecheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">身体正常，其他原因</option>
+                  <option value="1">输卵管疾病</option>
+                  <option value="2">卵巢疾病</option>
+                  <option value="3">子宫内膜异位症</option>
+                  <option value="4">子宫颈疾病</option>
+                  <option value="5">男方精子问题</option>
+                  <option value="6">多种不孕因素结合</option>
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"><a class="s" href='javascript:showcalc03()'>上一步</a><a class="x" href='javascript:showcalc05()'>下一步</a> </p>
+      </div>
+    </div>
+    <div id='calc05' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第五题：您之前有尝试做过试管婴儿么。</span><span class="right">5/9</span></div>
+        <form name='cycform' action='javascript:void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="cyc1">这是第几次尝试试管婴儿 </label>
+                <select id="cyc1" name="cyc" size="1" onChange="cyccheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">第一次</option>
+                  <option value="1">第二次</option>
+                  <option value="2">三次以上</option>
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"><a class="s" href='javascript:showcalc04()'>上一步</a><a class="x" href='javascript:showcalc06()'>下一步</a> </p>
+      </div>
+    </div>
+    <div id='calc06' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第六题：您之前做试管婴儿失败的次数</span><span class="right">6/9</span></div>
+        <form name='attsform' action='javascript:void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="atts1">试管婴儿不成功的尝试</label>
+                <select id="atts1" name="atts" size="1" onChange="attscheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5次以上</option>
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"><a class="s" href='javascript:showcalc05()'>上一步</a><a class="x" href='javascript:showcalc07()'>下一步</a> </p>
+      </div>
+    </div>
+    <div id='calc07' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第七题：下面那个是你的妊娠史</span><span class="right">7/9</span></div>
+        <form name='histform' action='javascript: void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="hist1">下面那个是你的妊娠史?</label>
+                <select id="hist1" name="hist" size="1" onChange="histcheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">没有做过试管婴儿，没有妊娠史</option>
+                  <option value="1">没做过试管婴儿，怀孕一次</option>
+                  <option value="2">没做过试管婴儿，活产</option>
+                  <option value="3">做过试管婴儿，无怀孕史</option>
+                  <option value="4">做过试管婴儿， 怀孕一次</option>
+                  <option value="5">做过试管婴儿 ，活产</option>
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"><a class="s" href='javascript:showcalc06()'>上一步</a><a class="x" href='javascript:showcalc08()'>下一步</a> </p>
+      </div>
+    </div>
+    <div id='calc08' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第八题：在这之前你有使用过哪种相关的药物</span><span class="right">8/9</span></div>
+        <form name='prepform' action='javascript: void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="prep1">药物治疗史</label>
+                <select id="prep1" name="prep" size="1" onChange="prepcheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">抗雌激素</option>
+                  <option value="1">促性腺激素</option>
+                  <option value="2">激素替代</option> 
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"><a class="s" href='javascript:showcalc07()'>上一步</a><a class="x" href='javascript:showcalc09()'>下一步</a> </p>
+      </div>
+    </div>
+    <div id='calc09' style = 'display:none'>
+      <div class="sm">
+        <div class="yuan"><span class="left">第九题：本次选择的试管婴儿技术</span><span class="right">9/9</span></div>
+        <form name='icsiform' action='javascript: void(0)'>
+          <fieldset>
+            <ol>
+              <li>
+                <label for="icsi1">选择哪一种试管婴儿技术</label>
+                <select id="icsi1" name="icsi" size="1" onChange="icsicheck()">
+                  <option value="-1">请选择</option>
+                  <option value="0">第一代试管婴儿(IVF)</option>
+                  <option value="1">第二代试管婴儿（ICSI）</option>
+                </select>
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div class="hx">
+        <p class="next"> <a class="s" href='javascript:showcalc08()'>上一步</a><a class="x" href='javascript:showsummary()'>确定</a> </p>
+      </div>
+    </div>
+    <div id='summary' style = 'display:none'>
+      <div class="sm">
+      <div class="yuan"><span class="left">基本信息摘要</span></div>
+      <form name='thesecondform' action='javascript: void(0)'>
+        <fieldset>
+          <ol class="tl">
+            <li>
+              <label for="sumage">女性的年龄:</label>
+              <select id="sumage" name="sumage" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="18">18岁</option>
+                <option value="19">19岁</option>
+                <option value="20">20岁</option>
+                <option value="21">21岁</option>
+                <option value="22">22岁</option>
+                <option value="23">23岁</option>
+                <option value="24">24岁</option>
+                <option value="25">25岁</option>
+                <option value="26">26岁</option>
+                <option value="27">27岁</option>
+                <option value="28">28岁</option>
+                <option value="29">29岁</option>
+                <option value="30">30岁</option>
+                <option value="31">31岁</option>
+                <option value="32">32岁</option>
+                <option value="33">33岁</option>
+                <option value="34">34岁</option>
+                <option value="35">35岁</option>
+                <option value="36">36岁</option>
+                <option value="37">37岁</option>
+                <option value="38">38岁</option>
+                <option value="39">39岁</option>
+                <option value="40">40岁</option>
+                <option value="41">41岁</option>
+                <option value="42">42岁</option>
+                <option value="43">43岁</option>
+                <option value="44">44岁</option>
+                <option value="45">45岁</option>
+                <option value="46">46岁</option>
+                <option value="47">47岁</option>
+                <option value="48">48岁</option>
+                <option value="49">49岁</option>
+                <option value="50">50岁</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumdur">尝试怀孕几年了:</label>
+              <select id="sumdur" name="sumdur" size="1"  onchange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="0">少于一年</option>
+                <option value="1">1年</option>
+                <option value="2">2年</option>
+                <option value="3">3年</option>
+                <option value="4">4年</option>
+                <option value="5">5年</option>
+                <option value="6">6年</option>
+                <option value="7">7年</option>
+                <option value="8">8年</option>
+                <option value="9">9年</option>
+                <option value="10">10年</option>
+                <option value="11">11年</option>
+                <option value="12">12年</option>
+                <option value="13">12年以上</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumsrc">供卵方式</label>
+              <select id="sumsrc" name="sumsrc" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="1">自己的</option>
+                <option value="0">卵子捐赠</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumcause">不怀孕的原因:</label>
+              <select id="sumcause" name="sumcause" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="0">身体正常，其他原因</option>
+                <option value="1">输卵管疾病</option>
+                <option value="2">卵巢疾病</option>
+                <option value="3">子宫内膜异位症</option>
+                <option value="4">子宫颈疾病</option>
+                <option value="5">男方精子问题</option>
+                <option value="6">多种不孕因素结合</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumcyc">试管婴儿次数:</label>
+              <select id="sumcyc" name="sumcyc" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="0">第一次</option>
+                <option value="1">第二次</option>
+                <option value="2">三次以上</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumatts">试管婴儿不成功的尝试:</label>
+              <select id="sumatts" name="sumatts" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="0">0次</option>
+                <option value="1">1次</option>
+                <option value="2">2次</option>
+                <option value="3">3次</option>
+                <option value="4">4次</option>
+                <option value="5">5次以上</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumhist">妊娠史:</label>
+              <select id="sumhist" name="sumhist" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="0">没做过，无怀孕史</option>
+                <option value="1">没做过，怀孕一次</option>
+                <option value="2">没做过，活产</option>
+                <option value="3">做过，无怀孕史</option>
+                <option value="4">做过， 怀孕一次</option>
+                <option value="5">做过 ，活产</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumprep">药物史:</label>
+              <select id="sumprep" name="sumprep" size="1" onChange="calculate('Some')" >
+                <option value="-1">请选择</option>
+                <option value="0">抗雌激素</option>
+                <option value="1">促性腺激素</option>
+                <option value="2">激素替代</option>
+              </select>
+            </li>
+            <li>
+              <label for="sumicsi">本次选择的技术</label>
+              <select id="sumicsi" name="sumicsi" size="1" onChange="calculate('All')">
+                <option value="-1">请选择</option>
+                <option value="0">IVF</option>
+                <option value="1">ICSI</option>
+              </select>
+            </li>
+          </ol>
+        </fieldset>
+        <hr>
+        <fieldset>
+          <legend><span>你的试管婴儿成功率为：</span></legend>
+          <ol>
+            <li>
+              <input type="text" id="prob"  name='prob' />
+            </li>
+          </ol>
+        </fieldset>
+        <div class="hx">
+          <p class="next"><a class="x" href='javascript:showcalc01()'>重新测试</a> </p>
+        </div>
+      </form>
+    </div>
+  </div>
+    <div class="sm foot">
+    <div>
+      IVFpredict © 2015<a href="http://m.tgivf.com">柒月健康官网</a><a href="http://m.tgivf.com/ycq">预产期计算器</a>
+    </div>
+    <div style="padding-top:6px;">好孕热线：400-666-4704</div>
+  </div>
+    <!--<script type="text/javascript"> Cufon.now(); </script>-->
+  </body>
+</html>
+
+

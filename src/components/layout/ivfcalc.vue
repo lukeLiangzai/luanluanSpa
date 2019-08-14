@@ -175,7 +175,7 @@ export default {
     },
     methods:{
         onClickLeft() {
-            this.$router.push({path:'/'})
+            this.$router.go(-1)
         }
         ,onSelect(){}
         ,onCancel(){}
@@ -265,7 +265,10 @@ export default {
             
             
                 if (age<0||dur<0||src<0||cause<0||cyc<0||atts<0||hist<0||prep<0||icsi<0){
-                        alert("为了更准确的计算成功率请回答全部问题");
+                        this.$dialog.alert({
+                            title:'提示', 
+                            message: '为了更准确的计算成功率请回答全部问题'
+                        });
                 }else {
                         
                     var yup = t1[age][dur] + t2[age][src] + t3[icsi][cause] + t4[icsi][cyc] + t5[atts] + t6[hist] + t7[prep];
@@ -273,13 +276,13 @@ export default {
                     y = y + yup;
                     var prob = (100*Math.exp(y))/(1 + Math.exp(y));
                     prob = Math.round(prob * 10) / 10;
-                    // $(".succ_num").text(prob);
-                    // successfully(true);
-                    console.log(prob);
-                    this.$router.push({path:`/ivfcalcsucc/${prob}`})
+                    this.$router.push({path:`/ivfcalcsucc/${prob}`}) 
                 }
                 }
         }
+    },
+    mounted(){
+        
     }
 }
 </script>

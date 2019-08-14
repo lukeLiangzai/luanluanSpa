@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head design-width="750">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>孪娈海外-医院</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <script src="assets/js/auto-size.js"></script><!--设置字体大小-->
+    <script src="assets/js/jquery1.42.min.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id='calculator-main'>
+        <div class="head-nav flex align-center justify-between">
+            <a onclick="javascript :history.back(-1)" class="left img-box"><img src="assets/img/head-nav-left-active.png" alt="" width="18" height="20"></a>
+            <div class="center">IVF成功率计算器</div>
+            <div class="right"></div>
+        </div>
+        <div class="calc-list">
+            <form id="calc-list-form">
+            <!-- <div class="calc-items flex align-center">
+                <div class="left">
+                    <div class="tag-left">NO.1</div>
+                </div>
+                <div class="center flex-auto">
+                    <div><input type="text" name="age" placeholder="请选择" value="没做过试管，没有妊娠史"></div>
+                    <p>请选择女性的年龄</p>
+                </div>
+                <div class="right img-box"><img src="assets/img/icon-toright.png" alt=""></div>
+            </div> -->
+            <!-- <input type="submit" class="calc-btn" value="马上测试"/> -->
+            </form>
+        </div>
+        <div class="calc-popup-model">
+            <div class='calc-options'>
+                <!-- <div class="options-items">
+                    <div class='item-text'>综合性医院1</div>
+                    <label class="bui-radios-label bui-radios-anim">
+                        <input type="radio" name='test'><div class="bui-radios"></div>
+                    </label>
+                </div> -->
+            </div>
+            <div class='calc-mask'></div>
+        </div>
+        <div class="successfully">
+            <div class="head-nav flex align-center justify-between">
+                <a onclick='successfully(false)' class="left img-box"><img src="assets/img/head-nav-left-active.png" alt="" width="18" height="20"></a>
+                <div class="center">IVF成功率计算器</div>
+                <div class="right"></div>
+            </div>
+            <div class="card-block flex flex-column align-center block1">
+                <p>您的成功率为</p>
+                <div class="succ_num">44.3</div>
+                <div class="block-btn">重新测试</div>
+                <span>小娈所测数据仅供参考，具体情况因人而异</span>
+            </div>
+            <div class="card-block flex flex-column align-center justify-center end-block">
+                <div><span>IVFpredict&copy;2015</span><i>孪娈海外官网</i><i>IVF成功率计算器</i></div>
+                <p>好孕热线：400-999-6816</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // console.log($("#calc-list-form").serialize());
+    function calcPopup(data){
+        if(data){
+            $(".calc-options").css({"transform":"translateY(0%)"});
+            $(".calc-mask").css({"opacity":"1"});
+            $(".calc-popup-model").css({"zIndex":"2"});
+        }else{
+            $(".calc-options").css({"transform":"translateY(110%)"});
+            $(".calc-mask").css({"opacity":"0"});
+            setTimeout(function(){
+                $(".calc-popup-model").css({"zIndex":"-2"});
+            },300);
+        }
+    }
+
+    const calc_data = [
+        {
+            title:'请选择女性的年龄',
+            inputName:'age',
+            optionaArr:[
+                "18岁~34岁",
+                "35岁~37岁",
+                "38岁~39岁",
+                "40岁~42岁",
+                "43岁~44岁",
+                "45岁以上"
+            ]
+        },
+        {
+            title:'您尝试怀孕有几年了',
+            inputName:'years',
+            optionaArr:[
+                "1年以内",
+                "1年~3年",
+                "3年~6年",
+                "7年~9年",
+                "9年~12年",
+                "13年以上"
+            ]
+        },
+        {
+            title:'您是选择自己的卵子还是卵子捐赠',
+            inputName:'own',
+            optionaArr:[
+                "卵子捐赠",
+                "自己的",
+            ]
+        },
+        {
+            title:'您本次做试管婴儿的主要原因',
+            inputName:'reason',
+            optionaArr:[
+                "身体正常，其他原因",
+                "输卵管疾病",
+                "卵巢疾病",
+                "子宫内膜异位症",
+                "子宫颈疾病",
+                "男方精子问题",
+                "多种不孕因素结合"
+            ]
+        },
+        {
+            title:'您这是第几次尝试试管婴儿',
+            inputName:'attempt_times',
+            optionaArr:[
+                "第1次",
+                "第2次",
+                "3次以上"
+            ]
+        },
+        {
+            title:'您之前做试管婴儿失败的次数',
+            inputName:'failed_times',
+            optionaArr:[
+                "0次",
+                "1次",
+                "2次",
+                "3次",
+                "4次",
+                "5次以上"
+            ]
+        },
+        {
+            title:'哪一种是您的妊娠史',
+            inputName:'pregnancy_history',
+            optionaArr:[
+                "没有做过试管婴儿，没有妊娠史",
+                "没有做过试管婴儿，怀孕一次",
+                "没有做过试管婴儿，活产",
+                "做过试管婴儿，无怀孕史",
+                "做过试管婴儿，怀孕一次",
+                "做过试管婴儿，活产"
+            ]
+        },
+        {
+            title:'之前使用过哪些相关药物',
+            inputName:'medicine_history',
+            optionaArr:[
+                "抗雌激素",
+                "促性腺激素",
+                "激素代替"
+            ]
+        },
+        {
+            title:'选择哪种试管婴儿技术',
+            inputName:'ivf_technology',
+            optionaArr:[
+                "第一代试管婴儿（IVF）",
+                "第二代试管婴儿（ICSI）"
+            ]
+        },
+    ];
+    let calcHtml=``;
+    for(let calcI in calc_data){
+        calcHtml += `<div class=\"calc-items flex align-center\">
+                <div class=\"left\">
+                    <div class=\"tag-left\">NO.${parseInt(calcI)+1}</div>
+                </div>
+                <div class=\"center flex-auto\">
+                    <div><input type=\"text\" name=\"${calc_data[calcI].inputName}\" placeholder=\"请选择\" value=\"\"><div class=\"inputMask\"></div></div>
+                    <p>${calc_data[calcI].title}</p>
+                </div>
+                <div class=\"right img-box\"><img src=\"assets/img/icon-toright.png\" alt=\"\"></div>
+            </div>`;
+    };
+    calcHtml +=`<input type=\"button\" class=\"calc-btn\" value=\"马上测试\"/>`
+
+    $("#calc-list-form").empty();
+    $("#calc-list-form").append(calcHtml);
+    let indexNum=0;
+    $(".calc-list .calc-items").click(e=>{
+        let that=$(e.target);
+            indexNum= that.parents(".calc-items").index()==-1?that.index():that.parents(".calc-items").index();
+        calcPopup(true);
+        let optionHtml=``;
+        for( let i of calc_data[indexNum].optionaArr){
+            optionHtml += `<div class=\"options-items\">
+                    <div class=\"item-text\">${i}</div>
+                    <label class=\"bui-radios-label bui-radios-anim\">
+                        <input type=\"radio\" name=\"test\"><div class=\"bui-radios\"></div>
+                    </label>
+                </div>`;
+        }
+        $(".calc-options").empty();
+
+        $(".calc-options").append(optionHtml);
+
+    });
+    $(".calc-mask").click(e=>{
+        let that=$(e.target);
+        calcPopup(false);
+    });
+
+    let inputVal=[
+        {val:-1},
+        {val:-1},
+        {val:-1},
+        {val:-1},
+        {val:-1},
+        {val:-1},
+        {val:-1},
+        {val:-1},
+        {val:-1}
+    ];
+	
+    $(document).ready(function(){
+        $('.calc-popup-model> div.calc-options').on("click",".options-items",function(e){
+            let that=$(e.target);
+            let labelItems=that.parents('.options-items').children('label').prev('.item-text').text();
+            setTimeout(e=>{
+                calcPopup(false);
+                $(".calc-list .calc-items:nth-child("+(indexNum+1)+") input").attr({"value":labelItems});
+            },200);
+            inputVal[indexNum].val = that.parents('.options-items').index();
+        });
+    });
+        $('#calc-list-form').on("click","input.calc-btn",function(){
+            console.log(inputVal);
+            calculate("All");
+            
+        });
+        $('.block-btn').click(()=>{
+            successfully(false);
+        });
+        function successfully(data){
+            if(data){
+                $("#calculator-main .successfully").css({"transform":"translateX(0%)"});
+            }else{
+                $("#calculator-main .successfully").css({"transform":"translateX(100%)"});
+            }
+        }
+function calculate(known) { 
+   // tables from the paper
+	var t1 = [
+				[0.4109,0.1391,0.0,-0.0909,-0.1571,-0.1545],
+				[0.3935,0.0913,0.2,-0.03,-0.1449,-0.1151],
+				[0.5010,0.0410,-0.2586,-0.0329,-0.0850,-0.0137],
+				[0.4885,0.0415,0.0513,-0.0367,-0.0881,-0.1658],
+				[0.1705,-0.1013,-0.0336,-0.5706,-0.8279,-0.4323],
+				[0.2530,-0.0188,-0.3816,0.0314,0.0443,-0.4652]
+			];
+				
+	var t2 = [
+				[0.0,0.0129],
+				[0.20,-0.4216],
+				[-0.2586,-0.3436],
+				[0.0513,-1.2512],
+				[-0.0336,-2.1049],
+				[-0.3816,-2.7981]
+			];
+
+	var t3 = [
+				[0.0,-0.1455,-0.0763,-0.0526,-1.1661,-0.2728,-0.22],
+				[0.1481,-0.8872,0.0208,-0.0499,0.2509,0.02,-0.003]
+			];
+	var t4 = [
+				[0.0,-0.1613,-0.0368],
+				[0.1481,-0.1662,-0.1927]
+			];
+
+	var t5 = [0.0,-0.3210,-0.3489,-0.2496,-0.5931,-0.3863];
+	
+	// 0 means no previous IVF, never been pregnant
+	// 1         ditt         , spontaneous pregnancy
+	// 2         ditto        , normal live birth
+	// 3 means previous unsuccessful IVF
+	// 4 means previous IVF, got pregnant, no baby
+	// 5 means previous successful IVF 			 
+	var t6 = [0.0,0.0276,0.1735,0.1280,0.0123,0.4593];
+	   
+	var t7 = [0.0,0.29,0.4458];
+
+	var ageIndex = [0,1,2,3,4,5];
+
+	var yearIndex = [0,1,2,3,4,5]; 
+
+	// index values from the forms
+	with (true){
+	
+        //年龄
+        var age = inputVal[0].val;
+	   //几年未怀孕
+	   var dur = inputVal[1].val;
+		//卵子
+	   var src = inputVal[2].val;
+		//做试管的原因
+	   var cause = inputVal[3].val;
+	   //第几次试管
+	   var cyc = inputVal[4].val;
+	   //失败次数
+	   var atts = inputVal[5].val;
+	   //妊娠史
+	   var hist = inputVal[6].val;
+	   //药物史
+	   var prep = inputVal[7].val;
+	   //技术
+	   var icsi = inputVal[8].val;
+	  }// end with
+	  if (known == "All") {
+	
+	
+	       if (age<0||dur<0||src<0||cause<0||cyc<0||atts<0||hist<0||prep<0||icsi<0){
+                alert("为了更准确的计算成功率请回答全部问题");
+           }else {
+	   	          
+	          var yup = t1[age][dur] + t2[age][src] + t3[icsi][cause] + t4[icsi][cyc] + t5[atts] + t6[hist] + t7[prep];
+			  var y = -0.377;
+		      y = y + yup;
+              var prob = (100*Math.exp(y))/(1 + Math.exp(y));
+		      prob = Math.round(prob * 10) / 10;
+              $(".succ_num").text(prob);
+              successfully(true);
+		   }
+	    }
+};
+
+</script>
+</html>
