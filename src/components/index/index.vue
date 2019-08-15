@@ -45,14 +45,32 @@
                 </div>
             </div> 
         </div>
-        <div style='width:100%;height:600px;'></div>
+
+        <div class="title-recommended img-box"><img src="../../assets/img/title-recommended.png" alt=""></div>
+        <titleListNav></titleListNav>
+        <hosSerListLi v-for="(items,index) in 3" :key="'hos-'+index"></hosSerListLi>
+
+        <titleListNav></titleListNav>
+        <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes1.png" alt=""></div>
+        <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes2.png" alt=""></div>
+
+        <titleListNav></titleListNav>
+        <infoList v-for="(items,index) in 4" :key="'info-'+index"></infoList>
     </div>
 </template>
 
 <script>
 import { Swipe, SwipeItem } from 'vant'
+import hosSerListLi from "../layout/hosSerListLi"
+import titleListNav from "../layout/titleListNav"
+import infoList from "../layout/infoList"
 export default {
     name:"Index",
+    components:{
+        hosSerListLi,
+        titleListNav,
+        infoList,
+    },
     data(){
         return {
             msg:'这里是首页',
@@ -94,7 +112,7 @@ export default {
 <style lang="scss" scoped>
     .main{
         background-color: #F7F5F5;
-        height: 100%;
+        height: calc(100% - 1.466667rem);
         position: absolute;
         top:0;
         left:0;
@@ -217,6 +235,19 @@ export default {
                 background-color: #62A9F8;
             }
         }
+    }
+    .title-recommended.img-box{
+        width: 3.333333rem;
+        height: .666667rem;
+        margin: .373333rem auto 0;
+    }
+    .serve-card-itmes{
+        width: calc(100% - .8rem);
+        background-size: contain;
+        border-radius: .266667rem;
+        overflow: hidden;
+        display: block;
+        margin:0 auto .266667rem;
     }
 </style>
 

@@ -81,13 +81,6 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
         flex-direction: column;
     }
 
-    .hospital-list{
-        width: 100%;
-        padding:0 .4rem;
-        margin-bottom: 1.28rem;
-        border-bottom: 1px solid transparent;
-    }
-
     .van-picker-column__wrapper{
         display: flex !important;
         flex-direction: column !important;

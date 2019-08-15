@@ -50,13 +50,13 @@ a:hover{
 }
 
     .list-items{
-        width: 100%;
+        width: calc(100% - .8rem);
         background-color: #fff;
         border-radius: .133333rem;
         min-height:2.4rem;
         padding: .266667rem 0 .266667rem .32rem;
         display: flex;
-        margin-bottom: .32rem;
+        margin:0 auto .32rem;
         .left-img{
             width: 2.933333rem;
             height: 1.866667rem;

@@ -7,7 +7,7 @@
         <div class="page1" v-if="isActive">
             <van-tabs  swipeable animated >
                 <van-tab v-for="(index,idx) in ['推荐','成功案例','常见问题','试管资讯']" :title=" index" :key="idx" >
-                    <infoList></infoList>
+                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
                 </van-tab>
             </van-tabs>
         </div>

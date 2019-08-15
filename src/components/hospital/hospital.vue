@@ -17,9 +17,7 @@
                 <van-dropdown-item v-model="value4" :options="option4" />
             </van-dropdown-menu>
         </div>
-        <div class="hospital-list">
-            <hosSerListLi v-for="(items,index) in option2" :key="index"></hosSerListLi>
-        </div>
+        <hosSerListLi v-for="(items,index) in option2" :key="index"></hosSerListLi>
     </div>
 </template>
 
@@ -85,7 +83,7 @@ export default {
 <style lang="scss" scoped>
 .main{
     background-color: #F7F5F5;
-    height: 100%;
+    height: calc(100% - 1.466667rem);
     position: absolute;
     top:0;
     left:0;

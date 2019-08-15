@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="information-items" v-for="(index,idx) in 9" :key="idx">
+        <div class="information-items">
             <p class="title">泰国三代试管有什么缺点管有什么缺点管有什么缺点管有什么缺点?我能不能做三代?</p>
             <div class="flex">
                 <div class="left img-box"></div>
