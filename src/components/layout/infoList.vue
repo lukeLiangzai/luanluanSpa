@@ -3,7 +3,7 @@
         <div class="information-items">
             <p class="title">泰国三代试管有什么缺点管有什么缺点管有什么缺点管有什么缺点?我能不能做三代?</p>
             <div class="flex">
-                <div class="left img-box"></div>
+                <div class="left img-box"><img src="../../assets/img/hos-img.png" alt=""></div>
                 <div class="right flex flex-column flex-auto justify-between">
                     <div class="text">
                         试管婴儿助孕技术产生近50年来，已从一代、二代发展至三代。
