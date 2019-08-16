@@ -12,7 +12,14 @@
             </van-tabs>
         </div>
         <div class="page2" v-else-if="!isActive">
-            动态
+            <div class='message-items flex justify-between align-center' v-for="(index,idx) in 8" :key="idx">
+                <div class="left img-box"><img src="../../assets/img/icon-test.png" alt=""></div>
+                <div class="center flex flex-column justify-center flex-auto">
+                    <p>孪娈小娈</p>
+                    <span>13.8万人民币全包服务</span>
+                </div>
+                <div class="right img-box"><img src="../../assets/img/icon-list-right.png" alt=""></div>
+            </div>
         </div>
         
     </div>
@@ -76,6 +83,42 @@ export default {
         background-color: #f7f5f5;
         overflow-y: auto;
         padding-top: 1.466667rem;
+    }
+    .page2{
+        width: 100%;
+        height:84vh;
+        background-color: #f7f5f5;
+        overflow-y: auto;
+        .message-items{
+            width: calc(100% - .8rem);
+            padding: .266667rem .4rem;
+            background-color: #fff;
+            border-radius: .133333rem;
+            font-size:.373333rem;
+            color:rgba(153,153,153,1);
+            margin: .4rem auto .266667rem;
+            .left{
+                width: 1.333333rem;
+                height: 1.333333rem;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: .266667rem;
+            }
+            .center{
+                p{
+                    font-size:.426667rem;
+                    line-height:22px;
+                    color:rgba(57,57,57,1);
+                    margin-bottom: .08rem;
+                }
+            }
+            .right{
+                width: .426667rem;
+                height: .32rem;
+            }
+        }
+        
+
     }
 
     
