@@ -49,6 +49,9 @@ export default {
         });
       this.actives[tag] = true;
       this.$emit("navBarNum",tag);
+      // if(tag===4){
+      //   this.$router.push({path:'/login'})
+      // }
     }
   },
   mounted(){ 
