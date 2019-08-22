@@ -47,16 +47,22 @@ export default {
         this.actives = this.actives.map(function(){
           return false;
         });
-      this.actives[tag] = true;
-      this.$emit("navBarNum",tag);
+        
+      this.$store.state.navBarNum = tag
+      this.actives[this.$store.state.navBarNum] = true;
+      // console.log(this.$store.state.navBarNum)
       // if(tag===4){
       //   this.$router.push({path:'/login'})
       // }
     }
   },
   mounted(){ 
-
-  }
+    this.actives = this.actives.map(function(){
+          return false;
+        });
+    this.actives[this.$store.state.navBarNum] = true;
+  },
+  
 }
 </script>
 

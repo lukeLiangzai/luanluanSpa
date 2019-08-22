@@ -1,5 +1,6 @@
 <template>
     <div class="main">
+        <router-view/>
         <van-nav-bar title="IVF成功率计算器" left-arrow @click-left="onClickLeft"></van-nav-bar>
         <div class="calc-list">
             <div v-for="(items,indexs) in calc_data" :key="indexs">
@@ -28,7 +29,7 @@
             </div>
 
             <div class="calc-btn" @click="calculate('All')">马上测试</div>
-            <router-link to=""></router-link>
+            <router-link :to="{path:`/ivfcalcsucc/22`}">测试按钮</router-link>
         </div>
         
     </div>
@@ -176,6 +177,7 @@ export default {
     methods:{
         onClickLeft() {
             this.$router.go(-1)
+            this.$store.state.navBarNum = 1
         }
         ,onSelect(){}
         ,onCancel(){}

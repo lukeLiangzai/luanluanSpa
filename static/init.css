@@ -6,6 +6,7 @@ body{font-family:"PingFang SC";font-size: 0.24rem;line-height: 1;color:#333;-web
 [class|="icon-"]{font-family:"iconfont" !important;font-size:.24rem !important;font-style:normal;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 li{list-style-type:none; float:left;}
 a{text-decoration:none;color: #333;}
+a:hover {text-decoration: none;}
 img{border:none;vertical-align: middle;margin-top: 0;}
 i,var,em{font-style:normal;}
 button{font-family:"PingFang SC";outline:none;cursor: pointer;font-size: 0.24rem;border: none;}

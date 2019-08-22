@@ -13,7 +13,6 @@
                     <img v-lazy="image.srcImg" />
                 </van-swipe-item>
             </van-swipe>
-    
         </div>
         
         <div class='row-nav'> 
@@ -27,7 +26,7 @@
             </van-grid>
         </div>
         <div class='active-card flex justify-between'>
-            <div class="card-item1">
+            <div class="card-item1" @click="jumpHosshow">
                 <img src="../../assets/img/comma.png" alt="" class='comma'>
                 <p>一对一问诊</p>
                 <img src="../../assets/img/icon-doctor.png" alt="" class='doctor-img'>
@@ -73,7 +72,6 @@ export default {
     },
     data(){
         return {
-            msg:'这里是首页',
             images:[//轮播图
                 {srcImg: require("../../assets/img/banner-img2.png")},
                 {srcImg: require("../../assets/img/banner-img2.png")},
@@ -102,7 +100,17 @@ export default {
             }else if(scrollNum > 98){
                 this.headOpacity = "rgba(250,250,250,.98)"
             }
-        }
+        },
+        jumpHos(){
+            this.$store.state.navBarNum = 1
+        },
+        jumpHosshow(){
+            this.$router.push({path : '/hospitalShow'});
+            console.log(111)
+        },
+        jumpSer(){
+            this.$store.state.navBarNum = 3
+        },
     },
     mounted(){
         window.addEventListener('scroll',this.handleScroll,true)

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <indexTemplate v-if="this.toNavnum===0"></indexTemplate>
-        <hospitalTemplate v-if="this.toNavnum===1"></hospitalTemplate>
-        <informationTemplate v-if="this.toNavnum===2"></informationTemplate>
-        <serviceTemplate v-if="this.toNavnum===3"></serviceTemplate>
-        <personalTemplate v-if="this.toNavnum===4"></personalTemplate>
+        <indexTemplate v-if="this.$store.state.navBarNum ===0"></indexTemplate>
+        <hospitalTemplate v-if="this.$store.state.navBarNum ===1"></hospitalTemplate>
+        <informationTemplate v-if="this.$store.state.navBarNum ===2"></informationTemplate>
+        <serviceTemplate v-if="this.$store.state.navBarNum ===3"></serviceTemplate>
+        <personalTemplate v-if="this.$store.state.navBarNum ===4"></personalTemplate>
     </div>
 </template>
 <script>

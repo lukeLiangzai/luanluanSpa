@@ -69,7 +69,7 @@ export default {
             }
         },
         toIvfcalc(){
-            this.$router.push({path:'/ivfcalc'})
+            this.$router.push({path:'/ivfcalc/'})
         }
     },
     mounted(){

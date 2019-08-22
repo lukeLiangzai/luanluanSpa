@@ -6,7 +6,7 @@ Vue.use(Vuex);
     const state={
         showFooter: true,
         changebleNum:0,
-        navBarNum:0
+        navBarNum:0,
     };
     const store = new Vuex.Store({
         state

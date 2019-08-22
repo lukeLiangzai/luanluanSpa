@@ -23,12 +23,12 @@ export default {
     name:"Ivfcalcsucc",
     data(){
         return {
-            succ_num: this.$route.params.succval
+            succ_num: this.$route.params.succval || 0
         }
     },
     methods:{
         onClickLeft() {
-            this.$router.push('/ivfcalc');
+            this.$router.go(-1);
         }
         ,onSelect(){}
         ,onCancel(){}
