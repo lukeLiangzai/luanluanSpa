@@ -449,7 +449,7 @@ textarea{resize:none;}
     font-family: 'DIN Alternate Bold';
     font-style: normal;
     font-weight: normal;
-    src: url('/assets/font/DINAlternate-Bold.woff') format('woff');
+    src: url('../font/DINAlternate-Bold.woff') format('woff');
 }
 
 [v-cloak]{
@@ -529,22 +529,22 @@ html.not-scroll,body.not-scroll{
     background-position: 0 center;
 }
 #current-page .head-nav .head-icon:nth-child(1){
-    background-image: url(/assets/img/icon-bao.png);
+    background-image: url(../img/icon-bao.png);
 }
 #current-page .head-nav .head-icon:nth-child(3){
-    background-image: url(/assets/img/icon-customer.png);
+    background-image: url(../img/icon-customer.png);
 }
 #current-page .head-nav .head-icon.active:nth-child(1){
-    background-image: url(/assets/img/icon-bao-gray.png);
+    background-image: url(../img/icon-bao-gray.png);
 }
 #current-page .head-nav .head-icon.active:nth-child(3){
-    background-image: url(/assets/img/icon-customer-gray.png);
+    background-image: url(../img/icon-customer-gray.png);
 }
 #current-page .head-nav input{
     height: .6rem;
     border-radius: .06rem;
     padding: 0 .6rem;
-    background:#fff url(/assets/img/icon-indexsearch.png) no-repeat .2rem center;
+    background:#fff url(../img/icon-indexsearch.png) no-repeat .2rem center;
     background-size: .26rem;
     border: 1px solid #F5F5F5;
 }
@@ -676,7 +676,7 @@ html.not-scroll,body.not-scroll{
     font-weight:400;
     color:rgba(0,0,0,1);
     padding-left: .14rem;
-    background: url(/assets/img/head-title.png) no-repeat 0 1px;
+    background: url(../img/head-title.png) no-repeat 0 1px;
     background-size: contain;
 }
 #current-page .recommended>.more-title>.right{
@@ -685,7 +685,7 @@ html.not-scroll,body.not-scroll{
     font-weight:400;
     color:#C5C5C9;
     padding-right: .18rem;
-    background: url(/assets/img/icon-toright.png) no-repeat right center;
+    background: url(../img/icon-toright.png) no-repeat right center;
     background-size: .12rem auto;
 }
 #current-page .recommended>.serve-card-list{
@@ -726,7 +726,7 @@ html.not-scroll,body.not-scroll{
     padding: 0 .4rem;
     padding-left: .8rem;
     margin:0 .3rem 0 .4rem;
-    background-image: url(/assets/img/icon-search.png);
+    background-image: url(../img/icon-search.png);
     background-repeat: no-repeat;
     background-position: .4rem center;
     background-size: .3rem;
@@ -888,11 +888,11 @@ label.bui-radios-label .bui-radios{
     width: .5rem;
     height: .5rem;
     border-radius: 50%;
-    background:url(/assets/img/check_box_none.png) no-repeat;
+    background:url(../img/check_box_none.png) no-repeat;
     background-size: 100% 100%;
 }
 label.bui-radios-label input[type="radio"]:checked + .bui-radios{
-    background:url(/assets/img/check_box_done.png) no-repeat;
+    background:url(../img/check_box_done.png) no-repeat;
     background-size: 100% 100%;
 }
 /* <label class="bui-radios-label bui-radios-anim">
@@ -946,12 +946,12 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
 .hospital-list .list-items .right-introduce .row-1 .score i{
     width:.24rem;
     height:.24rem;
-    background: url(/assets/img/icon-stars.png) no-repeat  0 0;
+    background: url(../img/icon-stars.png) no-repeat  0 0;
     background-size: .24rem .24rem;
     margin-right: .06rem;
 }
 .hospital-list .list-items .right-introduce .row-1 .score i.active{
-    background: url(/assets/img/icon-stars-bat.png) no-repeat  0 0;
+    background: url(../img/icon-stars-bat.png) no-repeat  0 0;
     background-size: .24rem .24rem;
 }
 .hospital-list .list-items .right-introduce .row-1 .price-row{
@@ -1064,21 +1064,21 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     .head-box .head-row1 .left{
         width: .22rem;
         height: .36rem;
-        background: url(/assets/img/head-nav-left.png) no-repeat 0 0;
+        background: url(../img/head-nav-left.png) no-repeat 0 0;
         background-size: .22rem .36rem;
     }
     .head-box .head-row1 .left.active{
-        background: url(/assets/img/head-nav-left-active.png) no-repeat 0 0;
+        background: url(../img/head-nav-left-active.png) no-repeat 0 0;
         background-size: .22rem .36rem;
     }
     .head-box .head-row1 .right{
         width: .38rem;
         height: .06rem;
-        background: url(/assets/img/head-nav-more.png) no-repeat 0 0;
+        background: url(../img/head-nav-more.png) no-repeat 0 0;
         background-size: .38rem .06rem;
     }
     .head-box .head-row1 .right.active{
-        background: url(/assets/img/head-nav-more-active.png) no-repeat 0 0;
+        background: url(../img/head-nav-more-active.png) no-repeat 0 0;
         background-size: .38rem .06rem;
     }
     .head-box .head-row2{
@@ -1183,7 +1183,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     /* font-weight: 400; */
 }
 #details-show-root .module1 .row-price .right{
-    background: url(/assets/img/icon-toright.png) no-repeat right 50%;
+    background: url(../img/icon-toright.png) no-repeat right 50%;
     background-size: .1rem;
     padding-right: .2rem;
     font-size:.24rem;
@@ -1200,7 +1200,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
 #details-show-root .module1 .row-alt .left{
     width: .84rem;
     height:.54rem;
-    background: url(/assets/img/icon-activity.png) no-repeat 0 0;
+    background: url(../img/icon-activity.png) no-repeat 0 0;
     background-size: 100%;
     font-size:.24rem;
     color:rgba(255,255,255,1);
@@ -1222,7 +1222,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     line-height: .4rem;
     color: rgba(0,0,0,1);
     padding-left: .16rem;
-    background: url(/assets/img/head-title.png) no-repeat 0 1px;
+    background: url(../img/head-title.png) no-repeat 0 1px;
     background-size: .04rem 100%;
     margin-bottom: .2rem;
 }
@@ -1288,7 +1288,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     width: 1.04rem;
     height: .5rem;
     line-height: .52rem;
-    background: url(/assets/img/icon-volume.png) no-repeat 0 0;
+    background: url(../img/icon-volume.png) no-repeat 0 0;
     background-size: 1.04rem .5rem;
     color: #fff;
     font-size: .24rem;
@@ -1316,7 +1316,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     line-height:.4rem;
     color:rgba(0,0,0,1);
     padding-left: .16rem;
-    background: url(../assets/img/head-title.png) no-repeat 0 1px;
+    background: url(..../img/head-title.png) no-repeat 0 1px;
     background-size: .04rem 100%;
     margin-bottom: .2rem;
 }
@@ -1340,7 +1340,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     font-size:.24rem;
     font-weight:400;
     color:rgba(255,255,255,1);
-    background:rgba(98,169,248,1) url(../assets/img/icon-plus-sign.png) no-repeat .2rem center;
+    background:rgba(98,169,248,1) url(..../img/icon-plus-sign.png) no-repeat .2rem center;
     padding-left: .44rem;
     background-size: .18rem;
 }
@@ -1403,7 +1403,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     line-height:.4rem;
     color:rgba(0,0,0,1);
     padding-left: .16rem;
-    background: url(../assets/img/head-title.png) no-repeat 0.3rem 1px;
+    background: url(..../img/head-title.png) no-repeat 0.3rem 1px;
     background-size: .04rem 100%;
     margin-bottom: .2rem;
     padding: 0 .3rem 0 .46rem;
@@ -1832,7 +1832,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     width: 1.04rem;
     height: .5rem;
     line-height: .52rem;
-    background: url(../assets/img/icon-volume.png) no-repeat 0 0;
+    background: url(..../img/icon-volume.png) no-repeat 0 0;
     background-size: 1.04rem .5rem;
     color: #fff;
     font-size: .24rem;
@@ -1883,7 +1883,7 @@ label.bui-radios-label.bui-radios-anim .bui-radios{
     height: .54rem;
 }
 /* #personal-main .triesto{
-    background: url(/assets/img/toright01.png) no-repeat right 52%;
+    background: url(../img/toright01.png) no-repeat right 52%;
     background-size: .26rem;
 } */
 #personal-main>.personal-block1{

@@ -89,7 +89,7 @@ export default {
     },
     methods:{
         handleScroll(e){
-            let scrollNum = e.target.scrollTop
+            let scrollNum = e.target.scrollTop || document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
             if(scrollNum < 50){
                 this.imgIsshow = true
             }else if(scrollNum > 50){
@@ -106,7 +106,6 @@ export default {
         },
         jumpHosshow(){
             this.$router.push({path : '/hospitalShow'});
-            console.log(111)
         },
         jumpSer(){
             this.$store.state.navBarNum = 3
@@ -114,7 +113,10 @@ export default {
     },
     mounted(){
         window.addEventListener('scroll',this.handleScroll,true)
-    }
+    },
+    destroyed() {
+        window.removeEventListener("scroll", this.handleScroll, true);
+    },
 }
 </script>
 <style lang="scss" scoped>
