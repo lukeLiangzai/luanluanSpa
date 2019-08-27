@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class='main'>
     <div class='head-box'>
         <div class='head-row1 flex align-center justify-between'>
-            <van-icon name="arrow-left" :color="imgIsshow ? '#fff' : '#323233'" size="18"/>
+            <van-icon name="arrow-left" :color="imgIsshow ? '#fff' : '#323233'" size="18" @click="back"/>
         </div>
         <div class='head-row2 flex align-center justify-center' :style="{opacity : headOpacity}"><span>医院详情</span></div>
     </div>
@@ -12,6 +12,212 @@
                 <img v-lazy="image.srcImg" />
             </van-swipe-item>
         </van-swipe>
+    </div>
+    <div class="card-block module1">
+        <div class='title'>泰国EK国际医院</div>
+        <div class='row-tag flex'>
+            <van-tag round color='#62a9f8'>我就是那</van-tag>
+            <van-tag round color='#62a9f8'>整个西乡</van-tag>
+            <van-tag round color='#62a9f8'>最靓的仔</van-tag>
+            <a class='img-box'><img src="../../assets/img/icon-share.png" alt=""></a>   
+        </div>
+        <div class="row-price flex justify-between align-center">
+            <div class='left flex align-end'>
+                <i>&yen;</i>
+                <p>90000</p>
+                <span>/周期</span>
+            </div>
+            <div class="right">官方价格</div>
+        </div>
+        <div class='row-alt'>
+            <div class="left">预约</div>
+            <div class="center">现在预约即可享受一万泰铢优惠</div>
+            <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
+        </div>
+        <div class='row-alt'>
+            <div class="left">活动</div>
+            <div class="center">杰特宁医院实地考察</div>
+            <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
+        </div>
+    </div> 
+    <div class='card-block module2'>
+        <div class="row">
+            <div class="left">位置</div>
+            <div class="right">
+                <p>泰国曼谷，邦戈比去，空丹，哈皮蓝路，占告</p>
+                <a><img src="../../assets/img/icon-more.png" alt=""></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left">技术</div>
+            <div class="right">
+                <p>PGD、PGF、穿透取精</p>
+                <a><img src="../../assets/img/icon-more.png" alt=""></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left">人群</div>
+            <div class="right">
+                <p>少精、弱精、超一年不孕不育障碍者</p>
+                <a><img src="../../assets/img/icon-more.png" alt=""></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left">详情</div>
+            <div class="right">
+                <p>点击查看医院介绍</p>
+                <a><img src="../../assets/img/icon-more.png" alt=""></a>
+            </div>
+        </div>
+    </div> 
+    <div class='card-block module3'>
+        <div class="head-title">医疗顾问</div>
+        <div class="content flex align-center">
+            <div class="left-img img-box"><img src="../../assets/img/guwen-img.png" alt=""></div>
+            <div class='right flex align-center flex-auto justify-between'>
+                <span>徐顾问</span>
+                <p class='flex-auto'>拥有八年试管婴儿生育经验</p>
+                <a href='' class='flex'>
+                    咨询
+                </a>
+            </div>
+        </div>
+        <div class="content flex align-center">
+            <div class="left-img img-box"><img src="../../assets/img/guwen-img.png" alt=""></div>
+            <div class='right flex align-center flex-auto justify-between'>
+                <span>徐顾问</span>
+                <p class='flex-auto'>拥有八年试管婴儿生育经验</p>
+                <a href='' class='flex'>
+                    咨询
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class='card-block module4'>
+        <div class='title'>主治医生</div>
+        <van-swipe :loop="false" :width="200" class='doctor-list' :show-indicators="false">
+            <van-swipe-item>
+                <div class="left img-box">
+                    <img src="../../assets/img/doctor-img-test.png" alt="">
+                </div>
+                <div class='right'>
+                    <div class="row-name">
+                        <img src="../../assets/img/icon-v.png" alt="">
+                        <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                    </div>
+                    <div class='row-text'>
+                        张主任长期奋斗在临床一线，
+                        在产科疑难病症和危重症的诊
+                        治方面积累了丰富的临床经验；
+                        能在工作中熟练掌握各种高危
+                        妊娠的诊疗、疑难病症的诊治
+                        以及各类难产的处理。
+                    </div>
+                    <div class='row-btn'>预约</div>
+                </div>
+            </van-swipe-item>
+            <van-swipe-item>
+                <div class="left img-box">
+                    <img src="../../assets/img/doctor-img-test.png" alt="">
+                </div>
+                <div class='right'>
+                    <div class="row-name">
+                        <img src="../../assets/img/icon-v.png" alt="">
+                        <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                    </div>
+                    <div class='row-text'>
+                        张主任长期奋斗在临床一线，
+                        在产科疑难病症和危重症的诊
+                        治方面积累了丰富的临床经验；
+                        能在工作中熟练掌握各种高危
+                        妊娠的诊疗、疑难病症的诊治
+                        以及各类难产的处理。
+                    </div>
+                    <div class='row-btn'>预约</div>
+                </div>
+            </van-swipe-item>
+            <van-swipe-item>
+                <div class="left img-box">
+                    <img src="../../assets/img/doctor-img-test.png" alt="">
+                </div>
+                <div class='right'>
+                    <div class="row-name">
+                        <img src="../../assets/img/icon-v.png" alt="">
+                        <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                    </div>
+                    <div class='row-text'>
+                        张主任长期奋斗在临床一线，
+                        在产科疑难病症和危重症的诊
+                        治方面积累了丰富的临床经验；
+                        能在工作中熟练掌握各种高危
+                        妊娠的诊疗、疑难病症的诊治
+                        以及各类难产的处理。
+                    </div>
+                    <div class='row-btn'>预约</div>
+                </div>
+            </van-swipe-item>
+        </van-swipe>
+    </div>
+    <div class='card-block module-comments'>
+        <div class="title flex justify-between">
+            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>23+</p></div>
+            <div class="right flex align-center">好评度 98% <img src="../../assets/img/icon-toright.png" alt=""></div>
+        </div>
+        <div class="comments-items">
+            <div class="row-head flex">
+                <div class='img-box'><img src="../../assets/img/head-img-test.png" alt=""></div>
+                <div class='right flex flex-column'>
+                    <p>小恐农</p>
+                    <div class="stars flex">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row-text">
+                做试管的路上真的是一路艰辛，
+                我只是个喵，为什么要承受这些，
+                谢谢孪娈海外的所有工作人员，
+                细心沟通的周顾问，饭菜可口的王阿姨，
+                认真负责的安翻译，感谢。
+            </div>
+            <div class="row-img">
+                <div class='img-box'></div>
+                <div class='img-box'></div>
+                <div class='img-box'></div>
+            </div>
+        </div>
+        <div class="comments-items">
+            <div class="row-head flex">
+                <div class='img-box'><img src="../../assets/img/head-img-test.png" alt=""></div>
+                <div class='right flex flex-column'>
+                    <p>小恐农</p>
+                    <div class="stars flex">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row-text">
+                做试管的路上真的是一路艰辛，
+                我只是个喵，为什么要承受这些，
+                谢谢孪娈海外的所有工作人员，
+                细心沟通的周顾问，饭菜可口的王阿姨，
+                认真负责的安翻译，感谢。
+            </div>
+            <div class="row-img">
+                <div class='img-box'></div>
+                <div class='img-box'></div>
+                <div class='img-box'></div>
+            </div>
+        </div>
+        <div class="comments-more">查看全部评论</div>
     </div>
     <footer class='details-nav-bar'>
         <div class='focus'>
@@ -52,6 +258,9 @@ export default {
                 this.headOpacity = 1
             }
         },
+        back(){
+            this.$router.go(-1);
+        }
     },
     mounted(){
         window.addEventListener('scroll',this.hosScroll,true)
@@ -64,6 +273,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f7f5f5;
+    padding-bottom: 1.333333rem;
+}
+.van-tag--round {
+    border-radius: 0 .8em .8em .8em;
+}
     .banner{
         width: 100%;
         max-height: 5.786667rem;
@@ -132,5 +350,367 @@ export default {
     .btn-bottom:last-child{
         background:rgba(255,72,72,1);
     }
+}
+
+.module1{
+    border-radius: .533333rem .533333rem .266667rem .266667rem;
+    margin-top: -0.586667rem;
+    padding: .533333rem .533333rem .213333rem;
+    z-index: 3;
+    position: relative;
+    .title{
+        font-size:.48rem;
+        font-weight:bold;
+        color:#525465;
+    }
+    .row-tag{
+        margin: .266667rem 0;
+        font-size:.266667rem;
+        color:rgba(255,255,255,1);
+        position: relative;
+        :not(:last-child){
+            margin-right: .133333rem;
+        }
+        .img-box{
+            position: absolute;
+            display: block;
+            width: .533333rem;
+            height: .586667rem;
+            top: -100%;
+            right: 0;
+        }
+    }
+    .row-price{
+        margin-bottom: .266667rem;
+        .left {
+            i{
+                font-size: .32rem;
+                font-weight: bold;
+                color: #FF6A6A;
+            }
+            p{
+                font-size: .64rem;
+                line-height: .506667rem;
+                font-weight: bold;
+                margin:0 .053333rem;
+                color: #FF6A6A;
+                font-family: 'DIN Alternate Bold';
+            }
+            span{
+                font-size: .32rem;
+            }
+        }
+        .right{
+            background: url(../../assets/img/icon-toright.png) no-repeat right 50%;
+            background-size: .133333rem;
+            padding-right: .266667rem;
+            font-size: .32rem;
+            line-height: .24rem;
+        }
+    }
+}
+
+
+.module1 .row-alt{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .32rem;
+    color:rgba(137,137,137,1);
+    margin-bottom: .186667rem;
+}
+.module1 .row-alt .left{
+    width: 1.12rem;
+    height: .72rem;
+    background: url(../../assets/img/icon-activity.png) no-repeat 0 0;
+    background-size: 100%;
+    font-size: .32rem;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    padding-top: .16rem;
+}
+.module1 .row-alt .center{
+    flex: 1;
+    padding: 0 .266667rem;
+}
+.module1 .row-alt .right img{
+    width: .453333rem;
+}
+
+.module2{
+    padding-right: 0;
+}
+.module2>.row{
+    width: 100%;
+    height: 1.146667rem;
+    display: flex;
+    align-items: center;
+    
+}
+.module2>.row>.left{
+    flex: 1;
+    font-size:.32rem;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+}
+.module2>.row>.right{
+    width: 8.346667rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: .4rem;
+    font-size: .32rem;
+    line-height: .453333rem;
+    color:rgba(124,124,124,1);
+    position: relative;
+    border-bottom:1px solid #FAFAFA;
+}
+.module2>.row>.right>.volume{
+    display: flex;
+    height: .666667rem;
+}
+.module2>.row>.right>.volume>span{
+    width: 1.386667rem;
+    height: .666667rem;
+    line-height: .693333rem;
+    background: url(../../assets/img/icon-volume.png) no-repeat 0 0;
+    background-size: 1.386667rem .666667rem;
+    color: #fff;
+    font-size: .32rem;
+    text-align: center;
+    margin-right: .266667rem;
+}
+.module2>.row:last-child>.right{
+    border-bottom:none;
+}
+.module2>.row>.right>p{
+    max-width: 90%;
+    height: .533333rem;
+    line-height: .533333rem;
+    overflow: hidden;
+}
+.module2>.row>.right img{width: .453333rem;}
+
+.module3{
+    padding: .266667rem .4rem;
+}
+.module3 .head-title{
+    width:100%;
+    height: .533333rem;
+    font-size: .373333rem;
+    font-weight:400;
+    line-height: .533333rem;
+    color:rgba(0,0,0,1);
+    padding-left: .213333rem;
+    background: url(../../assets/img/head-title.png) no-repeat 0 1px;
+    background-size: .053333rem 100%;
+    margin-bottom: .266667rem;
+}
+.module3 .content .left-img{
+    width: 1.066667rem;
+    height: 1.066667rem;
+}
+.module3 .content .right span{
+    font-size: .32rem;
+    font-weight:600;
+    line-height: .453333rem;
+    color:rgba(83,83,83,1);
+    margin: 0 .4rem;
+}
+.module3 .content .right a{
+    width: 1.493333rem;
+    height: .613333rem;
+    line-height: .64rem;
+    text-align: center;
+    border-radius: .08rem;
+    font-size: .32rem;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    background:rgba(98,169,248,1) url(../../assets/img/icon-plus-sign.png) no-repeat .266667rem center;
+    padding-left: .586667rem;
+    background-size: .24rem;
+}
+.module3 .content .right p{
+    font-size: .32rem;
+    /* font-weight:400; */
+    line-height: .453333rem;
+    color:rgba(154,154,154,1);
+}
+
+
+.module4{
+    padding: .2rem 0;
+}
+.module4 .title{
+    width:100%;
+    height: .533333rem;
+    font-size: .373333rem;
+    font-weight:400;
+    line-height: .533333rem;
+    color:rgba(0,0,0,1);
+    padding-left: .213333rem;
+    background: url(../../assets/img/head-title.png) no-repeat .4rem 1px;
+    background-size: .053333rem 100%;
+    margin-bottom: .266667rem;
+    padding: 0 .4rem 0 .613333rem;
+}
+
+.module4 .doctor-list{
+    width: 100%;
+    height: 3.2rem;
+    padding: .133333rem;
+}
+.module4 .doctor-list .van-swipe-item{
+    background-color: #fff;
+    width: 5.333333rem;
+    height: 2.933333rem;
+    display: flex;
+    align-items: center;
+    box-shadow:0px 1px 10px rgba(199,199,199,0.16);
+}
+// .module4 .doctor-list .van-swipe-item:first-child{
+//     margin-left: .133333rem;
+// }
+.module4 .doctor-list .van-swipe-item .left{
+    width: 2rem;
+    height: 2rem;
+    padding: 0 .266667rem;
+}
+.module4 .doctor-list .van-swipe-item .right{
+    width: 2.933333rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.module4 .doctor-list .van-swipe-item .right .row-name{
+    font-size: .373333rem;
+    font-weight:600;
+    color:rgba(0,0,0,1);
+    display: flex;
+    align-items: flex-end;
+}
+.module4 .doctor-list .van-swipe-item .right .row-name img{
+    width: .32rem;
+    margin-right: .08rem;
+}
+.module4 .doctor-list .van-swipe-item .right .row-name span{
+    flex: 1;
+    height: .373333rem;
+    overflow: hidden;
+    line-height: .426667rem;
+}
+.module4 .doctor-list .van-swipe-item .right .row-text{
+    width: 100%;
+    height: .8rem;
+    line-height: .4rem;
+    overflow: hidden;
+    font-size: .266667rem;
+    /* font-weight:400; */
+    color:rgba(128,128,128,1);
+}
+.module4 .doctor-list .van-swipe-item .right .row-btn{
+    width: .96rem;
+    height: .426667rem;
+    background:rgba(98,169,248,1);
+    border-radius: .08rem;
+    font-size: .266667rem;
+    /* font-weight:400; */
+    line-height: .453333rem;
+    text-align: center;
+    color:rgba(255,255,255,1);
+}
+
+.module-comments{
+    padding: .32rem .4rem;
+}
+.module-comments .title>.left{
+    position: relative;
+    padding-left: .213333rem;
+}
+.module-comments .title>.left>img{
+    width: .053333rem;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.module-comments .title>.left>span{
+    font-size: .373333rem;
+    color:rgba(0,0,0,1);
+    margin-right: .053333rem;
+}
+.module-comments .title>.left>p{
+    font-size: .266667rem;
+    color:rgba(121,121,121,1);
+}
+.module-comments .title>.right{
+    height: .4rem;
+    font-size: .266667rem;
+    color:rgba(153,153,153,1);
+    position: relative;
+    padding-right: .213333rem;
+}
+.module-comments .title>.right>img{
+    width: .133333rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-52%);
+}
+.module-comments .comments-items{
+    width: 100%;
+    padding-top: .266667rem;
+}
+.module-comments .comments-items .row-head .img-box{
+    width: .8rem;
+    height:.8rem;
+    margin-right: .133333rem;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.module-comments .comments-items .row-head .right>p{
+    height:.533333rem;
+    font-size: .373333rem;
+    font-weight:400;
+    line-height:.533333rem;
+    color:rgba(105,105,105,1);
+}
+.module-comments .comments-items .row-head .right>div>img{
+    width: .213333rem;
+    height: .213333rem;
+    margin-right: .053333rem;
+}
+.module-comments .comments-items .row-text{
+    font-size: .32rem;
+    font-weight:300;
+    line-height:.453333rem;
+    color:rgba(69,69,69,1);
+    padding: .133333rem;
+}
+.module-comments .comments-items .row-img{
+    width: 100%;
+    height: 2.133333rem;
+    display: flex;
+}
+.module-comments .comments-items .row-img>.img-box{
+    width: 2.133333rem;
+    height: 2.133333rem;
+    margin-right: .213333rem;
+    background-color: #FAFAFA;
+}
+.module-comments .comments-more{
+    width:3.2rem;
+    height:.693333rem;
+    text-align: center;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(172,172,172,1);
+    border-radius:2.666667rem;
+    font-size: .32rem;
+    font-weight:300;
+    line-height:.693333rem;
+    color:rgba(153,153,153,1);
+    margin: .266667rem auto 0;
 }
 </style>

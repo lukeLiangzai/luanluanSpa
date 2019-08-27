@@ -93,3 +93,13 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
         top: 1.466667rem;
         width: 100%;
     }
+
+    .card-block{
+        width: 100%;
+        background-color: #fff;
+        padding: 0 .4rem;
+        border-radius: .266667rem;
+        min-height: 1.333333rem;
+        margin-bottom: .266667rem
+    } 
+    .card-block:last-child{margin-bottom: 0;}

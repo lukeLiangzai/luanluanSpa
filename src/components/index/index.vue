@@ -112,7 +112,16 @@ export default {
         },
     },
     mounted(){
-        window.addEventListener('scroll',this.handleScroll,true)
+        window.addEventListener('scroll',this.handleScroll,true);
+        this.$axios.get('https://www.luanluanhaiwai.com/api/hospital')
+        .then(function (response) {
+            console.log(response);
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
+        // console.log($axios)
     },
     destroyed() {
         window.removeEventListener("scroll", this.handleScroll, true);
