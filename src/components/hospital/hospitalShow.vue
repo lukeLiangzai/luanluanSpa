@@ -7,11 +7,21 @@
         <div class='head-row2 flex align-center justify-center' :style="{opacity : headOpacity}"><span>医院详情</span></div>
     </div>
     <div class='banner'>
-        <van-swipe :autoplay="3000">
+        <!-- <van-swipe :autoplay="3000">
             <van-swipe-item v-for="(image, index) in images" :key="index">
                 <img v-lazy="image.srcImg" />
             </van-swipe-item>
-        </van-swipe>
+        </van-swipe> -->
+        <div class="swiper-container banner-box">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
+                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
+                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
+                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <a class='heart-btn'><img src="../../assets/img/icon-heart.png" alt=""><span>13k</span></a>
+        </div>
     </div>
     <div class="card-block module1">
         <div class='title'>泰国EK国际医院</div>
@@ -95,68 +105,70 @@
     </div>
     <div class='card-block module4'>
         <div class='title'>主治医生</div>
-        <van-swipe :loop="false" :width="200" class='doctor-list' :show-indicators="false">
-            <van-swipe-item>
-                <div class="left img-box">
-                    <img src="../../assets/img/doctor-img-test.png" alt="">
-                </div>
-                <div class='right'>
-                    <div class="row-name">
-                        <img src="../../assets/img/icon-v.png" alt="">
-                        <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+        <div class="swiper-container doctor-list">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="left img-box">
+                        <img src="../../assets/img/doctor-img-test.png" alt="">
                     </div>
-                    <div class='row-text'>
-                        张主任长期奋斗在临床一线，
-                        在产科疑难病症和危重症的诊
-                        治方面积累了丰富的临床经验；
-                        能在工作中熟练掌握各种高危
-                        妊娠的诊疗、疑难病症的诊治
-                        以及各类难产的处理。
+                    <div class='right'>
+                        <div class="row-name">
+                            <img src="../../assets/img/icon-v.png" alt="">
+                            <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                        </div>
+                        <div class='row-text'>
+                            张主任长期奋斗在临床一线，
+                            在产科疑难病症和危重症的诊
+                            治方面积累了丰富的临床经验；
+                            能在工作中熟练掌握各种高危
+                            妊娠的诊疗、疑难病症的诊治
+                            以及各类难产的处理。
+                        </div>
+                        <div class='row-btn'>预约</div>
                     </div>
-                    <div class='row-btn'>预约</div>
                 </div>
-            </van-swipe-item>
-            <van-swipe-item>
-                <div class="left img-box">
-                    <img src="../../assets/img/doctor-img-test.png" alt="">
-                </div>
-                <div class='right'>
-                    <div class="row-name">
-                        <img src="../../assets/img/icon-v.png" alt="">
-                        <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                <div class="swiper-slide">
+                    <div class="left img-box">
+                        <img src="../../assets/img/doctor-img-test.png" alt="">
                     </div>
-                    <div class='row-text'>
-                        张主任长期奋斗在临床一线，
-                        在产科疑难病症和危重症的诊
-                        治方面积累了丰富的临床经验；
-                        能在工作中熟练掌握各种高危
-                        妊娠的诊疗、疑难病症的诊治
-                        以及各类难产的处理。
+                    <div class='right'>
+                        <div class="row-name">
+                            <img src="../../assets/img/icon-v.png" alt="">
+                            <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                        </div>
+                        <div class='row-text'>
+                            张主任长期奋斗在临床一线，
+                            在产科疑难病症和危重症的诊
+                            治方面积累了丰富的临床经验；
+                            能在工作中熟练掌握各种高危
+                            妊娠的诊疗、疑难病症的诊治
+                            以及各类难产的处理。
+                        </div>
+                        <div class='row-btn'>预约</div>
                     </div>
-                    <div class='row-btn'>预约</div>
                 </div>
-            </van-swipe-item>
-            <van-swipe-item>
-                <div class="left img-box">
-                    <img src="../../assets/img/doctor-img-test.png" alt="">
-                </div>
-                <div class='right'>
-                    <div class="row-name">
-                        <img src="../../assets/img/icon-v.png" alt="">
-                        <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                <div class="swiper-slide">
+                    <div class="left img-box">
+                        <img src="../../assets/img/doctor-img-test.png" alt="">
                     </div>
-                    <div class='row-text'>
-                        张主任长期奋斗在临床一线，
-                        在产科疑难病症和危重症的诊
-                        治方面积累了丰富的临床经验；
-                        能在工作中熟练掌握各种高危
-                        妊娠的诊疗、疑难病症的诊治
-                        以及各类难产的处理。
+                    <div class='right'>
+                        <div class="row-name">
+                            <img src="../../assets/img/icon-v.png" alt="">
+                            <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                        </div>
+                        <div class='row-text'>
+                            张主任长期奋斗在临床一线，
+                            在产科疑难病症和危重症的诊
+                            治方面积累了丰富的临床经验；
+                            能在工作中熟练掌握各种高危
+                            妊娠的诊疗、疑难病症的诊治
+                            以及各类难产的处理。
+                        </div>
+                        <div class='row-btn'>预约</div>
                     </div>
-                    <div class='row-btn'>预约</div>
                 </div>
-            </van-swipe-item>
-        </van-swipe>
+            </div>
+        </div>
     </div>
     <div class='card-block module-comments'>
         <div class="title flex justify-between">
@@ -184,11 +196,11 @@
                 细心沟通的周顾问，饭菜可口的王阿姨，
                 认真负责的安翻译，感谢。
             </div>
-            <div class="row-img">
+            <!-- <div class="row-img">
                 <div class='img-box'></div>
                 <div class='img-box'></div>
                 <div class='img-box'></div>
-            </div>
+            </div> -->
         </div>
         <div class="comments-items">
             <div class="row-head flex">
@@ -211,11 +223,11 @@
                 细心沟通的周顾问，饭菜可口的王阿姨，
                 认真负责的安翻译，感谢。
             </div>
-            <div class="row-img">
+            <!-- <div class="row-img">
                 <div class='img-box'></div>
                 <div class='img-box'></div>
                 <div class='img-box'></div>
-            </div>
+            </div> -->
         </div>
         <div class="comments-more">查看全部评论</div>
     </div>
@@ -231,6 +243,7 @@
 </template>
 
 <script>
+import Swiper from "swiper"
 export default {
     name:'hospitalShow',
     data(){
@@ -260,10 +273,30 @@ export default {
         },
         back(){
             this.$router.go(-1);
-        }
+        },
+        _initSwiper_banner(){
+            var swiper = new Swiper('.banner-box', {
+                loop:true,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+            });
+        },
+        _initSwiper_docList(){
+            var swiper = new Swiper('.doctor-list', {
+                slidesPerView: 'auto',
+                spaceBetween: 10,
+            });
+        },
     },
     mounted(){
-        window.addEventListener('scroll',this.hosScroll,true)
+        window.addEventListener('scroll',this.hosScroll,true);
+        this._initSwiper_docList();
+        this._initSwiper_banner();
     },
     destroyed() {
         window.removeEventListener("scroll", this.hosScroll, true);
@@ -273,6 +306,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@import "../../../node_modules/swiper/dist/css/swiper.css";
+
 .main{
     width: 100%;
     min-height: 100vh;
@@ -282,34 +318,65 @@ export default {
 .van-tag--round {
     border-radius: 0 .8em .8em .8em;
 }
-    .banner{
-        width: 100%;
-        max-height: 5.786667rem;
+.banner{
+    width: 100%;
+    max-height: 5.786667rem;
+    img{
+        width: 100vw;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: .8rem;
+    }
+    .swiper-pagination-bullet {
+        width: .16rem;
+        height: .16rem;
+        background: #e2e2e2;
+        opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+        background: #fff;
+    }
+    .heart-btn{
+        height: .666667rem;
+        background:rgba(255,255,255,1);
+        border-radius: 2.666667rem;
+        position: absolute;
+        right: .4rem;
+        bottom: .8rem;
+        z-index: 10;
+        text-align: center;
+        font-size: .32rem;
+        font-family: 'DIN Alternate';
+        font-weight:bold;
+        line-height: .693333rem;
+        color:rgba(20,182,196,1);
+        padding: 0 .24rem;
         img{
-            width: 100vw;
+            width: .346667rem;
         }
     }
-    .head-box{
-        position: relative;
+}
+.head-box{
+    position: relative;
+    z-index: 4;
+    div{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 1.28rem;
+        font-size: .426667rem;
+        font-weight: 400;
+        padding: 0 .4rem;
         z-index: 4;
-        div{
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 3;
-            width: 100%;
-            height: 1.28rem;
-            font-size: .426667rem;
-            font-weight: 400;
-            padding: 0 .4rem;
-            z-index: 4;
-        }
-        .head-row2{
-            z-index: 3;
-            background-color: #fff;
-            opacity: 0;
-        }
     }
+    .head-row2{
+        z-index: 3;
+        background-color: #fff;
+        opacity: 0;
+    }
+}
     
 .details-nav-bar{
     position: fixed;
@@ -355,7 +422,7 @@ export default {
 .module1{
     border-radius: .533333rem .533333rem .266667rem .266667rem;
     margin-top: -0.586667rem;
-    padding: .533333rem .533333rem .213333rem;
+    padding: .533333rem .4rem .213333rem;    
     z-index: 3;
     position: relative;
     .title{
@@ -408,309 +475,323 @@ export default {
             line-height: .24rem;
         }
     }
+    .row-alt{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .32rem;
+        color:rgba(137,137,137,1);
+        margin-bottom: .186667rem;
+        .left{
+            width: 1.12rem;
+            height: .72rem;
+            background: url(../../assets/img/icon-activity.png) no-repeat 0 0;
+            background-size: 100%;
+            font-size: .32rem;
+            color:rgba(255,255,255,1);
+            text-align: center;
+            padding-top: .16rem;
+
+        }
+        .center{
+            flex: 1;
+            padding: 0 .266667rem;
+            
+        }
+        img{
+            width: .453333rem;
+        }
+    }
 }
 
-
-.module1 .row-alt{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: .32rem;
-    color:rgba(137,137,137,1);
-    margin-bottom: .186667rem;
-}
-.module1 .row-alt .left{
-    width: 1.12rem;
-    height: .72rem;
-    background: url(../../assets/img/icon-activity.png) no-repeat 0 0;
-    background-size: 100%;
-    font-size: .32rem;
-    color:rgba(255,255,255,1);
-    text-align: center;
-    padding-top: .16rem;
-}
-.module1 .row-alt .center{
-    flex: 1;
-    padding: 0 .266667rem;
-}
-.module1 .row-alt .right img{
-    width: .453333rem;
-}
 
 .module2{
     padding-right: 0;
+    .row{
+        width: 100%;
+        height: 1.146667rem;
+        display: flex;
+        align-items: center;
+        .left{
+            flex: 1;
+            font-size:.32rem;
+            font-weight:500;
+            color:rgba(0,0,0,1);
+        }
+        .right{
+            width: 8.346667rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: .4rem;
+            font-size: .32rem;
+            line-height: .453333rem;
+            color:rgba(124,124,124,1);
+            position: relative;
+            border-bottom:1px solid #FAFAFA;
+            .volume{
+                display: flex;
+                height: .666667rem;
+                span{
+                    width: 1.386667rem;
+                    height: .666667rem;
+                    line-height: .693333rem;
+                    background: url(../../assets/img/icon-volume.png) no-repeat 0 0;
+                    background-size: 1.386667rem .666667rem;
+                    color: #fff;
+                    font-size: .32rem;
+                    text-align: center;
+                    margin-right: .266667rem;
+                }
+            }
+            p{
+                max-width: 90%;
+                height: .533333rem;
+                line-height: .533333rem;
+                overflow: hidden;
+            }
+            img{width: .453333rem;}
+        }
+    }
+    .row:last-child{
+        .right{
+            border-bottom:none;
+        }
+    }
 }
-.module2>.row{
-    width: 100%;
-    height: 1.146667rem;
-    display: flex;
-    align-items: center;
-    
-}
-.module2>.row>.left{
-    flex: 1;
-    font-size:.32rem;
-    font-weight:500;
-    color:rgba(0,0,0,1);
-}
-.module2>.row>.right{
-    width: 8.346667rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: .4rem;
-    font-size: .32rem;
-    line-height: .453333rem;
-    color:rgba(124,124,124,1);
-    position: relative;
-    border-bottom:1px solid #FAFAFA;
-}
-.module2>.row>.right>.volume{
-    display: flex;
-    height: .666667rem;
-}
-.module2>.row>.right>.volume>span{
-    width: 1.386667rem;
-    height: .666667rem;
-    line-height: .693333rem;
-    background: url(../../assets/img/icon-volume.png) no-repeat 0 0;
-    background-size: 1.386667rem .666667rem;
-    color: #fff;
-    font-size: .32rem;
-    text-align: center;
-    margin-right: .266667rem;
-}
-.module2>.row:last-child>.right{
-    border-bottom:none;
-}
-.module2>.row>.right>p{
-    max-width: 90%;
-    height: .533333rem;
-    line-height: .533333rem;
-    overflow: hidden;
-}
-.module2>.row>.right img{width: .453333rem;}
 
 .module3{
     padding: .266667rem .4rem;
-}
-.module3 .head-title{
-    width:100%;
-    height: .533333rem;
-    font-size: .373333rem;
-    font-weight:400;
-    line-height: .533333rem;
-    color:rgba(0,0,0,1);
-    padding-left: .213333rem;
-    background: url(../../assets/img/head-title.png) no-repeat 0 1px;
-    background-size: .053333rem 100%;
-    margin-bottom: .266667rem;
-}
-.module3 .content .left-img{
-    width: 1.066667rem;
-    height: 1.066667rem;
-}
-.module3 .content .right span{
-    font-size: .32rem;
-    font-weight:600;
-    line-height: .453333rem;
-    color:rgba(83,83,83,1);
-    margin: 0 .4rem;
-}
-.module3 .content .right a{
-    width: 1.493333rem;
-    height: .613333rem;
-    line-height: .64rem;
-    text-align: center;
-    border-radius: .08rem;
-    font-size: .32rem;
-    font-weight:400;
-    color:rgba(255,255,255,1);
-    background:rgba(98,169,248,1) url(../../assets/img/icon-plus-sign.png) no-repeat .266667rem center;
-    padding-left: .586667rem;
-    background-size: .24rem;
-}
-.module3 .content .right p{
-    font-size: .32rem;
-    /* font-weight:400; */
-    line-height: .453333rem;
-    color:rgba(154,154,154,1);
+    .head-title{
+        width:100%;
+        height: .533333rem;
+        font-size: .373333rem;
+        font-weight:400;
+        line-height: .533333rem;
+        color:rgba(0,0,0,1);
+        padding-left: .213333rem;
+        background: url(../../assets/img/head-title.png) no-repeat 0 1px;
+        background-size: .053333rem 100%;
+        margin-bottom: .266667rem;
+    }
+    .content:not(:last-child){
+        margin-bottom: .266667rem;
+    }
+    .content{
+        .left-img{
+            width: 1.066667rem;
+            height: 1.066667rem;
+        }
+        .right{
+            span{
+                font-size: .32rem;
+                font-weight:600;
+                line-height: .453333rem;
+                color:rgba(83,83,83,1);
+                margin: 0 .4rem;
+            }
+            a{
+                width: 1.493333rem;
+                height: .613333rem;
+                line-height: .64rem;
+                text-align: center;
+                border-radius: .08rem;
+                font-size: .32rem;
+                font-weight:400;
+                color:rgba(255,255,255,1);
+                background:rgba(98,169,248,1) url(../../assets/img/icon-plus-sign.png) no-repeat .266667rem center;
+                padding-left: .586667rem;
+                background-size: .24rem;
+            }
+            p{
+                font-size: .32rem;
+                line-height: .453333rem;
+                color:rgba(154,154,154,1);
+            }
+        }
+    }
+
+
 }
 
 
 .module4{
     padding: .2rem 0;
-}
-.module4 .title{
-    width:100%;
-    height: .533333rem;
-    font-size: .373333rem;
-    font-weight:400;
-    line-height: .533333rem;
-    color:rgba(0,0,0,1);
-    padding-left: .213333rem;
-    background: url(../../assets/img/head-title.png) no-repeat .4rem 1px;
-    background-size: .053333rem 100%;
-    margin-bottom: .266667rem;
-    padding: 0 .4rem 0 .613333rem;
-}
-
-.module4 .doctor-list{
-    width: 100%;
-    height: 3.2rem;
-    padding: .133333rem;
-}
-.module4 .doctor-list .van-swipe-item{
-    background-color: #fff;
-    width: 5.333333rem;
-    height: 2.933333rem;
-    display: flex;
-    align-items: center;
-    box-shadow:0px 1px 10px rgba(199,199,199,0.16);
-}
-// .module4 .doctor-list .van-swipe-item:first-child{
-//     margin-left: .133333rem;
-// }
-.module4 .doctor-list .van-swipe-item .left{
-    width: 2rem;
-    height: 2rem;
-    padding: 0 .266667rem;
-}
-.module4 .doctor-list .van-swipe-item .right{
-    width: 2.933333rem;
-    height: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.module4 .doctor-list .van-swipe-item .right .row-name{
-    font-size: .373333rem;
-    font-weight:600;
-    color:rgba(0,0,0,1);
-    display: flex;
-    align-items: flex-end;
-}
-.module4 .doctor-list .van-swipe-item .right .row-name img{
-    width: .32rem;
-    margin-right: .08rem;
-}
-.module4 .doctor-list .van-swipe-item .right .row-name span{
-    flex: 1;
-    height: .373333rem;
-    overflow: hidden;
-    line-height: .426667rem;
-}
-.module4 .doctor-list .van-swipe-item .right .row-text{
-    width: 100%;
-    height: .8rem;
-    line-height: .4rem;
-    overflow: hidden;
-    font-size: .266667rem;
-    /* font-weight:400; */
-    color:rgba(128,128,128,1);
-}
-.module4 .doctor-list .van-swipe-item .right .row-btn{
-    width: .96rem;
-    height: .426667rem;
-    background:rgba(98,169,248,1);
-    border-radius: .08rem;
-    font-size: .266667rem;
-    /* font-weight:400; */
-    line-height: .453333rem;
-    text-align: center;
-    color:rgba(255,255,255,1);
+    .title{
+        width:100%;
+        height: .533333rem;
+        font-size: .373333rem;
+        font-weight:400;
+        line-height: .533333rem;
+        color:rgba(0,0,0,1);
+        padding-left: .213333rem;
+        background: url(../../assets/img/head-title.png) no-repeat .4rem 1px;
+        background-size: .053333rem 100%;
+        margin-bottom: .266667rem;
+        padding: 0 .4rem 0 .613333rem;
+    }
+    .doctor-list{
+        width: 100%;
+        height: 3.2rem;
+        padding: .133333rem;
+        .swiper-slide{
+            background-color: #fff;
+            width: 5.333333rem;
+            height: 2.933333rem;
+            display: flex;
+            align-items: center;
+            box-shadow:0px 1px 10px rgba(199,199,199,0.16);
+            .left{
+                width: 2rem;
+                height: 2rem;
+                padding: 0 .266667rem;
+            }
+            .right{
+                width: 2.933333rem;
+                height: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .row-name{
+                    font-size: .373333rem;
+                    font-weight:600;
+                    color:rgba(0,0,0,1);
+                    display: flex;
+                    align-items: flex-end;
+                    img{
+                        width: .32rem;
+                        margin-right: .08rem;
+                    }
+                    span{
+                        flex: 1;
+                        height: .373333rem;
+                        overflow: hidden;
+                        line-height: .426667rem;
+                    }
+                }
+                .row-text{
+                    width: 100%;
+                    height: .8rem;
+                    line-height: .4rem;
+                    overflow: hidden;
+                    font-size: .266667rem;
+                    color:rgba(128,128,128,1);
+                }
+                .row-btn{
+                    width: .96rem;
+                    height: .426667rem;
+                    background:rgba(98,169,248,1);
+                    border-radius: .08rem;
+                    font-size: .266667rem;
+                    line-height: .453333rem;
+                    text-align: center;
+                    color:rgba(255,255,255,1);
+                }
+            }
+        }
+        .swiper-slide:first-child{
+            margin-left: .133333rem;
+        }
+    }
 }
 
 .module-comments{
     padding: .32rem .4rem;
-}
-.module-comments .title>.left{
-    position: relative;
-    padding-left: .213333rem;
-}
-.module-comments .title>.left>img{
-    width: .053333rem;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.module-comments .title>.left>span{
-    font-size: .373333rem;
-    color:rgba(0,0,0,1);
-    margin-right: .053333rem;
-}
-.module-comments .title>.left>p{
-    font-size: .266667rem;
-    color:rgba(121,121,121,1);
-}
-.module-comments .title>.right{
-    height: .4rem;
-    font-size: .266667rem;
-    color:rgba(153,153,153,1);
-    position: relative;
-    padding-right: .213333rem;
-}
-.module-comments .title>.right>img{
-    width: .133333rem;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-52%);
-}
-.module-comments .comments-items{
-    width: 100%;
-    padding-top: .266667rem;
-}
-.module-comments .comments-items .row-head .img-box{
-    width: .8rem;
-    height:.8rem;
-    margin-right: .133333rem;
-    overflow: hidden;
-    border-radius: 100%;
-}
-.module-comments .comments-items .row-head .right>p{
-    height:.533333rem;
-    font-size: .373333rem;
-    font-weight:400;
-    line-height:.533333rem;
-    color:rgba(105,105,105,1);
-}
-.module-comments .comments-items .row-head .right>div>img{
-    width: .213333rem;
-    height: .213333rem;
-    margin-right: .053333rem;
-}
-.module-comments .comments-items .row-text{
-    font-size: .32rem;
-    font-weight:300;
-    line-height:.453333rem;
-    color:rgba(69,69,69,1);
-    padding: .133333rem;
-}
-.module-comments .comments-items .row-img{
-    width: 100%;
-    height: 2.133333rem;
-    display: flex;
-}
-.module-comments .comments-items .row-img>.img-box{
-    width: 2.133333rem;
-    height: 2.133333rem;
-    margin-right: .213333rem;
-    background-color: #FAFAFA;
-}
-.module-comments .comments-more{
-    width:3.2rem;
-    height:.693333rem;
-    text-align: center;
-    background:rgba(255,255,255,1);
-    border:1px solid rgba(172,172,172,1);
-    border-radius:2.666667rem;
-    font-size: .32rem;
-    font-weight:300;
-    line-height:.693333rem;
-    color:rgba(153,153,153,1);
-    margin: .266667rem auto 0;
+    .title{
+        .left{
+            position: relative;
+            padding-left: .213333rem;
+            img{
+                width: .053333rem;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            span{
+                font-size: .373333rem;
+                color:rgba(0,0,0,1);
+                margin-right: .053333rem;
+            }
+            p{
+                font-size: .266667rem;
+                color:rgba(121,121,121,1);
+            }
+        }
+        .right{
+            height: .4rem;
+            font-size: .266667rem;
+            color:rgba(153,153,153,1);
+            position: relative;
+            padding-right: .213333rem;
+            img{
+                width: .133333rem;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-52%);
+            }
+        }
+    }
+    .comments-items{
+        width: 100%;
+        padding-top: .266667rem;
+        .row-head{
+            .img-box{
+                width: .8rem;
+                height:.8rem;
+                margin-right: .133333rem;
+                overflow: hidden;
+                border-radius: 100%;
+            }
+            .right{
+                p{
+                    height:.533333rem;
+                    font-size: .373333rem;
+                    font-weight:400;
+                    line-height:.533333rem;
+                    color:rgba(105,105,105,1);
+                }
+                div>img{
+                    width: .213333rem;
+                    height: .213333rem;
+                    margin-right: .053333rem;
+                }
+            }
+        }
+        .row-text{
+            font-size: .32rem;
+            font-weight:300;
+            line-height:.453333rem;
+            color:rgba(69,69,69,1);
+            padding: .133333rem;
+        }
+        // 评论图片
+        // .row-img{
+        //     width: 100%;
+        //     height: 2.133333rem;
+        //     display: flex;
+        //     .img-box{
+        //         width: 2.133333rem;
+        //         height: 2.133333rem;
+        //         margin-right: .213333rem;
+        //         background-color: #FAFAFA;
+        //     }
+        // }
+    }
+     .comments-more{
+        width:3.2rem;
+        height:.693333rem;
+        text-align: center;
+        background:rgba(255,255,255,1);
+        border:1px solid rgba(172,172,172,1);
+        border-radius:2.666667rem;
+        font-size: .32rem;
+        font-weight:300;
+        line-height:.693333rem;
+        color:rgba(153,153,153,1);
+        margin: .266667rem auto 0;
+    }
 }
 </style>
