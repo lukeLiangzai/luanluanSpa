@@ -42,18 +42,22 @@ export default {
       ]
     }
   },
-  methods:{
-    didClickedItem:function(tag){
-        this.actives = this.actives.map(function(){
+  computed:{
+    active(){
+      return this.$store.state.navBarNum
+    }
+  },
+  watch:{
+    active(curVal,oldVal){
+      this.actives = this.actives.map(function(){
           return false;
         });
-        
-      this.$store.state.navBarNum = tag
       this.actives[this.$store.state.navBarNum] = true;
-      // console.log(this.$store.state.navBarNum)
-      // if(tag===4){
-      //   this.$router.push({path:'/login'})
-      // }
+    }
+  },
+  methods:{
+    didClickedItem:function(tag){
+      this.$store.state.navBarNum = tag
     }
   },
   mounted(){ 

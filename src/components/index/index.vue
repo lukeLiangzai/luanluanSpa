@@ -10,7 +10,7 @@
         <div class='banner'>
             <van-swipe :autoplay="3000">
                 <van-swipe-item v-for="(image, index) in images" :key="index">
-                    <img v-lazy="image.srcImg" />
+                    <img v-lazy="image.url" />
                 </van-swipe-item>
             </van-swipe>
         </div>
@@ -22,6 +22,7 @@
                     :key="index2"
                     :icon="value.icon"
                     :text="value.text"
+                    @click="gridClick(index2)"
                 />
             </van-grid>
         </div>
@@ -46,14 +47,14 @@
         </div>
 
         <div class="title-recommended img-box"><img src="../../assets/img/title-recommended.png" alt=""></div>
-        <titleListNav></titleListNav>
-        <hosSerListLi v-for="(items,index) in 3" :key="'hos-'+index"></hosSerListLi>
+        <titleListNav name='医院' value=1></titleListNav>
+        <hosSerListLi :hosList="hospitalList"></hosSerListLi>
 
-        <titleListNav></titleListNav>
+        <titleListNav name='服务' value=3></titleListNav>
         <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes1.png" alt=""></div>
         <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes2.png" alt=""></div>
 
-        <titleListNav></titleListNav>
+        <titleListNav name='咨询' value=2></titleListNav>
         <infoList v-for="(items,index) in 4" :key="'info-'+index"></infoList>
     </div>
 </template>
@@ -72,17 +73,16 @@ export default {
     },
     data(){
         return {
-            images:[//轮播图
-                {srcImg: require("../../assets/img/banner-img2.png")},
-                {srcImg: require("../../assets/img/banner-img2.png")},
-                {srcImg: require("../../assets/img/banner-img2.png")},
-            ],
-            iconList:[
+            images:[
+                {url:require("../../assets/img/banner-img2.png")}
+            ],//轮播图
+            iconList:[//grid
                 {icon:require("../../assets/img/icon-row-nav1.png"),text:'医院'},
                 {icon:require("../../assets/img/icon-row-nav2.png"),text:'服务'},
                 {icon:require("../../assets/img/icon-row-nav3.png"),text:'医生'},
                 {icon:require("../../assets/img/icon-row-nav4.png"),text:'反馈'},
             ],
+            hospitalList:[],
             headOpacity : "rgba(250,250,250,0)",
             imgIsshow : true
         }
@@ -110,18 +110,33 @@ export default {
         jumpSer(){
             this.$store.state.navBarNum = 3
         },
+        gridClick(e){
+            switch(e){
+                case 0:
+                 this.$store.state.navBarNum = 1;
+                 break;
+                case 1:
+                 this.$store.state.navBarNum = 3;
+                 break;
+            }
+        },
+        getAxios(){
+            this.$axios.get('https://www.luanluanhaiwai.com/api/index')
+            .then( (response)=> {
+                this.hospitalList = response.data.hospitals
+                // console.log(this.hospitalList)
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     },
     mounted(){
         window.addEventListener('scroll',this.handleScroll,true);
-        this.$axios.get('https://www.luanluanhaiwai.com/api/hospital')
-        .then(function (response) {
-            console.log(response);
-        })
-
-        .catch(function (error) {
-            console.log(error);
-        });
-        // console.log($axios)
+    },
+    created(){
+        this.getAxios()
     },
     destroyed() {
         window.removeEventListener("scroll", this.handleScroll, true);

@@ -1,41 +1,48 @@
 <template>
-    <a href="#" class='list-items'>
-        <div class='left-img img-box'><img src="../../assets/img/hos-img.png" alt=""></div>
-        <div class='right-introduce flex flex-column flex-auto'>
-            <p class="title">医院详情</p>
-            <div class='row-1 flex justify-between'>
-                <div class='score flex'>
-                    <i class='active'></i>
-                    <i class='active'></i>
-                    <i class='active'></i>
-                    <i></i>
-                    <i></i>
+    <div>
+        <a href="#" class='list-items' v-for="(item,index) in hosList" :key="index">
+            <div class='left-img img-box'><img :src="item.cover" alt=""></div>
+            <div class='right-introduce flex flex-column flex-auto'>
+                <p class="title">{{item.name}}</p>
+                <div class='row-1 flex justify-between'>
+                    <div class='score flex'>
+                        <i class='active'></i>
+                        <i class='active'></i>
+                        <i class='active'></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <div class='price-row flex align-end'>
+                        <i>&yen;</i>
+                        <p>{{parseInt(item.convert_price)}}</p>
+                        <span>/周期</span>
+                    </div>
                 </div>
-                <div class='price-row flex align-end'>
-                    <i>&yen;</i>
-                    <p>90000</p>
-                    <span>/周期</span>
+                <div class='row-2 flex align-center' v-for="(tag,index2) in item.promotions" :key="index2">
+                    <div class="tag-square">{{tag.label}}</div>
+                    <p>{{tag.describe}}</p>
                 </div>
             </div>
-            <div class='row-2 flex align-center'>
-                <div class="tag-square">预约</div>
-                <p>现在预约即可享受一万泰一在预约即可享受一万泰一在预约即可享受一万泰一万泰一万泰铢优惠</p>
-            </div>
-            <div class='row-2 flex align-center'>
-                <div class="tag-square">活动</div>
-                <p>杰特宁医院实地考察杰特宁医院杰特宁医院</p>
-            </div>
-        </div>
-    </a>
+        </a>
+    </div>
 </template>
 
 <script>
 export default {
     name:'hosSerListLi',
+    props:[
+        'hosList'
+    ],
     data (){
         return {
             
         }
+    },
+    mounted(){
+        console.log(this.hosList);
+    },
+    beforeMount(){
+        // console.log(this.hosList);
     }
 }
 </script>
