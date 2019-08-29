@@ -6,7 +6,16 @@
         </div>
         <div class="page1" v-if="isActive">
             <van-tabs  swipeable animated >
-                <van-tab v-for="(index,idx) in ['推荐','成功案例','常见问题','试管资讯']" :title=" index" :key="idx" >
+                <van-tab title="推荐">
+                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                </van-tab>
+                <van-tab title="成功案例">
+                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                </van-tab>
+                <van-tab title="常见问题">
+                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                </van-tab>
+                <van-tab title="试管资讯">
                     <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
                 </van-tab>
             </van-tabs>
@@ -38,6 +47,17 @@ export default {
         }
     },
     methods:{
+    },
+    created(){
+        this.$axios.get('https://www.luanluanhaiwai.com/api/article')
+        .then( (response)=> {
+            // this.hosChild = response.data.hospitals
+            console.log(response.data.articles)
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 }
 </script>

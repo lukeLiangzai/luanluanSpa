@@ -55,7 +55,7 @@
         <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes2.png" alt=""></div>
 
         <titleListNav name='咨询' value=2></titleListNav>
-        <infoList v-for="(items,index) in 4" :key="'info-'+index"></infoList>
+        <infoList :article='articleList'></infoList>
     </div>
 </template>
 
@@ -83,6 +83,7 @@ export default {
                 {icon:require("../../assets/img/icon-row-nav4.png"),text:'反馈'},
             ],
             hospitalList:[],
+            articleList:[],
             headOpacity : "rgba(250,250,250,0)",
             imgIsshow : true
         }
@@ -120,23 +121,22 @@ export default {
                  break;
             }
         },
-        getAxios(){
-            this.$axios.get('https://www.luanluanhaiwai.com/api/index')
-            .then( (response)=> {
-                this.hospitalList = response.data.hospitals
-                // console.log(this.hospitalList)
-            })
-
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
+        
     },
     mounted(){
         window.addEventListener('scroll',this.handleScroll,true);
     },
     created(){
-        this.getAxios()
+        this.$axios.get('https://www.luanluanhaiwai.com/api/index')
+        .then( (response)=> {
+            this.hospitalList = response.data.hospitals
+            this.articleList = response.data.articles
+            // console.log(response.data.articles)
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
     },
     destroyed() {
         window.removeEventListener("scroll", this.handleScroll, true);

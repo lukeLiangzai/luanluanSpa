@@ -22,9 +22,6 @@ export default {
         ,'informationTemplate':information
         ,'personalTemplate':personal
     },
-    props:[
-        "toNavnum"
-    ],
     data(){
         return {
 

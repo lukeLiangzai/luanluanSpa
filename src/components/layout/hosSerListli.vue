@@ -6,11 +6,7 @@
                 <p class="title">{{item.name}}</p>
                 <div class='row-1 flex justify-between'>
                     <div class='score flex'>
-                        <i class='active'></i>
-                        <i class='active'></i>
-                        <i class='active'></i>
-                        <i></i>
-                        <i></i>
+                        <i class='active' v-for="(i,index3) in item.score/2" :key="index3"></i>
                     </div>
                     <div class='price-row flex align-end'>
                         <i>&yen;</i>
@@ -39,10 +35,9 @@ export default {
         }
     },
     mounted(){
-        console.log(this.hosList);
+        // console.log(this.hosList);
     },
     beforeMount(){
-        // console.log(this.hosList);
     }
 }
 </script>

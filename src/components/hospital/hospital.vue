@@ -17,7 +17,7 @@
                 <van-dropdown-item v-model="value4" :options="option4" />
             </van-dropdown-menu>
         </div>
-        <hosSerListLi v-for="(items,index) in option2" :key="index"></hosSerListLi>
+        <hosSerListLi :hosList="hosChild"></hosSerListLi>
     </div>
 </template>
 
@@ -56,6 +56,7 @@ export default {
                 { text: '价格优先', value: 2 },
             ]
             ,isActive: false
+            ,hosChild:[]
         }
     },
     methods:{
@@ -77,6 +78,17 @@ export default {
     },
     beforeDestroy() {
         window.removeEventListener("scroll",this.placeholderScroll,true)
+    },
+    created(){
+        this.$axios.get('https://www.luanluanhaiwai.com/api/hospital')
+        .then( (response)=> {
+            this.hosChild = response.data.hospitals
+            // console.log(response.data.hospitals)
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
     },
 }
 </script>

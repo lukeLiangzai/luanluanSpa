@@ -1,22 +1,14 @@
 <template>
     <div>
-        <div class="information-items">
-            <p class="title">泰国三代试管有什么缺点管有什么缺点管有什么缺点管有什么缺点?我能不能做三代?</p>
+        <div class="information-items" v-for="(item,index) in article" :key="index">
+            <p class="title">{{item.title}}</p>
             <div class="flex">
-                <div class="left img-box"><img src="../../assets/img/hos-img.png" alt=""></div>
+                <div class="left img-box"><img :src="item.cover" alt=""></div>
                 <div class="right flex flex-column flex-auto justify-between">
-                    <div class="text">
-                        试管婴儿助孕技术产生近50年来，已从一代、二代发展至三代。
-                        一代主要是解决女性导致的不孕不育，二代解决的是男性导致的不孕不育，
-                        三代是革命性的突破，主要针对的是优生优育。
-                        何为优生优育？相信这是许多想做试管婴儿助
-                        孕但不知道选择几代的女性的共同疑问。
-                    </div>
+                    <div class="text">{{item.describe}}</div>
                     <div class="tag-box">
                         <div class="tag flex">
-                            <span>孪娈自营</span>
-                            <span>孪娈自营</span>
-                            <span>孪娈自营</span>
+                            <span v-for="(tag,index2) in item.tags" :key="index2">{{tag}}</span>
                         </div>
                     </div>
                 </div>
@@ -28,6 +20,7 @@
 <script>
 export default {
     name:'infoList',
+    props:['article'],
     data (){
         return {
             
