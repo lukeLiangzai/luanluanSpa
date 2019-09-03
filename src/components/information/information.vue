@@ -5,18 +5,18 @@
             <div class='tab-nav-items' :class="{'active' : !isActive}" @click="isActive = false">动态</div>
         </div>
         <div class="page1" v-if="isActive">
-            <van-tabs  swipeable animated >
+            <van-tabs  swipeable animated @change="onChange">
                 <van-tab title="推荐">
-                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                    <infoList :article='articles'></infoList>
                 </van-tab>
                 <van-tab title="成功案例">
-                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                    <infoList :article='articlesc1'></infoList>
                 </van-tab>
                 <van-tab title="常见问题">
-                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                    <infoList :article='articlesc2'></infoList>
                 </van-tab>
                 <van-tab title="试管资讯">
-                    <infoList v-for="(index,idx) in 7" :key="idx"></infoList>
+                    <infoList :article='articlesc3'></infoList>
                 </van-tab>
             </van-tabs>
         </div>
@@ -44,20 +44,77 @@ export default {
     data(){
         return {
             isActive:true,
+            articles:[],
+            articlesc1:[],
+            articlesc2:[],
+            articlesc3:[],
         }
     },
     methods:{
+        artAxio(cid,art){
+            this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid='+cid)
+            .then( (response)=> {
+                art = response.data.articles
+                console.log(response.data.articles)
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        onChange(name, title) {
+            console.log(name,title)
+            switch(name){
+                case 1:
+                    this.artAxio(1,this.articlesc1);
+                    break;
+                case 2:
+                    this.artAxio(2,this.articlesc2);
+                    break;
+                case 3:
+                    this.artAxio(3,this.articlesc3);
+                    break;
+            }
+            // this.$toast(title);
+        }
     },
-    created(){
+    mounted(){
         this.$axios.get('https://www.luanluanhaiwai.com/api/article')
         .then( (response)=> {
-            // this.hosChild = response.data.hospitals
-            console.log(response.data.articles)
+            this.articles = response.data.articles
+            // console.log(response.data.articles)
         })
 
         .catch(function (error) {
             console.log(error);
         });
+        // this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=1')
+        // .then( (response)=> {
+        //     this.articlesc1 = response.data.articles
+        //     console.log(response.data.articles)
+        // })
+
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+        // this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=2')
+        // .then( (response)=> {
+        //     this.articlesc2 = response.data.articles
+        //     console.log(response.data.articles)
+        // })
+
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+        // this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=3')
+        // .then( (response)=> {
+        //     this.articlesc3 = response.data.articles
+        //     console.log(response.data.articles)
+        // })
+
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
     }
 }
 </script>
