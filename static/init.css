@@ -103,3 +103,10 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
         margin-bottom: .266667rem
     } 
     .card-block:last-child{margin-bottom: 0;}
+
+    .noIcon::after{
+        display: none!important;
+    }
+    .van-dropdown-menu__title.active {
+        color: #1989fa!important;
+    }

@@ -1,6 +1,6 @@
 <template>
-    <div v-if="article.length != 0">
-        <div class="information-items" v-for="(item,index) in article" :key="index" >
+    <div>
+        <div class="information-items" v-for="(item,index) in article" :key="index">
             <p class="title">{{item.title}}</p>
             <div class="flex">
                 <div class="left img-box"><img :src="item.cover" alt=""></div>

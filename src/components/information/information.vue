@@ -5,7 +5,7 @@
             <div class='tab-nav-items' :class="{'active' : !isActive}" @click="isActive = false">动态</div>
         </div>
         <div class="page1" v-if="isActive">
-            <van-tabs  swipeable animated @change="onChange">
+            <van-tabs  swipeable animated >
                 <van-tab title="推荐">
                     <infoList :article='articles'></infoList>
                 </van-tab>
@@ -51,32 +51,31 @@ export default {
         }
     },
     methods:{
-        artAxio(cid,art){
-            this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid='+cid)
-            .then( (response)=> {
-                art = response.data.articles
-                console.log(response.data.articles)
-            })
+        // artAxio(cid,art){
+        //     this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid='+cid)
+        //     .then( (response)=> {
+        //         art = response.data.articles
+        //         console.log(response.data.articles)
+        //     })
 
-            .catch(function (error) {
-                console.log(error);
-            });
-        },
-        onChange(name, title) {
-            console.log(name,title)
-            switch(name){
-                case 1:
-                    this.artAxio(1,this.articlesc1);
-                    break;
-                case 2:
-                    this.artAxio(2,this.articlesc2);
-                    break;
-                case 3:
-                    this.artAxio(3,this.articlesc3);
-                    break;
-            }
-            // this.$toast(title);
-        }
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+        // },
+        // onChange(name, title) {
+        //     console.log(name,title)
+        //     switch(name){
+        //         case 1:
+        //             this.artAxio(1,this.articlesc1);
+        //             break;
+        //         case 2:
+        //             this.artAxio(2,this.articlesc2);
+        //             break;
+        //         case 3:
+        //             this.artAxio(3,this.articlesc3);
+        //             break;
+        //     }
+        // }
     },
     mounted(){
         this.$axios.get('https://www.luanluanhaiwai.com/api/article')
@@ -88,33 +87,33 @@ export default {
         .catch(function (error) {
             console.log(error);
         });
-        // this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=1')
-        // .then( (response)=> {
-        //     this.articlesc1 = response.data.articles
-        //     console.log(response.data.articles)
-        // })
+        this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=1')
+        .then( (response)=> {
+            this.articlesc1 = response.data.articles
+            // console.log(response.data.articles)
+        })
 
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
-        // this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=2')
-        // .then( (response)=> {
-        //     this.articlesc2 = response.data.articles
-        //     console.log(response.data.articles)
-        // })
+        .catch(function (error) {
+            console.log(error);
+        });
+        this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=2')
+        .then( (response)=> {
+            this.articlesc2 = response.data.articles
+            // console.log(response.data.articles)
+        })
 
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
-        // this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=3')
-        // .then( (response)=> {
-        //     this.articlesc3 = response.data.articles
-        //     console.log(response.data.articles)
-        // })
+        .catch(function (error) {
+            console.log(error);
+        });
+        this.$axios.get('https://www.luanluanhaiwai.com/api/article?cid=3')
+        .then( (response)=> {
+            this.articlesc3 = response.data.articles
+            // console.log(response.data.articles)
+        })
 
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 }
 </script>

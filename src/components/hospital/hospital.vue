@@ -10,8 +10,8 @@
             <a><img src="../../assets/img/icon-04.png" alt="">费用估算</a>
         </div>
         <div class='placeholder-box' ref="placeholderBox">
-            <van-dropdown-menu :class="{'fixed-nav' : isActive}">
-                <van-dropdown-item v-model="value1" :options="option1" ref="recommended"  class="noIcon active"/>
+            <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa">
+                <van-dropdown-item v-model="value1" title="推荐" ref="recommended"  title-class="noIcon active" disabled/>
                 <van-dropdown-item v-model="value2" :options="option2" />
                 <van-dropdown-item v-model="value3" :options="option3" />
                 <van-dropdown-item v-model="value4" :options="option4" />
@@ -30,14 +30,10 @@ export default {
     },
     data(){
         return{
-            value1: 0,
             value2: 0,
             value3: 0,
             value4: 0,
-            option1: [
-                { text: '推荐', value: 0 },
-            ]
-            ,option2: [
+            option2: [
                 { text: '国家', value: 0 },
                 { text: '泰国', value: 1 },
                 { text: '柬埔寨', value: 2 },
@@ -188,12 +184,7 @@ export default {
         background-color: #62A9F8;
     }
 }
-.noIcon::after {
-    display: none;
-}
-.van-dropdown-menu__title.active {
-    color: rgb(25, 137, 250);
-}
+
 </style>
 
 
