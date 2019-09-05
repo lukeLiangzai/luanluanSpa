@@ -11,8 +11,8 @@
         </div>
         <div class='placeholder-box' ref="placeholderBox">
             <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa">
-                <van-dropdown-item v-model="value1" title="推荐" ref="recommended"  title-class="noIcon active" disabled/>
-                <van-dropdown-item v-model="value2" :options="option2" />
+                <van-dropdown-item v-model="value1" title="推荐" ref="recommended"  title-class="noIcon active van-dropdown-menu__title--active" disabled/>
+                <van-dropdown-item v-model="value2" :options="option2" title-class="van-dropdown-menu__title--active"/>
                 <van-dropdown-item v-model="value3" :options="option3" />
                 <van-dropdown-item v-model="value4" :options="option4" />
             </van-dropdown-menu>
@@ -30,6 +30,7 @@ export default {
     },
     data(){
         return{
+            value1: 0,
             value2: 0,
             value3: 0,
             value4: 0,
