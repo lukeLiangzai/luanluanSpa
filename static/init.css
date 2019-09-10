@@ -107,6 +107,9 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
     .noIcon::after{
         display: none!important;
     }
+    .van-dropdown-menu__item--disabled .van-dropdown-menu__title.noIcon{
+        color: #333;
+    }
     .van-dropdown-menu__title.active {
         color: #1989fa!important;
     }

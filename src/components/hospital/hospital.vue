@@ -1,5 +1,6 @@
 <template>
     <div class='main'>
+        <!-- @touchmove.prevent 移动端禁止滑动 -->
         <div class='head-nav flex align-center justify-between bg-white fixed' ref="headNav">
             <span class='bold text-black'>医院</span>
             <input type="text" placeholder="泰国杰特宁医院">
@@ -10,11 +11,11 @@
             <a><img src="../../assets/img/icon-04.png" alt="">费用估算</a>
         </div>
         <div class='placeholder-box' ref="placeholderBox">
-            <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa">
-                <van-dropdown-item v-model="value1" title="推荐" ref="recommended"  title-class="noIcon active van-dropdown-menu__title--active" disabled/>
-                <van-dropdown-item v-model="value2" :options="option2" title-class="van-dropdown-menu__title--active"/>
-                <van-dropdown-item v-model="value3" :options="option3" />
-                <van-dropdown-item v-model="value4" :options="option4" />
+            <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa" @click='show($event)'>
+                <van-dropdown-item v-model="value1" title="推荐" ref="recommended" :title-class="navActive[0]?'noIcon active':'noIcon'" disabled @change="changeVal(0)"/>
+                <van-dropdown-item v-model="value2" :options="option2" :title-class="navActive[1]?'active':''" @change="changeVal(value2,1)" @open="dropOpen" @close="dropClose"/>
+                <van-dropdown-item v-model="value3" :options="option3" :title-class="navActive[2]?'active':''" @change="changeVal(value3,2)"/>
+                <van-dropdown-item v-model="value4" :options="option4" :title-class="navActive[3]?'active':''" @change="changeVal(value4,3)"/>
             </van-dropdown-menu>
         </div>
         <hosSerListLi :hosList="hosChild"></hosSerListLi>
@@ -54,6 +55,8 @@ export default {
             ]
             ,isActive: false
             ,hosChild:[]
+            ,hosChildBat:[]
+            ,navActive:[true,false,false,false]
         }
     },
     methods:{
@@ -68,10 +71,62 @@ export default {
         },
         toIvfcalc(){
             this.$router.push({path:'/ivfcalc/'})
+        },
+        changeVal(e,idx){
+
+            this.navActive = this.navActive.map(function(){
+                return false;
+            });
+            this.navActive[idx] = true;
+
+            let countryVal = this.value2;
+            let type = this.value3;
+            let sorting = this.value4;
+            let hosChildVal =[];
+            switch(idx){
+                case 1 :
+                    this.hosChildBat.map(function(items,index){
+                        if(items.country == countryVal){
+                            hosChildVal.push(items);
+                        }
+                    });
+                    this.hosChild = hosChildVal;
+                    break;
+                case 2 :
+                    console.log('这里是3');
+                    break;
+                case 3 :
+                    console.log('这里是4');
+                    break;
+            }
+            
+
+            console.log(this.hosChild);
+            console.log(hosChildVal);
+        },
+        dropOpen(){
+            // console.log('打开');
+            //一般第三个参数可直接填false,
+            // true -> 表示在捕获阶段调用事件处理程序, 
+            // false -> 表示在冒泡阶段调用事件处理程序使用，但是touchmove会被浏览器忽略掉，并不会阻止默认行为，
+            // 这里通过passive:false明确声明为不是被动的
+            document.addEventListener('touchmove',this.touchStart,{passive:false})
+
+        },
+        dropClose(){
+            // console.log('关闭');
+            document.removeEventListener('touchmove',this.touchStart,{pasive:false})
+        },
+        touchStart(){
+            event.preventDefault();//通知 Web 浏览器不要执行与事件关联的默认动作
         }
     },
     mounted(){
-        window.addEventListener('scroll',this.placeholderScroll,true)
+        window.addEventListener('scroll',this.placeholderScroll,true);
+        // var new_list = ['a','s','d'].map(function(items,index){
+        //             return items+"!";
+        // })
+        // console.log(new_list)
     },
     beforeDestroy() {
         window.removeEventListener("scroll",this.placeholderScroll,true)
@@ -80,7 +135,7 @@ export default {
         this.$axios.get('https://www.luanluanhaiwai.com/api/hospital')
         .then( (response)=> {
             this.hosChild = response.data.hospitals
-            // console.log(response.data.hospitals)
+            this.hosChildBat = response.data.hospitals
         })
 
         .catch(function (error) {
