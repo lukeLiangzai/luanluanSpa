@@ -82,48 +82,55 @@ export default {
             });
             this.navActive[idx] = true;
 
+            // if(this.value4==2){
+            //     this.hosChild.sort(this.sortBy('convert_price',true));
+            // }
+            
 
-            switch(idx){
-                case 1 :
-                    console.log('这里是1');
-                    break;
-                case 2 :
-                    console.log('这里是2');
-                    break;
-                case 3 :
-                    if(this.value4==2){
-                        this.hosChild.sort(this.sortBy('convert_price',true));
+            this.sorting(this.value2,this.value3,this.value4);
+
+        },
+        sorting(countryVal,typeVal,sortVal){//类型排序
+            let hosChildVal = [];
+            if(countryVal!=0){
+                this.hosChildBat.map(function(items,index){
+                    if(items.country == countryVal){
+                        hosChildVal.push(items);
                     }
-                    break;
+                });
+            }else{
+                hosChildVal = this.hosChildBat
             }
             
 
 
 
-            // let countryVal = this.value2;
-            // let type = this.value3;
-            // let sorting = this.value4;
-            // let hosChildVal =[];
-            // switch(idx){
-            //     case 1 :
-            //         this.hosChildBat.map(function(items,index){
-            //             if(items.country == countryVal){
-            //                 hosChildVal.push(items);
-            //             }
-            //         });
-            //         this.hosChild = hosChildVal;
-            //         break;
-            //     case 2 :
-            //         console.log('这里是3');
-            //         break;
-            //     case 3 :
-            //         console.log('这里是4');
-            //         break;
-            // }
-            
-            console.log(this.hosChild);
-            // console.log(hosChildVal);
+            this.hosChild = hosChildVal;
+
+            console.log(countryVal,typeVal,sortVal)
+
         },
+        countryBy(countryVal){//国家排序
+
+            let hosChildVal =[];
+            let typeVal = this.value3;
+            let sortVal = this.value4;
+
+            switch(true){
+                case countryVal == 0 && typeVal == 0 && sortVal == 0 :
+                    this.hosChild = this.hosChildBat;
+                    return;
+                    break;
+            }
+            
+            this.hosChildBat.map(function(items,index){
+                if(items.country == countryVal){
+                    hosChildVal.push(items);
+                }
+            });
+            this.hosChild = hosChildVal;
+        },
+       
         sortBy(attr,rev){ //价格排序
             if(rev == undefined){
                 rev = 1;
@@ -174,7 +181,6 @@ export default {
         .then( (response)=> {
             this.hosChild = response.data.hospitals
             this.hosChildBat = response.data.hospitals
-            console.log(response.data.hospitals)
         })
 
         .catch(function (error) {
