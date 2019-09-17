@@ -12,7 +12,7 @@
         </div>
         <div class='placeholder-box' ref="placeholderBox">
             <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa">
-                <van-dropdown-item v-model="value1" :options="option1" ref="recommended" :title-class="navActive[0]?'noIcon active':'noIcon'" @open="refresh"/>
+                <van-dropdown-item v-model="value1" :options="option1" ref="recommended"  :title-class="navActive[0]?'noIcon active':'noIcon'" @open="refresh"/>
                 <van-dropdown-item v-model="value2" :options="option2" :title-class="navActive[1]?'active':''" @change="changeVal(value2,1)" @open="dropOpen" @close="dropClose"/>
                 <van-dropdown-item v-model="value3" :options="option3" :title-class="navActive[2]?'active':''" @change="changeVal(value3,2)" @open="dropOpen" @close="dropClose"/>
                 <van-dropdown-item v-model="value4" :options="option4" :title-class="navActive[3]?'active':''" @change="changeVal(value4,3)" @open="dropOpen" @close="dropClose"/>
@@ -79,13 +79,15 @@ export default {
         },
         //推荐刷新页面
         refresh(){
-            // this.$router.push({path:'/ivfcalc/'})
-            // this.$store.state.navBarNum = 1
+            // this.$router.push({path:'/'});
+            // this.$store.state.navBarNum = 1;
             console.log(211);
-            this.$refs.recommended.toggle(false);
-            this.$refs.recommended.show(false);
+            this.$refs.recommended.toggle();
+            // this.$refs.recommended.show(false);
         },
-
+        show(e){
+            console.log(e);
+        },
         changeVal(e,idx){
 
             this.navActive = this.navActive.map(function(){
