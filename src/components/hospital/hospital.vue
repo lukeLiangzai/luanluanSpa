@@ -11,11 +11,11 @@
             <a><img src="../../assets/img/icon-04.png" alt="">费用估算</a>
         </div>
         <div class='placeholder-box' ref="placeholderBox">
-            <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa" @click='show($event)'>
-                <van-dropdown-item v-model="value1" title="推荐" ref="recommended" :title-class="navActive[0]?'noIcon active':'noIcon'" disabled @change="changeVal(0)"/>
+            <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa">
+                <van-dropdown-item v-model="value1" :options="option1" ref="recommended" :title-class="navActive[0]?'noIcon active':'noIcon'" @open="refresh"/>
                 <van-dropdown-item v-model="value2" :options="option2" :title-class="navActive[1]?'active':''" @change="changeVal(value2,1)" @open="dropOpen" @close="dropClose"/>
-                <van-dropdown-item v-model="value3" :options="option3" :title-class="navActive[2]?'active':''" @change="changeVal(value3,2)"/>
-                <van-dropdown-item v-model="value4" :options="option4" :title-class="navActive[3]?'active':''" @change="changeVal(value4,3)"/>
+                <van-dropdown-item v-model="value3" :options="option3" :title-class="navActive[2]?'active':''" @change="changeVal(value3,2)" @open="dropOpen" @close="dropClose"/>
+                <van-dropdown-item v-model="value4" :options="option4" :title-class="navActive[3]?'active':''" @change="changeVal(value4,3)" @open="dropOpen" @close="dropClose"/>
             </van-dropdown-menu>
         </div>
         <hosSerListLi :hosList="hosChild"></hosSerListLi>
@@ -35,6 +35,9 @@ export default {
             value2: 0,
             value3: 0,
             value4: 0,
+            option1: [
+                {text:'推荐',value:0}
+            ],
             option2: [
                 { text: '国家', value: 0 },
                 { text: '泰国', value: 1 },
@@ -74,6 +77,14 @@ export default {
         toIvfcalc(){
             this.$router.push({path:'/ivfcalc/'})
         },
+        //推荐刷新页面
+        refresh(){
+            // this.$router.push({path:'/ivfcalc/'})
+            // this.$store.state.navBarNum = 1
+            console.log(211);
+            this.$refs.recommended.toggle(false);
+            this.$refs.recommended.show(false);
+        },
 
         changeVal(e,idx){
 
@@ -82,53 +93,80 @@ export default {
             });
             this.navActive[idx] = true;
 
-            // if(this.value4==2){
-            //     this.hosChild.sort(this.sortBy('convert_price',true));
-            // }
-            
-
             this.sorting(this.value2,this.value3,this.value4);
 
         },
         sorting(countryVal,typeVal,sortVal){//类型排序
-            let hosChildVal = [];
-            if(countryVal!=0){
-                this.hosChildBat.map(function(items,index){
-                    if(items.country == countryVal){
+
+            let hosChildVal = []; 
+
+            let switchVal = String( countryVal > 0 ? 1 : 0 ) + String( typeVal > 0 ? 1 : 0 ) + String( sortVal > 0 ? 1 : 0 );
+            
+            let sortFunc=function(val1,val2,data3){
+                data3.map(function(items,index){
+                    if( (val1 ? items.country == countryVal : true) &&  (val2 ? items.type == typeVal : true)){
                         hosChildVal.push(items);
                     }
                 });
-            }else{
-                hosChildVal = this.hosChildBat
             }
-            
 
-
-
-            this.hosChild = hosChildVal;
-
-            console.log(countryVal,typeVal,sortVal)
-
-        },
-        countryBy(countryVal){//国家排序
-
-            let hosChildVal =[];
-            let typeVal = this.value3;
-            let sortVal = this.value4;
-
-            switch(true){
-                case countryVal == 0 && typeVal == 0 && sortVal == 0 :
-                    this.hosChild = this.hosChildBat;
-                    return;
+            switch(switchVal){
+                case '100' :
+                    sortFunc(true,false,this.hosChildBat);
+                    // console.log("国家——被选择");
+                    break;
+                case '101' :
+                    if(sortVal == 2){
+                        sortFunc(true,false,this.hosChildBat);
+                        hosChildVal.sort(this.sortBy('convert_price',true));
+                    }else if(sortVal == 1){
+                        alert("功能未开放");
+                    }
+                    // console.log("国家、排序——被选择");
+                    break;
+                case '110' :
+                    sortFunc(true,true,this.hosChildBat);
+                    // console.log("国家、类型——被选择");
+                    break;
+                case '111' :
+                    if(sortVal == 2){
+                        sortFunc(true,true,this.hosChildBat);
+                        hosChildVal.sort(this.sortBy('convert_price',true));
+                    }else if(sortVal == 1){
+                        alert("功能未开放");
+                    }
+                    // console.log("国家、类型、排序——被选择");
+                    break;
+                case '010' :
+                    sortFunc(false,true,this.hosChildBat);
+                    // console.log("类型——被选择");
+                    break;
+                case '011' :
+                    if(sortVal == 2){
+                        sortFunc(false,true,this.hosChildBat);
+                        hosChildVal.sort(this.sortBy('convert_price',true));
+                    }else if(sortVal == 1){
+                        alert("功能未开放");
+                    }
+                    // console.log("类型、排序——被选择");
+                    break;
+                case '001' :
+                    if(sortVal == 2){
+                        hosChildVal = this.hosChildBat;
+                        hosChildVal.sort(this.sortBy('convert_price',true));
+                    }else if(sortVal == 1){
+                        alert("功能未开放");
+                    }
+                    // console.log("排序——被选择");
+                    break;
+                case '000' :
+                    hosChildVal = this.hosChildBat;
+                    // console.log("全部未被选择");
                     break;
             }
-            
-            this.hosChildBat.map(function(items,index){
-                if(items.country == countryVal){
-                    hosChildVal.push(items);
-                }
-            });
+
             this.hosChild = hosChildVal;
+
         },
        
         sortBy(attr,rev){ //价格排序
@@ -168,10 +206,6 @@ export default {
     },
     mounted(){
         window.addEventListener('scroll',this.placeholderScroll,true);
-        // var new_list = ['a','s','d'].map(function(items,index){
-        //             return items+"!";
-        // })
-        // console.log(new_list)
     },
     beforeDestroy() {
         window.removeEventListener("scroll",this.placeholderScroll,true)
