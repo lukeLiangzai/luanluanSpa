@@ -7,46 +7,34 @@
         <div class='head-row2 flex align-center justify-center' :style="{opacity : headOpacity}"><span>医院详情</span></div>
     </div>
     <div class='banner'>
-        <!-- <van-swipe :autoplay="3000">
-            <van-swipe-item v-for="(image, index) in images" :key="index">
-                <img v-lazy="image.srcImg" />
-            </van-swipe-item>
-        </van-swipe> -->
         <div class="swiper-container banner-box">
             <div class="swiper-wrapper">
-                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
-                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
-                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
-                <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
+                <div class="swiper-slide img-box" v-for="(bann,idx) in coverList" :key='idx'><img :src="bann.url" alt=""></div>
+                <!-- <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div> -->
             </div>
             <div class="swiper-pagination"></div>
             <a class='heart-btn'><img src="../../assets/img/icon-heart.png" alt=""><span>13k</span></a>
         </div>
     </div>
     <div class="card-block module1">
-        <div class='title'>泰国EK国际医院</div>
+        <div class='title'>{{hospitalData.name}}</div>
         <div class='row-tag flex'>
-            <van-tag round color='#62a9f8'>我就是那</van-tag>
-            <van-tag round color='#62a9f8'>整个西乡</van-tag>
-            <van-tag round color='#62a9f8'>最靓的仔</van-tag>
+            <div v-for="(tags,idx) in hospitalData.tags" :key='idx'>
+                <van-tag round color='#62a9f8'>{{tags}}</van-tag>
+            </div>
             <a class='img-box'><img src="../../assets/img/icon-share.png" alt=""></a>   
         </div>
         <div class="row-price flex justify-between align-center">
             <div class='left flex align-end'>
                 <i>&yen;</i>
-                <p>90000</p>
+                <p>{{ parseInt(hospitalData.convert_price)}}</p>
                 <span>/周期</span>
             </div>
             <div class="right">官方价格</div>
         </div>
-        <div class='row-alt'>
-            <div class="left">预约</div>
-            <div class="center">现在预约即可享受一万泰铢优惠</div>
-            <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
-        </div>
-        <div class='row-alt'>
-            <div class="left">活动</div>
-            <div class="center">杰特宁医院实地考察</div>
+        <div class='row-alt' v-for="(rowAlt,idx) in hospitalData.promotions" :key='idx'>
+            <div class="left">{{rowAlt.label}}</div>
+            <div class="center">{{rowAlt.title}}</div>
             <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
         </div>
     </div> 
@@ -54,21 +42,21 @@
         <div class="row">
             <div class="left">位置</div>
             <div class="right">
-                <p>泰国曼谷，邦戈比去，空丹，哈皮蓝路，占告</p>
+                <p>{{hospitalData.location}}</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
         <div class="row">
             <div class="left">技术</div>
             <div class="right">
-                <p>PGD、PGF、穿透取精</p>
+                <p>{{hospitalData.skill}}</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
         <div class="row">
             <div class="left">人群</div>
             <div class="right">
-                <p>少精、弱精、超一年不孕不育障碍者</p>
+                <p>{{hospitalData.crowd}}</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
@@ -76,6 +64,13 @@
             <div class="left">详情</div>
             <div class="right">
                 <p>点击查看医院介绍</p>
+                <a><img src="../../assets/img/icon-more.png" alt=""></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left">价格</div>
+            <div class="right">
+                <p>价格详细表</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
@@ -248,13 +243,10 @@ export default {
     name:'hospitalShow',
     data(){
         return{
-            images:[//轮播图
-                {srcImg: require("../../assets/img/banner-test.png")},
-                {srcImg: require("../../assets/img/banner-test.png")},
-                {srcImg: require("../../assets/img/banner-test.png")},
-            ],
+            coverList:[],
             headOpacity : 0,
-            imgIsshow : true
+            imgIsshow : true,
+            hospitalData:{},
         }
     },
     methods:{
@@ -284,23 +276,41 @@ export default {
                     delay: 3500,
                     disableOnInteraction: false,
                 },
+                observer:true,
+                observeParents:true
             });
         },
         _initSwiper_docList(){
             var swiper = new Swiper('.doctor-list', {
                 slidesPerView: 'auto',
                 spaceBetween: 10,
+                observer:true,
+                observeParents:true
             });
         },
     },
     mounted(){
         window.addEventListener('scroll',this.hosScroll,true);
-        this._initSwiper_docList();
-        this._initSwiper_banner();
+        
     },
     destroyed() {
         window.removeEventListener("scroll", this.hosScroll, true);
     },
+    created(){
+        this.$axios.get('https://www.luanluanhaiwai.com/api/hospital/'+this.$route.params.hid)
+        .then( (response)=> {
+            this.hospitalData = response.data.hospital
+            this.coverList = response.data.hospital.coverList
+            console.log(this.hospitalData)
+
+            this._initSwiper_docList();
+            this._initSwiper_banner();
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 
 }
 </script>

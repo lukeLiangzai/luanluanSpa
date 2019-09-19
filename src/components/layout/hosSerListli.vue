@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a href="#" class='list-items' v-for="(item,index) in hosList" :key="index">
+        <a href="#" class='list-items' v-for="(item,index) in hosList" :key="index" @click="hospitalTo(item.id)">
             <div class='left-img img-box'><img :src="item.cover" alt=""></div>
             <div class='right-introduce flex flex-column flex-auto'>
                 <p class="title">{{item.name}}</p>
@@ -32,6 +32,11 @@ export default {
     data (){
         return {
             
+        }
+    },
+    methods:{
+        hospitalTo(hid){
+            this.$router.push({path:`/hospitalShow/${hid}`}) 
         }
     },
     mounted(){

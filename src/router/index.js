@@ -32,7 +32,7 @@ export default new Router({
       component: Login,
     }
     ,{
-      path: '/hospitalShow',
+      path: '/hospitalShow/:hid',
       name: 'HospitalShow',
       component: HospitalShow,
     }

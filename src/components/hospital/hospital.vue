@@ -12,10 +12,35 @@
         </div>
         <div class='placeholder-box' ref="placeholderBox">
             <van-dropdown-menu :class="{'fixed-nav' : isActive}" active-color="#1989fa">
-                <van-dropdown-item v-model="value1" :options="option1" ref="recommended"  :title-class="navActive[0]?'noIcon active':'noIcon'" @open="refresh"/>
-                <van-dropdown-item v-model="value2" :options="option2" :title-class="navActive[1]?'active':''" @change="changeVal(value2,1)" @open="dropOpen" @close="dropClose"/>
-                <van-dropdown-item v-model="value3" :options="option3" :title-class="navActive[2]?'active':''" @change="changeVal(value3,2)" @open="dropOpen" @close="dropClose"/>
-                <van-dropdown-item v-model="value4" :options="option4" :title-class="navActive[3]?'active':''" @change="changeVal(value4,3)" @open="dropOpen" @close="dropClose"/>
+                <van-dropdown-item 
+                    v-model="value1" 
+                    :options="option1" 
+                    ref="recommended"  
+                    :title-class="navActive[0]?'noIcon active':'noIcon'" 
+                    @change="changeVal(value1,0)" 
+                    @open="dropOpen(0)" 
+                    @close="dropClose(0)"/>
+                <van-dropdown-item 
+                    v-model="value2" 
+                    :options="option2" 
+                    :title-class="navActive[1]?'active':''" 
+                    @change="changeVal(value2,1)" 
+                    @open="dropOpen(1)" 
+                    @close="dropClose(1)"/>
+                <van-dropdown-item 
+                    v-model="value3" 
+                    :options="option3" 
+                    :title-class="navActive[2]?'active':''" 
+                    @change="changeVal(value3,2)" 
+                    @open="dropOpen(2)" 
+                    @close="dropClose(2)"/>
+                <van-dropdown-item 
+                    v-model="value4" 
+                    :options="option4" 
+                    :title-class="navActive[3]?'active':''" 
+                    @change="changeVal(value4,3)" 
+                    @open="dropOpen(3)" 
+                    @close="dropClose(3)"/>
             </van-dropdown-menu>
         </div>
         <hosSerListLi :hosList="hosChild"></hosSerListLi>
@@ -76,17 +101,6 @@ export default {
         //跳转ivf计算器
         toIvfcalc(){
             this.$router.push({path:'/ivfcalc/'})
-        },
-        //推荐刷新页面
-        refresh(){
-            // this.$router.push({path:'/'});
-            // this.$store.state.navBarNum = 1;
-            console.log(211);
-            this.$refs.recommended.toggle();
-            // this.$refs.recommended.show(false);
-        },
-        show(e){
-            console.log(e);
         },
         changeVal(e,idx){
 
@@ -189,18 +203,33 @@ export default {
                 return 0;
             }
         },
-        dropOpen(){
+        dropOpen(idx){
             // console.log('打开');
             //一般第三个参数可直接填false,
             // true -> 表示在捕获阶段调用事件处理程序, 
             // false -> 表示在冒泡阶段调用事件处理程序使用，但是touchmove会被浏览器忽略掉，并不会阻止默认行为，
             // 这里通过passive:false明确声明为不是被动的
             document.addEventListener('touchmove',this.touchStart,{passive:false})
+            
+            if(idx == 0){
+                this.navActive = this.navActive.map(function(){
+                    return false;
+                });
+                this.navActive[idx] = true;
+            }
 
         },
-        dropClose(){
+        dropClose(idx){
             // console.log('关闭');
             document.removeEventListener('touchmove',this.touchStart,{pasive:false})
+
+            if(idx == 0){
+                this.hosChild = this.hosChildBat
+                this.value1 = 0
+                this.value2 = 0
+                this.value3 = 0
+                this.value4 = 0
+            }
         },
         touchStart(){
             event.preventDefault();//通知 Web 浏览器不要执行与事件关联的默认动作
