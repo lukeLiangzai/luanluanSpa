@@ -10,7 +10,6 @@
         <div class="swiper-container banner-box">
             <div class="swiper-wrapper">
                 <div class="swiper-slide img-box" v-for="(bann,idx) in coverList" :key='idx'><img :src="bann.url" alt=""></div>
-                <!-- <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div> -->
             </div>
             <div class="swiper-pagination"></div>
             <a class='heart-btn'><img src="../../assets/img/icon-heart.png" alt=""><span>13k</span></a>
