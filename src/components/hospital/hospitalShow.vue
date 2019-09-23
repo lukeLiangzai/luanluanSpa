@@ -7,13 +7,10 @@
         <div class='head-row2 flex align-center justify-center' :style="{opacity : headOpacity}"><span>医院详情</span></div>
     </div>
     <div class='banner'>
-        <div class="swiper-container banner-box">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide img-box" v-for="(bann,idx) in coverList" :key='idx'><img :src="bann.url" alt=""></div>
-            </div>
-            <div class="swiper-pagination"></div>
-            <a class='heart-btn'><img src="../../assets/img/icon-heart.png" alt=""><span>13k</span></a>
-        </div>
+        <van-swipe :autoplay="3000" indicator-color="white">
+            <van-swipe-item v-for="(bann,idx) in coverList" :key='idx'><img :src="bann.url" alt=""></van-swipe-item>
+        </van-swipe>
+        <div class="heart-btn"><img src="../../assets/img/icon-heart.png" alt=""><span>60</span></div>
     </div>
     <div class="card-block module1">
         <div class='title'>{{hospitalData.name}}</div>
@@ -87,9 +84,9 @@
             </div>
         </div>
         <div class="content flex align-center">
-            <div class="left-img img-box"><img src="../../assets/img/guwen-img.png" alt=""></div>
+            <div class="left-img img-box"><img src="../../assets/img/guwen-img2.png" alt=""></div>
             <div class='right flex align-center flex-auto justify-between'>
-                <span>徐顾问</span>
+                <span>周顾问</span>
                 <p class='flex-auto'>拥有八年试管婴儿生育经验</p>
                 <a href='' class='flex'>
                     咨询
@@ -101,63 +98,16 @@
         <div class='title'>主治医生</div>
         <div class="swiper-container doctor-list">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide" v-for="(doc,idx) in hospitalData.doctor" :key='idx'>
                     <div class="left img-box">
-                        <img src="../../assets/img/doctor-img-test.png" alt="">
+                        <img :src="doc.cover" alt="">
                     </div>
                     <div class='right'>
                         <div class="row-name">
                             <img src="../../assets/img/icon-v.png" alt="">
-                            <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
+                            <span>{{doc.name}}</span>
                         </div>
-                        <div class='row-text'>
-                            张主任长期奋斗在临床一线，
-                            在产科疑难病症和危重症的诊
-                            治方面积累了丰富的临床经验；
-                            能在工作中熟练掌握各种高危
-                            妊娠的诊疗、疑难病症的诊治
-                            以及各类难产的处理。
-                        </div>
-                        <div class='row-btn'>预约</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="left img-box">
-                        <img src="../../assets/img/doctor-img-test.png" alt="">
-                    </div>
-                    <div class='right'>
-                        <div class="row-name">
-                            <img src="../../assets/img/icon-v.png" alt="">
-                            <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
-                        </div>
-                        <div class='row-text'>
-                            张主任长期奋斗在临床一线，
-                            在产科疑难病症和危重症的诊
-                            治方面积累了丰富的临床经验；
-                            能在工作中熟练掌握各种高危
-                            妊娠的诊疗、疑难病症的诊治
-                            以及各类难产的处理。
-                        </div>
-                        <div class='row-btn'>预约</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="left img-box">
-                        <img src="../../assets/img/doctor-img-test.png" alt="">
-                    </div>
-                    <div class='right'>
-                        <div class="row-name">
-                            <img src="../../assets/img/icon-v.png" alt="">
-                            <span>张雪娅张雪娅张雪娅张雪娅张雪娅张雪娅</span>
-                        </div>
-                        <div class='row-text'>
-                            张主任长期奋斗在临床一线，
-                            在产科疑难病症和危重症的诊
-                            治方面积累了丰富的临床经验；
-                            能在工作中熟练掌握各种高危
-                            妊娠的诊疗、疑难病症的诊治
-                            以及各类难产的处理。
-                        </div>
+                        <div class='row-text' v-html="doc.curriculum_vitae"></div>
                         <div class='row-btn'>预约</div>
                     </div>
                 </div>
@@ -169,54 +119,17 @@
             <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>23+</p></div>
             <div class="right flex align-center">好评度 98% <img src="../../assets/img/icon-toright.png" alt=""></div>
         </div>
-        <div class="comments-items">
+        <div class="comments-items" v-for="(coms,idx) in 2" :key='idx'>
             <div class="row-head flex">
-                <div class='img-box'><img src="../../assets/img/head-img-test.png" alt=""></div>
+                <div class='img-box'><img :src="hospitalData.comments[coms-1].user.avatar_url" alt=""></div>
                 <div class='right flex flex-column'>
-                    <p>小恐农</p>
+                    <p>{{hospitalData.comments[coms-1].user.name}}</p>
                     <div class="stars flex">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
+                        <img src="../../assets/img/comments-stars.png" alt="" v-for="(rates,idx) in hospitalData.comments[coms-1].rate" :key='idx'>
                     </div>
                 </div>
             </div>
-            <div class="row-text">
-                做试管的路上真的是一路艰辛，
-                我只是个喵，为什么要承受这些，
-                谢谢孪娈海外的所有工作人员，
-                细心沟通的周顾问，饭菜可口的王阿姨，
-                认真负责的安翻译，感谢。
-            </div>
-            <!-- <div class="row-img">
-                <div class='img-box'></div>
-                <div class='img-box'></div>
-                <div class='img-box'></div>
-            </div> -->
-        </div>
-        <div class="comments-items">
-            <div class="row-head flex">
-                <div class='img-box'><img src="../../assets/img/head-img-test.png" alt=""></div>
-                <div class='right flex flex-column'>
-                    <p>小恐农</p>
-                    <div class="stars flex">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                        <img src="../../assets/img/comments-stars.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row-text">
-                做试管的路上真的是一路艰辛，
-                我只是个喵，为什么要承受这些，
-                谢谢孪娈海外的所有工作人员，
-                细心沟通的周顾问，饭菜可口的王阿姨，
-                认真负责的安翻译，感谢。
-            </div>
+            <div class="row-text">{{hospitalData.comments[coms-1].body}}</div>
             <!-- <div class="row-img">
                 <div class='img-box'></div>
                 <div class='img-box'></div>
@@ -246,6 +159,7 @@ export default {
             headOpacity : 0,
             imgIsshow : true,
             hospitalData:{},
+            doctorList:[],
         }
     },
     methods:{
@@ -300,15 +214,24 @@ export default {
         .then( (response)=> {
             this.hospitalData = response.data.hospital
             this.coverList = response.data.hospital.coverList
-            console.log(this.hospitalData)
+
+            for(let res in this.hospitalData.doctor){
+                this.hospitalData.doctor[res].curriculum_vitae = escape2Html(this.hospitalData.doctor[res].curriculum_vitae)
+            }
 
             this._initSwiper_docList();
             this._initSwiper_banner();
+            console.log(this.hospitalData)
         })
 
         .catch(function (error) {
             console.log(error);
         });
+
+        function escape2Html(str) {
+            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+        }
     }
 
 }
@@ -327,31 +250,22 @@ export default {
 .van-tag--round {
     border-radius: 0 .8em .8em .8em;
 }
+
 .banner{
     width: 100%;
-    max-height: 5.786667rem;
+    min-height: 5.786667rem;
+    position: relative;
     img{
         width: 100vw;
     }
-    .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
-        bottom: .8rem;
-    }
-    .swiper-pagination-bullet {
-        width: .16rem;
-        height: .16rem;
-        background: #e2e2e2;
-        opacity: 1;
-    }
-    .swiper-pagination-bullet-active {
-        background: #fff;
-    }
+    
     .heart-btn{
         height: .666667rem;
         background:rgba(255,255,255,1);
         border-radius: 2.666667rem;
         position: absolute;
         right: .4rem;
-        bottom: .8rem;
+        bottom: .9rem;
         z-index: 10;
         text-align: center;
         font-size: .32rem;

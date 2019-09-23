@@ -113,3 +113,7 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
     .van-dropdown-menu__title.active {
         color: #1989fa!important;
     }
+
+    div.van-swipe__indicators{
+        bottom: .9rem!important;
+    }
