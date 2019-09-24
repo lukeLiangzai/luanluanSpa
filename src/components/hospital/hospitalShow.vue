@@ -115,21 +115,21 @@
         </div>
     </div>
     <div class='card-block module-comments'>
-        <div class="title flex justify-between">
-            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>23+</p></div>
-            <div class="right flex align-center">好评度 98% <img src="../../assets/img/icon-toright.png" alt=""></div>
+        <div class="title flex justify-between" >
+            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>{{hospitalData.comments.length}}+</p></div>
+            <div class="right flex align-center">好评度5星 <img src="../../assets/img/icon-toright.png" alt=""></div>
         </div>
-        <div class="comments-items" v-for="(coms,idx) in 2" :key='idx'>
+        <div class="comments-items" v-for="(coms,idx) in hospitalData.comments" :key='idx' v-show="idx < 2">
             <div class="row-head flex">
-                <div class='img-box'><img :src="hospitalData.comments[coms-1].user.avatar_url" alt=""></div>
+                <div class='img-box'><img :src="'//'+coms.user.avatar_url" alt=""></div>
                 <div class='right flex flex-column'>
-                    <p>{{hospitalData.comments[coms-1].user.name}}</p>
+                    <p>{{coms.user.name}}</p>
                     <div class="stars flex">
-                        <img src="../../assets/img/comments-stars.png" alt="" v-for="(rates,idx) in hospitalData.comments[coms-1].rate" :key='idx'>
+                        <img src="../../assets/img/comments-stars.png" alt="" v-for="(rates,idx) in coms.rate" :key='idx'>
                     </div>
                 </div>
             </div>
-            <div class="row-text">{{hospitalData.comments[coms-1].body}}</div>
+            <div class="row-text">{{coms.body}}</div>
             <!-- <div class="row-img">
                 <div class='img-box'></div>
                 <div class='img-box'></div>
