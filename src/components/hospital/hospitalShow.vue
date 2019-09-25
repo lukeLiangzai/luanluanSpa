@@ -10,14 +10,12 @@
         <van-swipe :autoplay="3000" indicator-color="white">
             <van-swipe-item v-for="(bann,idx) in coverList" :key='idx'><img :src="bann.url" alt=""></van-swipe-item>
         </van-swipe>
-        <div class="heart-btn"><img src="../../assets/img/icon-heart.png" alt=""><span>60</span></div>
+        <div class="heart-btn"><img src="https://m.luanluanhaiwai.com/assets/img/icon-heart.png" alt=""><i>{{hospitalData.visit_count}}</i></div>
     </div>
     <div class="card-block module1">
         <div class='title'>{{hospitalData.name}}</div>
         <div class='row-tag flex'>
-            <div v-for="(tags,idx) in hospitalData.tags" :key='idx'>
-                <van-tag round color='#62a9f8'>{{tags}}</van-tag>
-            </div>
+			<div class="tag-box"><div class="tag flex"><span v-for="(tags,idx) in hospitalData.tags" :key='idx'>{{tags}}</span></div></div>
             <a class='img-box'><img src="../../assets/img/icon-share.png" alt=""></a>   
         </div>
         <div class="row-price flex justify-between align-center">
@@ -116,7 +114,7 @@
     </div>
     <div class='card-block module-comments'>
         <div class="title flex justify-between" >
-            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>{{hospitalData.comments.length}}+</p></div>
+            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>6+</p></div>
             <div class="right flex align-center">好评度5星 <img src="../../assets/img/icon-toright.png" alt=""></div>
         </div>
         <div class="comments-items" v-for="(coms,idx) in hospitalData.comments" :key='idx' v-show="idx < 2">
@@ -210,6 +208,7 @@ export default {
         window.removeEventListener("scroll", this.hosScroll, true);
     },
     created(){
+        console.log(this.hospitalData)
         this.$axios.get('https://www.luanluanhaiwai.com/api/hospital/'+this.$route.params.hid)
         .then( (response)=> {
             this.hospitalData = response.data.hospital
@@ -257,25 +256,31 @@ export default {
     position: relative;
     img{
         width: 100vw;
-    }
-    
-    .heart-btn{
-        height: .666667rem;
+	}
+	
+	.heart-btn{
+		height: 1.28rem;
+		line-height: 1.28rem;
         background:rgba(255,255,255,1);
         border-radius: 2.666667rem;
         position: absolute;
         right: .4rem;
         bottom: .9rem;
-        z-index: 10;
-        text-align: center;
-        font-size: .32rem;
+        z-index: 3;
+        font-size: .64rem;
         font-family: 'DIN Alternate';
         font-weight:bold;
-        line-height: .693333rem;
         color:rgba(20,182,196,1);
-        padding: 0 .24rem;
+		padding: 0 .48rem;
+		
+		transform: scale(.5);
+		transform-origin: right bottom;
+		-webkit-transform-origin: right bottom;
+		-moz-transform-origin: right bottom;
+		-o-transform-origin: right bottom;
         img{
-            width: .346667rem;
+			width: .693333rem;
+			margin-right: .133333rem;
         }
     }
 }
@@ -354,13 +359,36 @@ export default {
         color:#525465;
     }
     .row-tag{
+
         margin: .266667rem 0;
-        font-size:.266667rem;
         color:rgba(255,255,255,1);
         position: relative;
-        :not(:last-child){
-            margin-right: .133333rem;
-        }
+		.tag-box{
+			width: 5.333333rem;
+			height: .48rem;
+			.tag{
+				transform: scale(.5);
+				transform-origin: left top;
+				-webkit-transform-origin: left top;
+				-moz-transform-origin: left top;
+				-o-transform-origin: left top;
+				width: 10.666667rem;
+				height: .96rem;
+				span{
+					background:rgba(98,169,248,1);
+					border-radius:0 1.333333rem 1.333333rem 1.333333rem;
+					font-size:.533333rem;
+					color:rgba(255,255,255,1);
+					margin-right: .533333rem;
+					width: auto;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: .026667rem .32rem 0;
+				}
+			}
+		}
+		
         .img-box{
             position: absolute;
             display: block;
