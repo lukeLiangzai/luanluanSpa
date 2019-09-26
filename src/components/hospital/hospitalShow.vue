@@ -24,7 +24,11 @@
                 <p>{{ parseInt(hospitalData.convert_price)}}</p>
                 <span>/周期</span>
             </div>
-            <div class="right">官方价格</div>
+            <div class="right" @click="pricePop">官方价格</div>
+			<van-popup v-model="pricePopShow" position="bottom" closeable='true'>
+				<van-nav-bar title="官方价格"><van-icon name="close" slot="right"  color="#323233" @click="pricePopShow=false"/></van-nav-bar>
+				<img :src="hospitalData.price_introduce_images" alt="" style='width:calc(100% - 1.066667rem);margin:.533333rem auto;display:block'>
+			</van-popup>
         </div>
         <div class='row-alt' v-for="(rowAlt,idx) in hospitalData.promotions" :key='idx'>
             <div class="left">{{rowAlt.label}}</div>
@@ -157,7 +161,9 @@ export default {
             headOpacity : 0,
             imgIsshow : true,
             hospitalData:{},
-            doctorList:[],
+			doctorList:[],
+			
+			pricePopShow:false,
         }
     },
     methods:{
@@ -198,7 +204,10 @@ export default {
                 observer:true,
                 observeParents:true
             });
-        },
+		},
+		pricePop(){
+			this.pricePopShow = true
+		},
     },
     mounted(){
         window.addEventListener('scroll',this.hosScroll,true);
@@ -244,7 +253,7 @@ export default {
     width: 100%;
     min-height: 100vh;
     background-color: #f7f5f5;
-    padding-bottom: 1.333333rem;
+	padding-bottom: 1.333333rem;
 }
 .van-tag--round {
     border-radius: 0 .8em .8em .8em;
