@@ -30,13 +30,14 @@
 				<img :src="hospitalData.price_introduce_images" alt="" style='width:calc(100% - 1.066667rem);margin:.533333rem auto;display:block'>
 			</van-popup>
         </div>
+		<!--  -->
         <div class='row-alt' v-for="(rowAlt,idx) in hospitalData.promotions" :key='idx'>
             <div class="left">{{rowAlt.label}}</div>
             <div class="center">{{rowAlt.title}}</div>
             <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
         </div>
     </div> 
-    <div class='card-block module2'>
+    <div class='card-block module2'>    
         <div class="row">
             <div class="left">位置</div>
             <div class="right">
