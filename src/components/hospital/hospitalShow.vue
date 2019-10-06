@@ -24,27 +24,35 @@
                 <p>{{ parseInt(hospitalData.convert_price)}}</p>
                 <span>/周期</span>
             </div>
-            <div class="right" @click="pricePop">官方价格</div>
+            <div class="right" @click="pricePopShow=true">官方价格</div>
 			<van-popup v-model="pricePopShow" position="bottom" closeable='true'>
 				<van-nav-bar title="官方价格"><van-icon name="close" slot="right"  color="#323233" @click="pricePopShow=false"/></van-nav-bar>
 				<img :src="hospitalData.price_introduce_images" alt="" style='width:calc(100% - 1.066667rem);margin:.533333rem auto;display:block'>
 			</van-popup>
         </div>
 		<!--  -->
-        <div class='row-alt' v-for="(rowAlt,idx) in hospitalData.promotions" :key='idx'>
+        <div class='row-alt' v-for="(rowAlt,idx) in hospitalData.promotions" :key='idx' @click="activePop(idx)">
             <div class="left">{{rowAlt.label}}</div>
             <div class="center">{{rowAlt.title}}</div>
             <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
         </div>
+        <van-popup v-model="activePopShow" position="bottom" closeable='true' v-if="activePopNum!=-1">
+            <van-nav-bar :title="hospitalData.promotions[activePopNum].label"><van-icon name="close" slot="right"  color="#323233" @click="activePopShow=false"/></van-nav-bar>
+            <div class="alrContent">{{hospitalData.promotions[activePopNum].describe}}</div>
+        </van-popup>
     </div> 
     <div class='card-block module2'>    
-        <div class="row">
+        <div class="row" @click="google_mapPopShow=true">
             <div class="left">位置</div>
             <div class="right">
                 <p>{{hospitalData.location}}</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
+        <van-popup v-model="google_mapPopShow" position="bottom" closeable='true'>
+            <van-nav-bar title="医院地址"><van-icon name="close" slot="right"  color="#323233" @click="google_mapPopShow=false"/></van-nav-bar>
+            <div class="mapContent"><div  v-html="hospitalData.google_map"></div></div>
+        </van-popup>
         <div class="row">
             <div class="left">技术</div>
             <div class="right">
@@ -165,6 +173,9 @@ export default {
 			doctorList:[],
 			
 			pricePopShow:false,
+			activePopShow:false,
+            activePopNum:-1,
+            google_mapPopShow:false,
         }
     },
     methods:{
@@ -206,8 +217,9 @@ export default {
                 observeParents:true
             });
 		},
-		pricePop(){
-			this.pricePopShow = true
+		activePop(idx){
+            this.activePopShow = true
+            this.activePopNum = idx
 		},
     },
     mounted(){
@@ -754,5 +766,24 @@ export default {
         color:rgba(153,153,153,1);
         margin: .266667rem auto 0;
     }
+}
+.alrContent{
+    padding: .4rem .333333rem;
+    line-height: .4rem;
+}
+.mapContent{
+    width: calc(100% - .533333rem);
+    height: 300px;
+    overflow: hidden;
+    margin: .266667rem auto;
+    div{
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+}
+
+.van-popup {
+    max-height: 75%;
 }
 </style>
