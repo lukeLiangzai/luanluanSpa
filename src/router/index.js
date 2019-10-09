@@ -5,6 +5,7 @@ import Ivfcalc from '@/components/layout/ivfcalc'
 import Ivfcalcsucc from '@/components/layout/ivfcalcsucc'
 import Login from '@/components/login/login'
 import HospitalShow from '@/components/hospital/hospitalShow'
+import informationShow from '@/components/information/informationShow'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/hospitalShow/:hid',
       name: 'HospitalShow',
       component: HospitalShow,
+    }
+    ,{
+      path: '/informationShow/:fid',
+      name: 'informationShow',
+      component: informationShow,
     }
     
   ]

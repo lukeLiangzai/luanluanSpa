@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="information-items" v-for="(item,index) in article" :key="index">
+        <div class="information-items" v-for="(item,index) in article" :key="index" @click="informationTo(item.id)">
             <p class="title">{{item.title}}</p>
             <div class="flex">
                 <div class="left img-box"><img :src="item.cover" alt=""></div>
@@ -24,6 +24,11 @@ export default {
     data (){
         return {
             
+        }
+    },
+    methods:{
+        informationTo(fid){
+            this.$router.push({path:`/informationShow/${fid}`}) 
         }
     }
 }

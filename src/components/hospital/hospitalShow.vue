@@ -271,7 +271,6 @@ export default {
         window.removeEventListener("scroll", this.hosScroll, true);
     },
     created(){
-        console.log(this.hospitalData)
         this.$axios.get('https://www.luanluanhaiwai.com/api/hospital/'+this.$route.params.hid)
         .then( (response)=> {
             this.hospitalData = response.data.hospital
@@ -284,7 +283,7 @@ export default {
             this._initSwiper_docList();
             this._initSwiper_banner();
             this.hospitalData.introduce = escape2Html(this.hospitalData.introduce)
-            console.log(this.hospitalData)
+            // console.log(this.hospitalData)
         })
 
         .catch(function (error) {
