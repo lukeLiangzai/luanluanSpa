@@ -117,3 +117,20 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
     div.van-swipe__indicators{
         bottom: .9rem!important;
     }
+
+    .detailsContent{
+        max-height: 70vh;
+        width: calc(100% - .533333rem);
+        margin: .266667rem auto;
+    }
+    .detailsContent>p{
+        width: 100%;
+    }
+    .detailsContent>p>img{
+        width:100%;
+        margin:.533333rem auto;
+        display:block
+    }   
+    .detailsContent>p>.edui-upload-video.vjs-default-skin.video-js{
+        width: 100%;
+    }

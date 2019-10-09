@@ -41,7 +41,8 @@
             <div class="alrContent">{{hospitalData.promotions[activePopNum].describe}}</div>
         </van-popup>
     </div> 
-    <div class='card-block module2'>    
+    <div class='card-block module2'>   
+
         <div class="row" @click="google_mapPopShow=true">
             <div class="left">位置</div>
             <div class="right">
@@ -53,34 +54,70 @@
             <van-nav-bar title="医院地址"><van-icon name="close" slot="right"  color="#323233" @click="google_mapPopShow=false"/></van-nav-bar>
             <div class="mapContent"><div  v-html="hospitalData.google_map"></div></div>
         </van-popup>
-        <div class="row">
+
+        <div class="row" @click="technology_PopShow=true">
             <div class="left">技术</div>
             <div class="right">
                 <p>{{hospitalData.skill}}</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
-        <div class="row">
+        <van-popup v-model="technology_PopShow" position="bottom" closeable='true'>
+            <van-nav-bar title="先进技术"><van-icon name="close" slot="right"  color="#323233" @click="technology_PopShow=false"/></van-nav-bar>
+            <div class="alrContent">{{hospitalData.skill}}</div>
+        </van-popup>
+
+        <div class="row" @click="crowd_PopShow=true">
             <div class="left">人群</div>
             <div class="right">
                 <p>{{hospitalData.crowd}}</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
-        <div class="row">
+        <van-popup v-model="crowd_PopShow" position="bottom" closeable='true'>
+            <van-nav-bar title="适合人群"><van-icon name="close" slot="right"  color="#323233" @click="crowd_PopShow=false"/></van-nav-bar>
+            <div class="alrContent">{{hospitalData.crowd}}</div>
+        </van-popup>
+
+        <div class="row" @click="details_PopShow=true">
             <div class="left">详情</div>
             <div class="right">
                 <p>点击查看医院介绍</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
-        <div class="row">
+        <van-popup v-model="details_PopShow" position="bottom" closeable='true'>
+            <van-nav-bar title="图文介绍"><van-icon name="close" slot="right"  color="#323233" @click="details_PopShow=false"/></van-nav-bar>
+            <div class="detailsContent" v-html="hospitalData.introduce"></div>
+        </van-popup>
+
+        <div class="row" @click="calc_PopShow=true">
             <div class="left">价格</div>
             <div class="right">
                 <p>价格详细表</p>
                 <a><img src="../../assets/img/icon-more.png" alt=""></a>
             </div>
         </div>
+        <van-popup v-model="calc_PopShow" position="bottom" closeable='true'>
+            <van-nav-bar title="医疗计算器"><van-icon name="close" slot="right"  color="#323233" @click="calc_PopShow=false"/></van-nav-bar>
+            <div class="detailsContent">暂无
+                <!-- <van-steps direction="vertical" :active="2">
+                    <van-step :class="{'van-step--process':true}" style="color:rgb(7, 193, 96)">
+                        <h3>【城市】物流状态1</h3>
+                        <p>2016-07-12 12:40</p>
+                    </van-step>
+                    <van-step style="color:rgb(7, 193, 96)"  inactive-icon='cross'>
+                        <h3>【城市】物流状态2</h3>
+                        <p>2016-07-11 10:00</p>
+                    </van-step>
+                    <van-step>
+                        <h3>快件已发货</h3>
+                        <p>2016-07-10 09:30</p>
+                    </van-step>
+                </van-steps> -->
+            </div>
+        </van-popup>
+        
     </div> 
     <div class='card-block module3'>
         <div class="head-title">医疗顾问</div>
@@ -127,7 +164,7 @@
     </div>
     <div class='card-block module-comments'>
         <div class="title flex justify-between" >
-            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>6+</p></div>
+            <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>{{hospitalData.comments == null ? 0 : hospitalData.comments.length}}+</p></div>
             <div class="right flex align-center">好评度5星 <img src="../../assets/img/icon-toright.png" alt=""></div>
         </div>
         <div class="comments-items" v-for="(coms,idx) in hospitalData.comments" :key='idx' v-show="idx < 2">
@@ -176,6 +213,10 @@ export default {
 			activePopShow:false,
             activePopNum:-1,
             google_mapPopShow:false,
+            technology_PopShow:false,
+            crowd_PopShow:false,
+            details_PopShow:false,
+            calc_PopShow:false,
         }
     },
     methods:{
@@ -242,6 +283,7 @@ export default {
 
             this._initSwiper_docList();
             this._initSwiper_banner();
+            this.hospitalData.introduce = escape2Html(this.hospitalData.introduce)
             console.log(this.hospitalData)
         })
 
@@ -781,7 +823,9 @@ export default {
         height: 100%;
         overflow: auto;
     }
+    
 }
+
 
 .van-popup {
     max-height: 75%;
