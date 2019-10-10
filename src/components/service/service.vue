@@ -13,10 +13,10 @@
             </div>   
         </div>
         <div class="serve-card">
-            <a class='serve-card-items img-box'>
+            <a class='serve-card-items img-box' @click="showTo(0)">
                 <img src="../../assets/img/serve-apartment.png" alt="">
             </a>
-            <a class='serve-card-items img-box'>
+            <a class='serve-card-items img-box' @click="showTo(1)">
                 <img src="../../assets/img/serve-translations.png" alt="">
             </a>
             <div class="foo-edge">孪娈海外祝您试管无忧</div>
@@ -33,6 +33,9 @@ export default {
         }
     },
     methods:{
+        showTo(sid){
+            this.$router.push({path:`/serviceShow/${sid}`}) 
+        }
     }
 }
 </script>
