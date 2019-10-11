@@ -30,7 +30,6 @@
 				<img :src="hospitalData.price_introduce_images" alt="" style='width:calc(100% - 1.066667rem);margin:.533333rem auto;display:block'>
 			</van-popup>
         </div>
-		<!--  -->
         <div class='row-alt' v-for="(rowAlt,idx) in hospitalData.promotions" :key='idx' @click="activePop(idx)">
             <div class="left">{{rowAlt.label}}</div>
             <div class="center">{{rowAlt.title}}</div>
@@ -165,7 +164,7 @@
     <div class='card-block module-comments'>
         <div class="title flex justify-between" >
             <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>{{hospitalData.comments == null ? 0 : hospitalData.comments.length}}+</p></div>
-            <div class="right flex align-center">好评度5星 <img src="../../assets/img/icon-toright.png" alt=""></div>
+            <div class="right flex align-center">好评度98%<img src="../../assets/img/icon-toright.png" alt=""></div>
         </div>
         <div class="comments-items" v-for="(coms,idx) in hospitalData.comments" :key='idx' v-show="idx < 2">
             <div class="row-head flex">
@@ -178,11 +177,6 @@
                 </div>
             </div>
             <div class="row-text">{{coms.body}}</div>
-            <!-- <div class="row-img">
-                <div class='img-box'></div>
-                <div class='img-box'></div>
-                <div class='img-box'></div>
-            </div> -->
         </div>
         <div class="comments-more">查看全部评论</div>
     </div>

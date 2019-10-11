@@ -2,53 +2,40 @@
     <div id="details-show-root" class='main'>
         <div class='head-box'>
             <div class='head-row1 flex align-center justify-between'>
-                <div class='left'></div>
-                <div class='right'></div>
+                <van-icon name="arrow-left" :color="imgIsshow ? '#fff' : '#323233'" size="18" @click="back"/>
             </div>
-            <div class='head-row2 flex align-center justify-center'><span>套餐详情</span></div>
+            <div class='head-row2 flex align-center justify-center' :style="{opacity : headOpacity}"><span>套餐详情</span></div>
         </div>
         <div class="banner">
             <div class="swiper-container banner-box">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
-                    <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
-                    <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
-                    <div class="swiper-slide img-box"><img src="../../assets/img/banner-test.png" alt=""></div>
+                    <div class="swiper-slide img-box"><img :src="serviceData.cover" alt=""></div>
                 </div>
                 <div class="swiper-pagination"></div>
-                <a class='heart-btn'><img src="../../assets/img/icon-heart.png" alt=""><span>13k</span></a>
             </div>
         </div>
         <div class='card-block module1'>
-            <div class='title'>泰国温馨公寓</div>
+            <div class='title'>{{serviceData.name}}</div>
             <div class='row-tag flex'>
-                <span>我就是那</span>
-                <span>整个西乡</span>
-                <span>最靓的仔</span>
-                <a class='img-box'><img src="../../assets/img/icon-share.png" alt=""></a>   
+                <div class="tag-box"><div class="tag flex"><span v-for="(tags,idx) in serviceData.tags" :key='idx'>{{tags}}</span></div></div>
             </div>
             <div class="row-price flex justify-between align-center">
                 <div class='left flex align-end'>
                     <i>&yen;</i>
-                    <p>800</p>
-                    <span>/周期</span>
+                    <p>{{serviceData.price}}</p>
                 </div>
-                <div class="right">付款方式</div>
-            </div>
-            <div class='row-alt'>
-                <div class="left">预约</div>
-                <div class="center">现在预约即可享受一万泰铢优惠</div>
-                <div class="right"><img src="../../assets/img/icon-more.png" alt=""></div>
             </div>
             <div class='row-options'>
-                <div class="title-options">搭配套餐</div>
-                <div class='btn-box'>
-                    <div class="btn-item active">一天</div>
-                    <div class="btn-item">半个月</div>
-                    <div class="btn-item">一个月</div>
-                    <div class="btn-item active">移植期</div>
-                    <div class="btn-item">促排期</div>
-                    <div class="btn-item">促排+移植期</div>
+                <div class='btn-box' v-if="$route.params.sid==1">
+                    <!-- <div class="btn-item active" @click="jumpTo(0)">1天</div>
+                    <div class="btn-item" @click="jumpTo(1)">14天</div>
+                    <div class="btn-item" @click="jumpTo(2)">28天</div> -->
+                    <div class="btn-item" @click="jumpTo(items.url,idx)" v-for='(items,idx) in serSwitch[1]' :key='idx'>{{items.title}}</div>
+
+                </div>
+                <div class='btn-box' v-if="$route.params.sid==0">
+                    <div class="btn-item" @click="jumpTo(items1.url,idx)" v-for='(items1,idx) in serSwitch[0]' :key='idx'>{{items1.title}}</div>
+                    <div class="btn-item" v-for='(items2,idx) in serSwitch[0][serSwitchChild].child' :key='idx+11'>{{items2.title}}</div>
                 </div>
             </div>
         </div>
@@ -94,69 +81,21 @@
             </div>
         </div>
         <div class='card-block module-comments'>
-            <div class="title flex justify-between">
-                <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>23+</p></div>
-                <div class="right flex align-center">好评度 98% <img src="../../assets/img/icon-toright.png" alt=""></div>
+            <div class="title flex justify-between" >
+                <div class="left flex align-end"><img src="../../assets/img/head-title.png" alt=""> <span>评价</span><p>{{serviceData.comments == null ? 0 : serviceData.comments.length}}+</p></div>
+                <div class="right flex align-center">好评度98%<img src="../../assets/img/icon-toright.png" alt=""></div>
             </div>
-            <!-- <div class='comments-tag flex'>
-                <span class='tags'>宇宙无敌</span>
-                <span class='tags'>帅气无比</span>
-                <span class='tags'>整个西乡</span>
-                <span class='tags'>最靓的仔</span>
-            </div> -->
-            <div class="comments-items">
+            <div class="comments-items" v-for="(coms,idx) in serviceData.comments" :key='idx' v-show="idx < 2">
                 <div class="row-head flex">
-                    <div class='img-box'><img src="../../assets/img/head-img-test.png" alt=""></div>
+                    <div class='img-box'><img :src="'//'+coms.user.avatar_url" alt=""></div>
                     <div class='right flex flex-column'>
-                        <p>小恐农</p>
+                        <p>{{coms.user.name}}</p>
                         <div class="stars flex">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
+                            <img src="../../assets/img/comments-stars.png" alt="" v-for="(rates,idx) in coms.rate" :key='idx'>
                         </div>
                     </div>
                 </div>
-                <div class="row-text">
-                    做试管的路上真的是一路艰辛，
-                    我只是个喵，为什么要承受这些，
-                    谢谢孪娈海外的所有工作人员，
-                    细心沟通的周顾问，饭菜可口的王阿姨，
-                    认真负责的安翻译，感谢。
-                </div>
-                <div class="row-img">
-                    <div class='img-box'></div>
-                    <div class='img-box'></div>
-                    <div class='img-box'></div>
-                </div>
-            </div>
-            <div class="comments-items">
-                <div class="row-head flex">
-                    <div class='img-box'><img src="../../assets/img/head-img-test.png" alt=""></div>
-                    <div class='right flex flex-column'>
-                        <p>小恐农</p>
-                        <div class="stars flex">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                            <img src="../../assets/img/comments-stars.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row-text">
-                    做试管的路上真的是一路艰辛，
-                    我只是个喵，为什么要承受这些，
-                    谢谢孪娈海外的所有工作人员，
-                    细心沟通的周顾问，饭菜可口的王阿姨，
-                    认真负责的安翻译，感谢。
-                </div>
-                <div class="row-img">
-                    <div class='img-box'></div>
-                    <div class='img-box'></div>
-                    <div class='img-box'></div>
-                </div>
+                <div class="row-text">{{coms.body}}</div>
             </div>
             <div class="comments-more">查看全部评论</div>
         </div>
@@ -177,7 +116,123 @@ export default {
     name:'serviceShow',
     data(){
         return {
-            msg:this.$route.params.sid
+            msg:this.$route.params.sid,
+            headOpacity : 0,
+            imgIsshow : true,
+
+            serviceData : {},
+            serviceDatabat : [],
+
+            actives: [ true , false , false , false , false],
+            serSwitchChild:0,
+
+            serSwitch:[
+                [
+                    {
+                        title:'1天',
+                        url:6,
+                        child:[{
+                            title:'考察期',
+                            url: 6
+                        }],
+                    },
+                    {
+                        title:'14天',
+                        url:2,
+                        child:[
+                            {
+                                title:'促排期',
+                                url: 2
+                            },
+                            {
+                                title:'移植期',
+                                url: 1
+                            }
+                        ]
+                    },
+                    {
+                        title:'28天',
+                        url:0,
+                        child:[
+                            {
+                                title:'促排+移植期',
+                                url: 0
+                            }
+                        ]
+                    },
+                    
+                ],
+                [
+                    {
+                        title:'单次',
+                        url:5
+                    },
+                    {
+                        title:'14天',
+                        url:4
+                    },
+                    {
+                        title:'28天',
+                        url:3
+                    }
+                ]
+            ]
+        }
+    },
+    methods:{
+        hosScroll(e){
+            let scrollNum = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+            if(scrollNum < 50){
+                this.imgIsshow = true
+            }else if(scrollNum > 50){
+                this.imgIsshow = false
+            }
+            if(scrollNum < 98){
+                this.headOpacity = scrollNum/100
+            }else if(scrollNum > 98){
+                this.headOpacity = 1
+            }
+        },
+        back(){
+            this.$router.go(-1);
+        },
+        jumpTo(e,idx){
+            this.serviceData = this.serviceDatabat[e]
+            this.serSwitchChild = idx
+            // console.log(idx)
+        }
+    },
+    mounted(){
+        window.addEventListener('scroll',this.hosScroll,true);
+        
+    },
+    destroyed() {
+        window.removeEventListener("scroll", this.hosScroll, true);
+    },
+    created(){
+        this.$axios.get('https://www.luanluanhaiwai.com/api/service/')
+        .then( (response)=> {
+            this.serviceDatabat = response.data.services
+            this.serviceData = response.data.services[this.$route.params.sid]
+
+            // console.log(this.serviceData)
+            // console.log(this.serviceDatabat)
+            // console.log('-------------')
+            // console.log(this.serviceData)
+            // for(let i of response.data.services){
+
+            //     console.log(i.name)
+            // }
+
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        function escape2Html(str) {
+            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
         }
     }
 }
@@ -406,7 +461,7 @@ export default {
                 line-height: .533333rem;
                 color: rgba(0,0,0,1);
                 padding-left: .213333rem;
-                background: url(../img/head-title.png) no-repeat 0 1px;
+                background: url(../../assets/img/head-title.png) no-repeat 0 1px;
                 background-size: .053333rem 100%;
                 margin-bottom: .266667rem;
             }
