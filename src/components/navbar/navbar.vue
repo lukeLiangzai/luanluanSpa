@@ -49,9 +49,7 @@ export default {
   },
   watch:{
     active(curVal,oldVal){
-      this.actives = this.actives.map(function(){
-          return false;
-        });
+      this.actives = this.actives.map(function(){return false});
       this.actives[this.$store.state.navBarNum] = true;
     }
   },

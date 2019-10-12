@@ -9,9 +9,9 @@
         <div class="banner">
             <div class="swiper-container banner-box">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide img-box"><img :src="serviceData.cover" alt=""></div>
+                    <div class="swiper-slide img-box"><img src="//static.luanluanhaiwai.com/uploads/skpuU7YhPc079d7fv8aposBQ5Qpj5viLy7mmInePXhdlhdGW6wR3wxbjCc7KbREN.jpg" alt=""></div>
                 </div>
-                <div class="swiper-pagination"></div>
+                <!-- <div class="swiper-pagination"></div> -->
             </div>
         </div>
         <div class='card-block module1'>
@@ -27,26 +27,52 @@
             </div>
             <div class='row-options'>
                 <div class='btn-box' v-if="$route.params.sid==1">
-                    <!-- <div class="btn-item active" @click="jumpTo(0)">1天</div>
-                    <div class="btn-item" @click="jumpTo(1)">14天</div>
-                    <div class="btn-item" @click="jumpTo(2)">28天</div> -->
-                    <div class="btn-item" @click="jumpTo(items.url,idx)" v-for='(items,idx) in serSwitch[1]' :key='idx'>{{items.title}}</div>
-
+                    <div class="btn-item" 
+                    @click="jumpTo(items.url,idx)" 
+                    v-for='(items,idx) in serSwitch[1]' :key='idx'
+                    v-bind:class="{active: serSwitchAct[idx]}">{{items.title}}</div>
                 </div>
                 <div class='btn-box' v-if="$route.params.sid==0">
-                    <div class="btn-item" @click="jumpTo(items1.url,idx)" v-for='(items1,idx) in serSwitch[0]' :key='idx'>{{items1.title}}</div>
-                    <div class="btn-item" v-for='(items2,idx) in serSwitch[0][serSwitchChild].child' :key='idx+11'>{{items2.title}}</div>
+                    <div class="btn-item" 
+                    @click="jumpTo(items1.url,idx)" 
+                    v-for='(items1,idx) in serSwitch[0]' :key='idx'
+                    v-bind:class="{active: serSwitchAct[idx]}">{{items1.title}}</div>
+
+                    <div class="btn-item" 
+                    @click="childJumpTo(items2.url,idx)" 
+                    v-for='(items2,idx) in serSwitch[0][serSwitchChild].child' :key='idx+11'
+                    v-bind:class="{active: serSwitchActChidl[idx]}">{{items2.title}}</div>
                 </div>
             </div>
         </div>
-        <div class='card-block module2'>
-            <div class="row">
+        <div class='card-block module2' v-if='$route.params.sid==0'>
+            <div class="row" v-if="serviceData.effective_coupons == null ? 0 : serviceData.effective_coupons.length ===1"  @click="juan_PopShow=true">
                 <div class="left">领卷</div>
                 <div class="right">
-                    <p class='volume'><span>3000</span><span>2000</span><span>1000</span></p>
+                    <p class='volume'><span v-for="(items,idx) in serviceData.effective_coupons" :key="idx">{{parseInt(items.value)}}</span></p>
                     <a><img src="../../assets/img/icon-more.png" alt=""></a>
                 </div>
             </div>
+            <van-popup v-model="juan_PopShow" position="bottom" closeable='true'>
+                <van-nav-bar title="优惠卷"><van-icon name="close" slot="right"  color="#323233" @click="juan_PopShow=false"/></van-nav-bar>
+                <div class="alrContent">
+                    <div class="personal-coupon-list">
+                        <ul v-if="serviceData.effective_coupons != null">
+                            <li class="coupon_juan_li active" v-for="(items,idx) in serviceData.effective_coupons" :key='idx'>
+                                <h4><i>￥</i>{{items.value}}</h4>
+                                <p>
+                                    <b>{{items.name}}</b> 
+                                    <em>满<strong><big style="color: rgb(255, 76, 69);">{{items.min_amount}}</big></strong>元可用<br>{{items.start_at.slice(0,10)}} 至 {{items.expire_at.slice(0,10)}}</em>
+                                </p> 
+                                <div style="clear: both;"></div>
+                                <div class="coupons-tip">{{items.describe}}</div>
+                                <div class="coupon_juan_li_btn">领取</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </van-popup>
+
             <div class="row">
                 <div class="left">位置</div>
                 <div class="right">
@@ -64,18 +90,61 @@
             <div class="row">
                 <div class="left">详情</div>
                 <div class="right">
-                    <p>点击查看医院介绍</p>
+                    <p>点击查看套餐介绍</p>
                     <a><img src="../../assets/img/icon-more.png" alt=""></a>
                 </div>
             </div>
         </div>
+        <div class='card-block module2' v-if='$route.params.sid==1'>
+            <div class="row" v-if="serviceData.effective_coupons == null ? 0 : serviceData.effective_coupons.length ===1"  @click="juan_PopShow=true">
+                <div class="left">领卷</div>
+                <div class="right">
+                    <p class='volume'><span v-for="(items,idx) in serviceData.effective_coupons" :key="idx">{{parseInt(items.value)}}</span></p>
+                    <a><img src="../../assets/img/icon-more.png" alt=""></a>
+                </div>
+            </div>
+            <van-popup v-model="juan_PopShow" position="bottom" closeable='true'>
+                <van-nav-bar title="优惠卷"><van-icon name="close" slot="right"  color="#323233" @click="juan_PopShow=false"/></van-nav-bar>
+                <div class="alrContent">
+                    <div class="personal-coupon-list">
+                        <ul v-if="serviceData.effective_coupons != null">
+                            <li class="coupon_juan_li active" v-for="(items,idx) in serviceData.effective_coupons" :key='idx'>
+                                <h4><i>￥</i>{{items.value}}</h4>
+                                <p>
+                                    <b>{{items.name}}</b> 
+                                    <em>满<strong><big style="color: rgb(255, 76, 69);">{{items.min_amount}}</big></strong>元可用<br>{{items.start_at.slice(0,10)}} 至 {{items.expire_at.slice(0,10)}}</em>
+                                </p> 
+                                <div style="clear: both;"></div>
+                                <div class="coupons-tip">{{items.describe}}</div>
+                                <div class="coupon_juan_li_btn">领取</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </van-popup>
+
+            <div class="row"  @click="advantage_PopShow=true">
+                <div class="left">优势</div>
+                <div class="right">
+                    <p>专注于医疗翻译的团队助您沟通无忧</p>
+                    <a><img src="../../assets/img/icon-more.png" alt=""></a>
+                </div>
+            </div>
+            <van-popup v-model="advantage_PopShow" position="bottom" closeable='true'>
+                <van-nav-bar title="优势"><van-icon name="close" slot="right"  color="#323233" @click="advantage_PopShow=false"/></van-nav-bar>
+                <div class="alrContent">{{serviceData.describe}}</div>
+            </van-popup>
+
+            
+
+        </div>
         <div class='card-block module3'>
-            <div class="head-title">生活管家</div>
+            <div class="head-title">翻译团队</div>
             <div class="content flex align-center">
                 <div class="left-img img-box"><img src="../../assets/img/guwen-img.png" alt=""></div>
                 <div class='right flex align-center flex-auto justify-between'>
-                    <span>徐管家</span>
-                    <p class='flex-auto'>从事家政服务长达八年</p>
+                    <span>徐翻译</span>
+                    <p class='flex-auto'>从事泰国翻译长达八年</p>
                     <a href='' class='flex'>咨询</a>
                 </div>
             </div>
@@ -123,7 +192,8 @@ export default {
             serviceData : {},
             serviceDatabat : [],
 
-            actives: [ true , false , false , false , false],
+            serSwitchAct: [ true , false , false],
+            serSwitchActChidl: [ true , false],
             serSwitchChild:0,
 
             serSwitch:[
@@ -176,7 +246,12 @@ export default {
                         url:3
                     }
                 ]
-            ]
+            ],
+
+            advantage_PopShow: false,
+            juan_PopShow: false,
+
+
         }
     },
     methods:{
@@ -199,8 +274,22 @@ export default {
         jumpTo(e,idx){
             this.serviceData = this.serviceDatabat[e]
             this.serSwitchChild = idx
-            // console.log(idx)
-        }
+            // console.log(e,idx)
+            this.serSwitchAct = this.serSwitchAct.map(function(){return false});
+            this.serSwitchAct[idx] = true;
+            if(idx!=1){
+                this.serSwitchActChidl[0] = true;
+            }else{
+                this.serSwitchActChidl = [true,false];
+            }
+        },
+        childJumpTo(e,idx){
+            this.serviceData = this.serviceDatabat[e]
+
+            this.serSwitchActChidl = this.serSwitchActChidl.map(function(){return false});
+            this.serSwitchActChidl[idx] = true;
+            // console.log(e)
+        },
     },
     mounted(){
         window.addEventListener('scroll',this.hosScroll,true);
@@ -212,16 +301,20 @@ export default {
     created(){
         this.$axios.get('https://www.luanluanhaiwai.com/api/service/')
         .then( (response)=> {
+            let indexNum = 6
+            if(this.$route.params.sid==1){
+                indexNum = 5
+            }
             this.serviceDatabat = response.data.services
-            this.serviceData = response.data.services[this.$route.params.sid]
+            this.serviceData = response.data.services[indexNum]
 
             // console.log(this.serviceData)
             // console.log(this.serviceDatabat)
             // console.log('-------------')
-            // console.log(this.serviceData)
+            console.log(this.serviceDatabat)
             // for(let i of response.data.services){
 
-            //     console.log(i.name)
+            //     console.log(i.effective_coupons.length)
             // }
 
         })
@@ -798,5 +891,153 @@ export default {
             overflow: auto;
         }
         
+    }
+
+    /* 优惠卷 */
+    .personal-coupon-list{
+        margin: 0 auto;
+        display: table;
+        padding-bottom: .266667rem;
+    }
+    .personal-coupon-list ul{
+        width: 100%;
+        display: table;
+    }
+    .personal-coupon-list ul li.active{
+        width: 8.533333rem;
+        height: 100%;
+        border: 1px solid #e3e3e3;
+        border-top: .106667rem solid #ff4c45;
+        position: relative;
+        background: white;
+        margin-top: .533333rem;
+        border-radius: .133333rem;
+    }
+    .personal-coupon-list ul li.coupon_juan_li{
+        width: 9.333333rem;
+        height: 100%;
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+    .personal-coupon-list ul li.coupon_juan_li .coupon_juan_li_btn{
+        position: absolute;
+        top:45%;
+        right:3%;
+        transform: translate(0,-50%);
+        height:.666667rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff4c45;
+        color: #fff;
+        border-radius:3000px;
+        font-size: .293333rem;
+        padding: 0 .333333rem;
+    }
+    .personal-coupon-list ul li.coupon_juan_li .isnot{
+        background-color: #d5d5d5;
+        color: rgba(0, 0, 0, 0.6313725490196078);
+    }
+    
+    .personal-coupon-list ul li{
+        width: 8.533333rem;
+        height: 3.333333rem;
+        border: 1px solid #e3e3e3;
+        border-top: .106667rem solid #ccc;
+        position: relative;
+        background: white;
+        margin-top: .533333rem;
+        border-radius: .133333rem;
+    }
+    
+    .personal-coupon-list ul li.active h4{
+        width: 2.4rem;
+        height: 2.133333rem;
+        text-align: center;
+        border-right: 1px dashed #ebedf0;;
+        margin-top: .373333rem;
+        font-weight: bold;
+        line-height: 2.4rem;
+        font-size: .64rem;
+        float: left;
+        color: #ff4c45;
+        font-family: 'DIN Alternate Bold';
+    }
+    .personal-coupon-list ul li h4{
+        width: 2.4rem;
+        height: 2.4rem;
+        text-align: center;
+        border-right: 1px dashed #ccc;
+        margin-top: .373333rem;
+        font-weight: bold;
+        line-height: 2.4rem;
+        font-size: .64rem;
+        float: left;
+        color: #ccc;
+    }
+    .personal-coupon-list ul li h4 i{
+        font-size: .373333rem;
+    }
+    .personal-coupon-list ul li p{
+        width: 4.8rem;
+        float: left;
+        margin-left: .4rem;
+        height: 2.133333rem;
+        margin-top: .373333rem;
+    }
+    .personal-coupon-list ul li.active p b{
+        display: block;
+        font-weight: 500;
+        height: 1.013333rem;
+        line-height: .48rem;
+        min-height: .693333rem;
+        letter-spacing: -1px;
+        text-align: justify;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #ff4c45;
+        font-size: .4rem;
+    }
+    .personal-coupon-list ul li p b{
+        display: block;
+        font-weight: 500;
+        height: 1.386667rem;
+        line-height: .693333rem;
+        text-align: justify;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #ccc;
+        font-size: .426667rem;
+    }
+    .personal-coupon-list ul li.active p em{
+        display: block;
+        font-size: .346667rem;
+        line-height: .586667rem;
+        font-style: normal;
+        color: #666;
+        font-family: 'DIN Alternate Bold';
+    }
+    
+    .personal-coupon-list ul li p em{
+        display: block;
+        font-size: .346667rem;
+        line-height: .586667rem;
+        font-style: normal;
+        color: #ccc;
+    }
+    .coupons-tip {
+        margin: .266667rem 0 .053333rem;
+        padding: .186667rem .32rem;
+        border-top: 1px dashed #ebedf0;;
+        color: #afafaf;
+        background-color: #fafafa;
+        position: relative;
+    }
+
+
+    .md-dialog .md-popup{
+        z-index: 2500 !important;
     }
 </style>
