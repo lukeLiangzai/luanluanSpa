@@ -26,6 +26,7 @@
 
 <script>
 import { Toast } from 'vant'
+import { mapMutations } from 'vuex';
 export default {
     components:{
     },
@@ -43,26 +44,31 @@ export default {
         }
     },
     methods:{
+        ...mapMutations(['SET_TOKEN','GET_USER']),
         doLogin(){
             if (this.verify()) {
-                this.$axios.post('https://www.luanluanhaiwai.com/api/login', this.form).then((res)=>{
-                    if (res.statusCode == 200 && res.data.status_code == 200) {
+                this.$axios.post('/api/login', this.form).then((res)=>{
+                    if (res.status == 200 && res.data.status_code == 200) {
+                        
+                        this.SET_TOKEN({ Authorization: 'Bearer '+res.data.token });
+                        // console.log(this.$store.state.token)
+                        this.$axios({
+                            method:'get',
+                            url:'/api/user',
+                            headers:this.$store.state.token
+                            }).then((res)=>{
 
-                        // uni.setStorageSync('token', res.data.token);
-
-                        this.$axios.get('https://www.luanluanhaiwai.com/api/user').then((res)=>{
-
-                            if (res.statusCode == 200) {
+                            if (res.status == 200) {
                                 Toast.success('登录成功');
-                                // this.login(res.data);
-                                // uni.navigateBack({
-                                //     delta: 2
-                                // });
+                                this.GET_USER(res.data)
+                                this.$router.push({path:'/'})
+                                this.$store.state.navBarNum = 4
+                                // console.log(this.$store.state.user)
                             }
 
                         })
                     }
-                    if (res.statusCode == 419 && res.data.status_code == 419) {
+                    if (res.status == 419 && res.data.status_code == 419) {
 
                         Toast.fail(res.data.message)
 
@@ -73,17 +79,18 @@ export default {
         getVerifyCode() {
             if(this.form.phone !=''&& this.is_moblie()){
 
-                this.$axios.post('https://www.luanluanhaiwai.com/api/send/verifycode', {phone: this.form.phone}).then((res)=>{
+                this.$axios.post('api/send/verifycode', {phone: this.form.phone}).then((res)=>{
                     console.log(res)
                     if (res.status == 204) {
                         this.starTimeout()
                         Toast.success('验证码发送成功')
                     }
                     // if (res.status == 429) {
-                    //     this.showTip('休息一会再发送验证码吧')//************ */
                     //     Toast.fail('休息一会再发送验证码吧')
                     // }
-                })
+                }).catch(function (error) {
+                    console.log(error);
+                });
 
             }else{
                 Toast.fail('请正确填写手机号')
@@ -97,7 +104,7 @@ export default {
                 this.sendVerifyBtnText = this.timeout + 's'
                 if (this.timeout < 0) {     //当倒计时小于0时清除定时器
                     clearInterval(clock)
-                    this.sendVerifyBtnText = '获 取'
+                    this.sendVerifyBtnText = '获取验证码'
                     this.timeout = 60
                 }
             },1000)

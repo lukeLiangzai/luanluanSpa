@@ -127,7 +127,7 @@ export default {
         window.addEventListener('scroll',this.handleScroll,true);
     },
     created(){
-        this.$axios.get('https://www.luanluanhaiwai.com/api/index')
+        this.$axios.get('/api/index')
         .then( (response)=> {
             this.hospitalList = response.data.hospitals
             this.articleList = response.data.articles

@@ -242,7 +242,7 @@ export default {
         window.removeEventListener("scroll",this.placeholderScroll,true)
     },
     created(){
-        this.$axios.get('https://www.luanluanhaiwai.com/api/hospital')
+        this.$axios.get('api/hospital')
         .then( (response)=> {
             this.hosChild = response.data.hospitals
             this.hosChildBat = response.data.hospitals

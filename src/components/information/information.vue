@@ -65,7 +65,7 @@ export default {
                 return artChildVal;
             }
 
-        this.$axios.get('https://www.luanluanhaiwai.com/api/article')
+        this.$axios.get('/api/article')
         .then( (response)=> {
             this.articles = response.data.articles
             // console.log(this.articles)

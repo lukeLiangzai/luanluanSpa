@@ -271,7 +271,7 @@ export default {
         window.removeEventListener("scroll", this.hosScroll, true);
     },
     created(){
-        this.$axios.get('https://www.luanluanhaiwai.com/api/hospital/'+this.$route.params.hid)
+        this.$axios.get('/api/hospital/'+this.$route.params.hid)
         .then( (response)=> {
             this.hospitalData = response.data.hospital
             this.coverList = response.data.hospital.coverList

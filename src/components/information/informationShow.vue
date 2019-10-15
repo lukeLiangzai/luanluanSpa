@@ -71,7 +71,7 @@ export default {
         window.removeEventListener("scroll", this.hosScroll, true);
     },
     created(){
-        this.$axios.get('https://www.luanluanhaiwai.com/api/article/'+this.$route.params.fid)
+        this.$axios.get('/api/article/'+this.$route.params.fid)
         .then( (response)=> {
             this.articleData = response.data.article
             this.contentHTML = escape2Html(response.data.article.content)
