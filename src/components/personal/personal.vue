@@ -2,9 +2,9 @@
     <div id="personal-main">
         <div class="head-block flex justify-between align-center">
             <div class="left flex">
-                <div class="img-box"><img src="../../assets/img/head-img.png" alt=""></div>
+                <div class="img-box"><img :src="data.avatar_url" alt=""></div>
                 <div class="l-right flex flex-column justify-center">
-                    <p>这是昵称</p>
+                    <p>{{data.hidden_name}}</p>
                     <div class='triesto'>好孕从此开始</div>
                 </div>
             </div>
@@ -67,11 +67,25 @@ export default {
     name:"Personal",
     data(){
         return {
-            msg:'这里是我的',
+            data: {},
             item: 4
         }
     },
     methods:{
+    },
+    mounted(){
+        // console.log(this.$store.state.user)
+    },
+    created(){
+
+        // 进入个人中心组件时  查看token是否存在 true——取出token存data  false——转到login
+
+        const token = this.$store.state.token
+        if(typeof(token)!='string'){
+            this.data = this.$store.state.user
+        }else{
+            this.$router.push({ path: '/login', query: { routeStr : 'EnterElement' , navBarNum : 4 }});
+        }
     }
 }
 </script>

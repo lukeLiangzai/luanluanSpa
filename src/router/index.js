@@ -7,6 +7,7 @@ import Login from '@/components/login/login'
 import HospitalShow from '@/components/hospital/hospitalShow'
 import informationShow from '@/components/information/informationShow'
 import serviceShow from '@/components/service/serviceShow'
+import order from '@/components/order/index'
 
 Vue.use(Router)
 
@@ -47,7 +48,12 @@ const router = new Router({
       path: '/serviceShow/:sid',
       name: 'serviceShow',
       component: serviceShow,
-    },
+    }
+    ,{
+      path: '/order/',
+      name: 'order',
+      component: order,
+    }
     // {
     //   path: '/activity',
     //   name: 'activity',

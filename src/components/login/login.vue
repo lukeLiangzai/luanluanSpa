@@ -61,9 +61,10 @@ export default {
                             if (res.status == 200) {
                                 Toast.success('登录成功');
                                 this.GET_USER(res.data)
+
+                                
                                 this.$router.push({path:'/'})
                                 this.$store.state.navBarNum = 4
-                                // console.log(this.$store.state.user)
                             }
 
                         })
