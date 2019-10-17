@@ -3,28 +3,28 @@
         <van-nav-bar title="订单列表" fixed>
             <van-icon name="arrow-left" slot="left" color="#000"/>
         </van-nav-bar>
-        <div class="general-card-order" v-for="(items,index) in 10" :key='index'>
+        <div class="general-card-order" v-for="(items,index) in orderCard" :key='index'>
             <div class="head">
                 <div class="left">
                     <img data-cfsrc="/assets/img/order-icon-5.png" alt="" src="https://m.luanluanhaiwai.com/assets/img/order-icon-5.png">
                 </div>
-                <div class="right">订单关闭</div>
+                <div class="right">{{items.status}}</div>
             </div>
             <div class="content flex">
                 <div class="left img-box">
-                    <img data-cfsrc="//static.luanluanhaiwai.com/uploads/skpuU7YhPc079d7fv8aposBQ5Qpj5viLy7mmInePXhdlhdGW6wR3wxbjCc7KbREN.jpg" alt="" src="https://static.luanluanhaiwai.com/uploads/skpuU7YhPc079d7fv8aposBQ5Qpj5viLy7mmInePXhdlhdGW6wR3wxbjCc7KbREN.jpg">
+                    <img alt="" :src="items.orderable.cover">
                 </div>
                 <div class="right flex-auto flex flex-column justify-between">
-                    <div class="row-title">泰国28天温馨公寓（促排+移植）</div>
+                    <div class="row-title">{{items.orderable.name}}</div>
                     <div class="row-ordernum flex align-center font-price bold">
                         <div class="imgbox">
                             <img data-cfsrc="/assets/img/order-icon-1.png" alt="" src="https://m.luanluanhaiwai.com/assets/img/order-icon-1.png">
                         </div>
-                        <span>20190221153050185060</span>
+                        <span>{{items.no}}</span>
                     </div>
                     <div class="price-yen flex align-end font-price bold">
                         <i>¥</i>
-                        <p>2980</p> 
+                        <p>{{parseInt(items.total_amount)}}</p> 
                         <span>.00</span>
                         <div class="confirm-num font-price bold">1</div>
                     </div>
@@ -34,7 +34,7 @@
                 <div class="left">
                     <img data-cfsrc="/assets/img/order-icon-4.png" alt="" src="https://m.luanluanhaiwai.com/assets/img/order-icon-4.png">
                 </div> 
-                <div class="center font-price flex-auto bold">2019-02-21 15:30:50</div>
+                <div class="center font-price flex-auto bold">{{items.created_at}}</div>
                 <a href="//m.luanluanhaiwai.com/home/order/100" class="right-btn">查看订单</a>
             </div>
         </div>
@@ -43,32 +43,54 @@
 
 <script>
 export default {
-    name:"order",
+    name:"orderList",
     data(){
         return {
+            orderCard:[],
 
         }
     },
     mounted(){
+        for(let items in this.orderCard){
+            console.log(items.type)
+        }
+    },
+    created(){
         this.$axios({
             method:'get',
             url:'/api/home/order',
             headers:this.$store.state.token
             }).then((res)=>{
-                console.log(res)
             if (res.status == 200) {
-                // Toast.success('登录成功');
-                // this.GET_USER(res.data)
+                let resData = []
+                for(let items in res.data){
+                    switch(res.data[items].status){
+                        case 'payment_pending':
+                            res.data[items].status = '等待支付';
+                            break;
+                        case 'payment_free':
+                            res.data[items].status = '无需付款';
+                            break;
+                        case 'order_close':
+                            res.data[items].status = '订单关闭';
+                            break;
+                        case 'refund_pending':
+                            res.data[items].status = '退款中';
+                            break;
+                        case 'payment_completed':
+                            res.data[items].status = '支付完成';
+                            break;
+                    }
+                    if(res.data[items].type == 'normal'){
+                        resData.push(res.data[items])
+                    }
+                }
+                this.orderCard = resData
 
-                
-                // this.$router.push({path:'/'})
-                // this.$store.state.navBarNum = 4
             }
+        
 
         })
-    },
-    created(){
-        
     }
 
 }
