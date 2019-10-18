@@ -51,9 +51,6 @@ export default {
         }
     },
     mounted(){
-        for(let items in this.orderCard){
-            console.log(items.type)
-        }
     },
     created(){
         this.$axios({

@@ -9,6 +9,7 @@ import informationShow from '@/components/information/informationShow'
 import serviceShow from '@/components/service/serviceShow'
 import orderList from '@/components/order/orderList'
 import appointmentsList from '@/components/order/appointmentsList'
+import orderShow from '@/components/order/orderShow'
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ const router = new Router({
       path: '/appointmentsList/',
       name: 'appointmentsList',
       component: appointmentsList,
+    }
+    ,{
+      path: '/orderShow/',
+      name: 'orderShow',
+      component: orderShow,
     }
     // {
     //   path: '/activity',
