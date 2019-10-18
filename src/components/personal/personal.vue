@@ -79,7 +79,8 @@ export default {
     created(){
 
         // 进入个人中心组件时  查看token是否存在 true——取出token存data  false——转到login
-        if(this.$store.state.token.constructor === Object){
+        let tokre = this.$store.state.token
+        if(this.$store.state.token != null){
             this.data = this.$store.state.user
         }else{
             this.$router.push({ path: '/login', query: { routeStr : 'EnterElement' , navBarNum : 4 }});

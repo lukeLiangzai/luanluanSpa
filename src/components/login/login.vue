@@ -51,11 +51,12 @@ export default {
                     if (res.status == 200 && res.data.status_code == 200) {
                         
                         this.SET_TOKEN({ Authorization: 'Bearer '+res.data.token });
-                        // console.log(this.$store.state.token)
+                        console.log(this.$store.state.token)
+                        let axios_token=this.$store.state.token
                         this.$axios({
                             method:'get',
                             url:'/api/user',
-                            headers:this.$store.state.token
+                            headers: axios_token
                             }).then((res)=>{
 
                             if (res.status == 200) {

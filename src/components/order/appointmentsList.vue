@@ -53,25 +53,7 @@ export default {
                     if(res.data[items].type == 'appointment'){
                         resData.push(res.data[items])
                     }
-                //     switch(res.data[items].status){
-                //         case 'payment_pending':
-                //             res.data[items].status = '等待支付';
-                //             break;
-                //         case 'payment_free':
-                //             res.data[items].status = '无需付款';
-                //             break;
-                //         case 'order_close':
-                //             res.data[items].status = '订单关闭';
-                //             break;
-                //         case 'refund_pending':
-                //             res.data[items].status = '退款中';
-                //             break;
-                //         case 'payment_completed':
-                //             res.data[items].status = '支付完成';
-                //             break;
-                //     }
                 }
-                // console.log(resData)
 
                 this.appointmentsCard = resData
 
