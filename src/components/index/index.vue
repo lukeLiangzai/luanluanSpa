@@ -125,6 +125,36 @@ export default {
     },
     mounted(){
         window.addEventListener('scroll',this.handleScroll,true);
+
+
+        // demo test
+        //...obj 将当前对象的属性覆盖在原对象上
+        const adrian = {
+                fullName: 'Adrian Oprea',
+                occupation: 'Software developer',
+                age: 31,
+                website: 'https://oprea.rocks'
+                };
+        const bill = {
+                ...adrian,
+                fullName: 'Bill Gates',
+                website: 'https://microsoft.com'
+                };  
+        //...arr 数组中只有拼接的效果  无去重
+        const numbers1 = [1, 2, 3, 4, 5];
+        const numbers2 = [ 99999,...numbers1, 1, 2, 6,7,8]; // this will be [1, 2, 3, 4, 5, 1, 2, 6, 7, 8]
+
+        function sum(...numbers) {    
+            return numbers.reduce((accumulator, current) => { 
+                    return accumulator += current
+            });
+        };
+
+
+        // console.log(numbers1)
+        // console.log('------------分割线-----------')
+        // console.log(sum(1,2))
+        // console.log(sum(1,2,3,4,5))
     },
     created(){
         this.$axios.get('/api/index')

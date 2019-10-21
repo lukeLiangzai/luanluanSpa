@@ -11,11 +11,11 @@
             <a class="right img-box"><img src="../../assets/img/icon-personal-1.png" alt=""></a>
         </div>
         <div class='card-block personal-block1 flex justify-around align-center'>
-            <div class="flex flex-column justify-center align-center">
+            <div class="flex flex-column justify-center align-center" @click='toAppointments()'>
                 <img src="../../assets/img/icon-personal-3.png" alt="">
                 <span>我的预约</span>
             </div>
-            <div class="flex flex-column justify-center align-center">
+            <div class="flex flex-column justify-center align-center" @click='toOrderlist()'>
                 <img src="../../assets/img/icon-personal-2.png" alt="">
                 <span>我的订单</span>
             </div>
@@ -72,6 +72,12 @@ export default {
         }
     },
     methods:{
+        toOrderlist(){
+            this.$router.push({ path: '/orderList/'});
+        },
+        toAppointments(){
+            this.$router.push({ path: '/appointmentsList/'});
+        }
     },
     mounted(){
         // console.log(this.$store.state.user)

@@ -35,7 +35,7 @@
                     <img data-cfsrc="/assets/img/order-icon-4.png" alt="" src="https://m.luanluanhaiwai.com/assets/img/order-icon-4.png">
                 </div> 
                 <div class="center font-price flex-auto bold">{{items.created_at}}</div>
-                <a href="//m.luanluanhaiwai.com/home/order/100" class="right-btn">查看订单</a>
+                <a class="right-btn" @click="toOrdershow(items)">查看订单</a>
             </div>
         </div>
     </div>
@@ -50,7 +50,14 @@ export default {
 
         }
     },
+    methods:{
+        toOrdershow(e){
+            this.$router.push({ path: '/orderShow', query: e});
+            console.log(e)
+        }
+    },
     mounted(){
+        // console.log(this.orderCard) 详情页  id
     },
     created(){
         this.$axios({
@@ -83,7 +90,7 @@ export default {
                     }
                 }
                 this.orderCard = resData
-
+                // console.log(resData)
             }
         
 

@@ -9,7 +9,7 @@
             <div class='row-guwen-box'>
                 <div class='row-guwen flex align-center justify-between'>
                     <img class='left' src="../../assets/img/icon-buling.png" alt="">
-                    <div class="center">您提交了订单，稍后您的专属顾问将与您联系！</div>
+                    <div class="center">等待顾问与您联系,祝您好孕！</div>
                     <img class="right" src="../../assets/img/head-nav-left.png" alt="">
                 </div>
             </div>
@@ -26,7 +26,9 @@
                     </div>
                 </div>
             </div>
-            <div class='row-2 flex'><span>留言</span><p>这是留言这是留言这是留言这是留言</p></div>
+            <!-- <div class='row-2 flex'>
+                <span>留言</span><p>这是留言这是留言这是留言这是留言</p>
+            </div> -->
         </div>
         <div class="card-block  order-card2 flex align-center justify-center">
             <div class='icon-customer'>
@@ -92,6 +94,7 @@ export default {
         }
     },
     mounted(){
+        console.log(this.$route.query)
     },
     created(){
         // this.$axios({
