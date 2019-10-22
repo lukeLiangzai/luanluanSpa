@@ -69,7 +69,7 @@ const router = new Router({
       }
     }
     ,{
-      path: '/orderShow/',
+      path: '/orderShow/:orderId',
       name: 'orderShow',
       component: orderShow,
       meta: {

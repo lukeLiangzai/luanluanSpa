@@ -143,7 +143,7 @@ export default {
         getuserinfo() {
             wx.login({
                 success: (res) => {
-                    if (res.errMsg == 'login:ok') {
+                    if (res.errMsg == 'login:ok') { 
                     // 获取code成功
                         this.$http.post('mini/auth', {code: res.code}).then((res)=>{
 

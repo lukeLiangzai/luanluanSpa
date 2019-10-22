@@ -35,7 +35,7 @@
                     <img data-cfsrc="/assets/img/order-icon-4.png" alt="" src="https://m.luanluanhaiwai.com/assets/img/order-icon-4.png">
                 </div> 
                 <div class="center font-price flex-auto bold">{{items.created_at}}</div>
-                <a class="right-btn" @click="toOrdershow(items)">查看订单</a>
+                <a class="right-btn" @click="toOrdershow(items.id,items.status)">查看订单</a>
             </div>
         </div>
     </div>
@@ -51,9 +51,14 @@ export default {
         }
     },
     methods:{
-        toOrdershow(e){
-            this.$router.push({ path: '/orderShow', query: e});
-            console.log(e)
+        toOrdershow(e,status){
+            if(status !== '等待支付'){
+
+                this.$router.push({name:'orderShow',params:{orderId:e}}) 
+            }else{
+                alert('未开发')
+            }
+            // console.log(e)
         }
     },
     mounted(){
