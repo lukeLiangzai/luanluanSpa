@@ -21,7 +21,7 @@
             <div class='foot'>
                 <div class="left"><img src="../../assets/img/order-icon-4.png" alt=""></div>
                 <div class="center font-price flex-auto bold">{{items.created_at}}</div>
-                <a class="right-btn">查看预约</a>
+                <a class="right-btn" @click="toOrdershow(items.id)">查看预约</a>
             </div>
         </div>
     </div>
@@ -34,6 +34,12 @@ export default {
         return {
             appointmentsCard:[],
 
+        }
+    },
+    methods:{
+        toOrdershow(e){
+            this.$router.push({name:'orderShow',params:{orderId:e}}) 
+            // console.log(e)
         }
     },
     mounted(){
