@@ -56,7 +56,7 @@ export default {
 
                 this.$router.push({name:'orderShow',params:{orderId:e}}) 
             }else{
-                alert('未开发')
+                this.$router.push({name:'confirmorder',params:{conId:e}}) 
             }
             // console.log(e)
         }
@@ -95,7 +95,7 @@ export default {
                     }
                 }
                 this.orderCard = resData
-                // console.log(resData)
+                console.log(this.orderCard)
             }
         
 

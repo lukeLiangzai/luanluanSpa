@@ -38,6 +38,9 @@
                 <img src="../../assets/img/icon-roder-customer.png" alt="">
                 <span>联系客服</span>
             </div>
+
+            <!-- https://p.qiao.baidu.com/cps/chat?siteId=12938359&userId=27097433&cp=m.luanluanhaiwai.com&cr=home&cw=mobile -->
+            <!-- https://p.qiao.baidu.com/cps/chat?siteId=12938359&userId=27097433&cp=m.luanluanhaiwai.com&cr=index&cw=mobile -->
         </div>
         <div class="card-block order-card3">
             <div class="order-card-row">
@@ -148,7 +151,6 @@ export default {
                                 break;
                         }
                     }
-                    console.log(res.data[items])
                 }
 
             }

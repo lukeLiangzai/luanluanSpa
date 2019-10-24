@@ -10,6 +10,7 @@ import serviceShow from '@/components/service/serviceShow'
 import orderList from '@/components/order/orderList'
 import appointmentsList from '@/components/order/appointmentsList'
 import orderShow from '@/components/order/orderShow'
+import confirmorder from '@/components/order/confirmorder'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -65,7 +66,7 @@ const router = new Router({
       name: 'appointmentsList',
       component: appointmentsList,
       meta: {
-        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+        requireAuth: true // 
       }
     }
     ,{
@@ -73,7 +74,15 @@ const router = new Router({
       name: 'orderShow',
       component: orderShow,
       meta: {
-        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+        requireAuth: true // 
+      }
+    }
+    ,{
+      path: '/confirmorder/:conId',
+      name: 'confirmorder',
+      component: confirmorder,
+      meta: {
+        requireAuth: true // 
       }
     }
     // {
