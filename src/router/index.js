@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import EnterElement from '@/components/enterElement'
-import Ivfcalc from '@/components/layout/ivfcalc'
-import Ivfcalcsucc from '@/components/layout/ivfcalcsucc'
-import Login from '@/components/login/login'
-import HospitalShow from '@/components/hospital/hospitalShow'
+import enterElement from '@/components/enterElement'
+import ivfcalc from '@/components/layout/ivfcalc'
+import ivfcalcsucc from '@/components/layout/ivfcalcsucc'
+import login from '@/components/login/login'
+import hospitalShow from '@/components/hospital/hospitalShow'
 import informationShow from '@/components/information/informationShow'
 import serviceShow from '@/components/service/serviceShow'
 import orderList from '@/components/order/orderList'
@@ -13,6 +13,11 @@ import orderShow from '@/components/order/orderShow'
 import confirmorder from '@/components/order/confirmorder'
 import store from '../store/index'
 
+import my_address from '@/components/personal/my_address'
+import coupon from '@/components/personal/coupon'
+import favorite from '@/components/personal/favorite'
+import info from '@/components/personal/info'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -20,28 +25,28 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'EnterElement',
-      component: EnterElement,
+      name: 'enterElement',
+      component: enterElement,
     }
     ,{
       path: '/ivfcalc',
-      name: 'Ivfcalc',
-      component: Ivfcalc,
+      name: 'ivfcalc',
+      component: ivfcalc,
     }
     ,{
       path: '/ivfcalcsucc/:succval',
-      name: 'Ivfcalcsucc',
-      component: Ivfcalcsucc,
+      name: 'ivfcalcsucc',
+      component: ivfcalcsucc,
     }
     ,{
       path: '/login',
-      name: 'Login',
-      component: Login,
+      name: 'login',
+      component: login,
     }
     ,{
       path: '/hospitalShow/:hid',
-      name: 'HospitalShow',
-      component: HospitalShow,
+      name: 'hospitalShow',
+      component: hospitalShow,
     }
     ,{
       path: '/informationShow/:fid',
@@ -54,7 +59,7 @@ const router = new Router({
       component: serviceShow,
     }
     ,{
-      path: '/orderList/',
+      path: '/orderList',
       name: 'orderList',
       component: orderList,
       meta: {
@@ -66,7 +71,7 @@ const router = new Router({
       name: 'appointmentsList',
       component: appointmentsList,
       meta: {
-        requireAuth: true // 
+        requireAuth: true 
       }
     }
     ,{
@@ -74,7 +79,7 @@ const router = new Router({
       name: 'orderShow',
       component: orderShow,
       meta: {
-        requireAuth: true // 
+        requireAuth: true 
       }
     }
     ,{
@@ -82,17 +87,41 @@ const router = new Router({
       name: 'confirmorder',
       component: confirmorder,
       meta: {
-        requireAuth: true // 
+        requireAuth: true 
       }
     }
-    // {
-    //   path: '/activity',
-    //   name: 'activity',
-    //   component: Activity,
-    //   meta: {
-    //     requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
-    //   }
-    // }
+    ,{
+      path: '/my_address',
+      name: 'my_address',
+      component: my_address,
+      meta: {
+        requireAuth: true 
+      }
+    }
+    ,{
+      path: '/coupon',
+      name: 'coupon',
+      component: coupon,
+      meta: {
+        requireAuth: true 
+      }
+    }
+    ,{
+      path: '/favorite',
+      name: 'favorite',
+      component: favorite,
+      meta: {
+        requireAuth: true 
+      }
+    }
+    ,{
+      path: '/info',
+      name: 'info',
+      component: info,
+      meta: {
+        requireAuth: true 
+      }
+    }
   ]
 })
 

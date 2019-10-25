@@ -35,12 +35,11 @@ export default {
         }
     },
     methods:{
-        hospitalTo(hid){
-            this.$router.push({path:`/hospitalShow/${hid}`}) 
+        hospitalTo(e){
+            this.$router.push({name:'hospitalShow',params:{hid:e}}) 
         }
     },
     mounted(){
-        // console.log(this.hosList);
     },
     beforeMount(){
     }

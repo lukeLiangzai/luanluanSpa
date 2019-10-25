@@ -51,8 +51,8 @@
         <hosSerListLi :hosList="hospitalList"></hosSerListLi>
 
         <titleListNav name='服务' value=3></titleListNav>
-        <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes1.png" alt=""></div>
-        <div class="serve-card-itmes img-box"><img src="../../assets/img/serve-card-itmes2.png" alt=""></div>
+        <div class="serve-card-itmes img-box" @click="serveShowTo(0)"><img src="../../assets/img/serve-card-itmes1.png" alt=""></div>
+        <div class="serve-card-itmes img-box" @click="serveShowTo(1)"><img src="../../assets/img/serve-card-itmes2.png" alt=""></div>
 
         <titleListNav name='咨询' value=2></titleListNav>
         <infoList :article='articleList'></infoList>
@@ -121,6 +121,9 @@ export default {
                  break;
             }
         },
+        serveShowTo(e){
+            this.$router.push({name:'serviceShow',params:{sid:e}}) 
+        }
         
     },
     mounted(){

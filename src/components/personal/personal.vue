@@ -33,28 +33,28 @@
             <div class="right flex align-center justify-center">立即沟通</div>
         </div>
         <div class='card-block personal-list'>
-            <div class='card-block-row flex align-center'>
+            <router-link  to='/info' class='card-block-row flex align-center'>
                 <div class="left img-box"><img src="../../assets/img/icon-personal-5.png" alt=""></div>
                 <div class="cneter flex-auto">我的资料</div>
                 <div class="right img-box"><img src="../../assets/img/icon-toright.png" alt=""></div>
-            </div>  
+            </router-link>  
         </div>
         <div class='card-block personal-list'>
-            <div class='card-block-row flex align-center'>
+            <router-link  to='/favorite' class='card-block-row flex align-center'>
                 <div class="left img-box"><img src="../../assets/img/icon-personal-7.png" alt=""></div>
                 <div class="cneter flex-auto">我的收藏</div>
                 <div class="right img-box"><img src="../../assets/img/icon-toright.png" alt=""></div>
-            </div>  
-            <div class='card-block-row flex align-center'>
+            </router-link> 
+            <router-link  to='/coupon' class='card-block-row flex align-center'>
                 <div class="left img-box"><img src="../../assets/img/icon-personal-8.png" alt=""></div>
                 <div class="cneter flex-auto">我的优惠卷</div>
                 <div class="right img-box"><img src="../../assets/img/icon-toright.png" alt=""></div>
-            </div>  
-            <div class='card-block-row flex align-center'>
+            </router-link> 
+            <router-link  to='/my_address' class='card-block-row flex align-center'>
                 <div class="left img-box"><img src="../../assets/img/icon-personal-9.png" alt=""></div>
                 <div class="cneter flex-auto">我的地址</div>
                 <div class="right img-box"><img src="../../assets/img/icon-toright.png" alt=""></div>
-            </div>  
+            </router-link>  
         </div>
         <div class='log-base'>退出登录</div>
     </div>
@@ -73,10 +73,10 @@ export default {
     },
     methods:{
         toOrderlist(){
-            this.$router.push({ path: '/orderList/'});
+            this.$router.push({ path: '/orderList'});
         },
         toAppointments(){
-            this.$router.push({ path: '/appointmentsList/'});
+            this.$router.push({ path: '/appointmentsList'});
         }
     },
     mounted(){

@@ -2,7 +2,7 @@
     <div id="order-detail">
         <div class='head-block'>
             <div class='title-nav flex align-center justify-between'>
-                <van-icon name="arrow-left" slot="left" color="#fff" class="left"/>
+                <van-icon name="arrow-left" slot="left" color="#fff" class="left" @click="back"/>
                 <div class="center flex align-center"><img src="../../assets/img/radius-bingo.png" alt=""> <span>订单详情</span></div>
                 <div class="right-space"></div>
             </div>
@@ -109,6 +109,11 @@ export default {
             orderable_obj:{},
             promotions_ree:[]
         }
+    },
+    methods:{
+      back(){
+            this.$router.go(-1);
+        },
     },
     mounted(){
         // this.orderCard = this.$route.params

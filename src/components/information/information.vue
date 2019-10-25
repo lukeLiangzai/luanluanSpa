@@ -68,11 +68,11 @@ export default {
         this.$axios.get('/api/article')
         .then( (response)=> {
             this.articles = response.data.articles
-            // console.log(this.articles)
 
             this.articlesc1 = sortFunc(1,response.data.articles);
             this.articlesc2 = sortFunc(2,response.data.articles);
             this.articlesc3 = sortFunc(3,response.data.articles);
+            // console.log('end')
         })
 
         .catch(function (error) {

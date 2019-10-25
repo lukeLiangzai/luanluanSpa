@@ -8,7 +8,9 @@
                     <div class="text">{{item.describe}}</div>
                     <div class="tag-box">
                         <div class="tag flex">
-                            <span v-for="(tag,index2) in item.tags" :key="index2">{{tag}}</span>
+                            <span v-for="(tag,index2) in item.tags" :key="index2" v-show="index2 < 3">
+                                {{ tag.length > 5 ? tag.substr(0,5) : tag }}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -27,8 +29,8 @@ export default {
         }
     },
     methods:{
-        informationTo(fid){
-            this.$router.push({path:`/informationShow/${fid}`}) 
+        informationTo(e){
+            this.$router.push({name:'informationShow',params:{fid:e}}) 
         }
     }
 }

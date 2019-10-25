@@ -1,7 +1,7 @@
 <template>
       <div id="order-confirm">
         <van-nav-bar title="确认订单" fixed>
-            <van-icon name="arrow-left" slot="left" color="#000"/>
+            <van-icon name="arrow-left" slot="left" color="#000" @click="back"/>
         </van-nav-bar>
         <div class="card-block order-card1" style='box-shadow: none;'>
             <div class='row-1 flex'>
@@ -78,6 +78,11 @@ export default {
             promotions_ree:[]
         }
     },
+    methods:{
+        back(){
+            this.$router.go(-1);
+        },
+    },
     mounted(){
         // this.orderCard = this.$route.params
         // console.log(this.orderCard)
@@ -95,30 +100,8 @@ export default {
                         this.orderCard = res.data[items]
                         this.orderable_obj = res.data[items].orderable
                         this.promotions_ree = res.data[items].promotions
-
-                        // switch(this.orderCard.payment_method){
-                        //     case null:
-                        //         this.orderCard.payment_method = '微信支付';
-                        //         break;
-                        //     case 'wechat':
-                        //         this.orderCard.payment_method = '微信支付';
-                        //         break;
-                        //     case 'alipay':
-                        //         this.orderCard.payment_method = '支付宝支付';
-                        //         break;
-                        // }
-                        // switch(this.orderCard.status){
-                        //     case 'payment_completed':
-                        //         this.orderCard.status_text = '您提交了订单，稍后您的专属顾问将与您取得联系！';
-                        //         break;
-                        //     case 'order_close':
-                        //         this.orderCard.status_text = '等待顾问与您联系,助您好孕';
-                        //         break;
-                        //     case 'payment_free':
-                        //         this.orderCard.status_text = '您提交了订单，稍后您的专属顾问将与您取得联系！';
-                        //         break;
-                        // }
-                        console.log(res.data[items])
+                        
+                        // console.log(res.data[items])
                     }
                 }
 

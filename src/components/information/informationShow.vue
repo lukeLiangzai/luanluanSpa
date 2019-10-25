@@ -75,7 +75,7 @@ export default {
         .then( (response)=> {
             this.articleData = response.data.article
             this.contentHTML = escape2Html(response.data.article.content)
-            console.log(this.articleData)
+            // console.log(this.articleData)
         })
 
         .catch(function (error) {

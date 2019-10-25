@@ -311,7 +311,7 @@ export default {
             // console.log(this.serviceData)
             // console.log(this.serviceDatabat)
             // console.log('-------------')
-            console.log(this.serviceDatabat)
+            // console.log(this.serviceDatabat)
             // for(let i of response.data.services){
 
             //     console.log(i.effective_coupons.length)

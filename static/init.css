@@ -149,3 +149,8 @@ input::-ms-input-placeholder{ /*Internet Explorer*/
         width: 100%;
         border-radius: .266667rem;
     }
+
+
+    .van-nav-bar__left, .van-nav-bar__right {
+        font-size: .48rem!important;
+    }

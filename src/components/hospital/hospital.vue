@@ -100,7 +100,7 @@ export default {
         },
         //跳转ivf计算器
         toIvfcalc(){
-            this.$router.push({path:'/ivfcalc/'})
+            this.$router.push({path:'/ivfcalc'})
         },
         changeVal(e,idx){
 

@@ -1,7 +1,7 @@
 <template>
     <div id="login-main">
         <div class="block-title flex flex-column align-center justify-center">
-            <div class="toback img-box" onclick="javascript :history.back(-1)"><img src="../../assets/img/head-nav-left.png" alt=""></div>
+            <van-icon name="arrow-left" slot="left" color="#fff" class="toback img-box" @click="back"/>
             <img src="../../assets/img/login-logo.png" width="73" height="70" alt="">
             <p>好孕从此开始</p>
         </div>
@@ -171,6 +171,11 @@ export default {
                     }
                 },
             })
+        },
+        back(){
+            this.$router.push({path:'/'}) 
+            // this.$router.go(-1) 
+            this.$store.state.navBarNum = 0
         }
     },
     mounted(){
@@ -200,7 +205,7 @@ export default {
         position: absolute;
         left: .4rem;
         top: .4rem;
-        width: .32rem;
+        font-size: .48rem;
     }
     #login-main>.block-title>p{
         font-size: .48rem;

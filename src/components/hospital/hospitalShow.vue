@@ -234,7 +234,7 @@ export default {
             }
         },
         back(){
-            this.$router.go(-1);
+            this.$router.go(-2);
         },
         _initSwiper_banner(){
             var swiper = new Swiper('.banner-box', {

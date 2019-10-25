@@ -1,7 +1,7 @@
 <template>
     <div class='main'>
         <van-nav-bar title="订单列表" fixed>
-            <van-icon name="arrow-left" slot="left" color="#000"/>
+            <van-icon name="arrow-left" slot="left" color="#000" @click="back"/>
         </van-nav-bar>
         <div class="general-card-order" v-for="(items,index) in orderCard" :key='index'>
             <div class="head">
@@ -59,7 +59,10 @@ export default {
                 this.$router.push({name:'confirmorder',params:{conId:e}}) 
             }
             // console.log(e)
-        }
+        },
+        back(){
+            this.$router.go(-1);
+        },
     },
     mounted(){
         // console.log(this.orderCard) 详情页  id
@@ -95,7 +98,7 @@ export default {
                     }
                 }
                 this.orderCard = resData
-                console.log(this.orderCard)
+                // console.log(this.orderCard)
             }
         
 

@@ -33,8 +33,8 @@ export default {
         }
     },
     methods:{
-        showTo(sid){
-            this.$router.push({path:`/serviceShow/${sid}`}) 
+        showTo(e){
+            this.$router.push({name:'serviceShow',params:{sid:e}}) 
         }
     }
 }

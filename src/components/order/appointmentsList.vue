@@ -1,7 +1,7 @@
 <template>
     <div class='main'>
         <van-nav-bar title="预约列表" fixed>
-            <van-icon name="arrow-left" slot="left" color="#000"/>
+            <van-icon name="arrow-left" slot="left" color="#000" @click="back"/>
         </van-nav-bar>
         <div class='general-card-yue' v-for="(items,index) in appointmentsCard" :key="index">
             <div class='content bold'>
@@ -39,8 +39,10 @@ export default {
     methods:{
         toOrdershow(e){
             this.$router.push({name:'orderShow',params:{orderId:e}}) 
-            // console.log(e)
-        }
+        },
+        back(){
+            this.$router.go(-1);
+        },
     },
     mounted(){
         // for(let items in this.orderCard){
