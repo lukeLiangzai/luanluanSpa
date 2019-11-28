@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // import enterElement from '@/components/enterElement'
-// const enterElement=()=>import('@/components/enterElement')
+const enterElement=()=>import('@/components/enterElement')
 
 // import ivfcalc from '@/components/layout/ivfcalc'
 const ivfcalc=()=>import('@/components/layout/ivfcalc')
@@ -16,18 +16,37 @@ const login=()=>import('@/components/login/login')
 // import hospitalShow from '@/components/hospital/hospitalShow'
 const hospitalShow=()=>import('@/components/hospital/hospitalShow')
 
-import informationShow from '@/components/information/informationShow'
-import serviceShow from '@/components/service/serviceShow'
-import orderList from '@/components/order/orderList'
-import appointmentsList from '@/components/order/appointmentsList'
-import orderShow from '@/components/order/orderShow'
-import confirmorder from '@/components/order/confirmorder'
+// import informationShow from '@/components/information/informationShow'
+const informationShow=()=>import('@/components/information/informationShow')
+
+// import serviceShow from '@/components/service/serviceShow'
+const serviceShow=()=>import('@/components/service/serviceShow')
+
+// import orderList from '@/components/order/orderList'
+const orderList=()=>import('@/components/order/orderList')
+
+// import appointmentsList from '@/components/order/appointmentsList'
+const appointmentsList=()=>import('@/components/order/appointmentsList')
+
+// import orderShow from '@/components/order/orderShow'
+const orderShow=()=>import('@/components/order/orderShow')
+
+// import confirmorder from '@/components/order/confirmorder'
+const confirmorder=()=>import('@/components/order/confirmorder')
+
 import store from '../store/index'
 
-import my_address from '@/components/personal/my_address'
-import coupon from '@/components/personal/coupon'
-import favorite from '@/components/personal/favorite'
-import info from '@/components/personal/info'
+// import my_address from '@/components/personal/my_address'
+const my_address=()=>import('@/components/personal/my_address')
+
+// import coupon from '@/components/personal/coupon'
+const coupon=()=>import('@/components/personal/coupon')
+
+// import favorite from '@/components/personal/favorite'
+const favorite=()=>import('@/components/personal/favorite')
+
+// import info from '@/components/personal/info'
+const info=()=>import('@/components/personal/info')
 
 Vue.use(Router)
 
@@ -37,7 +56,7 @@ const router = new Router({
     {
       path: '/',
       name: 'enterElement',
-      component: resolve => require.ensure([], () => resolve(require('@/components/enterElement')), 'demo')
+      component: enterElement
     }
     ,{
       path: '/ivfcalc',
