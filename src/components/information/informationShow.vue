@@ -192,11 +192,8 @@ export default {
 
     #information-show>.content-text{
         padding: .4rem;
-        font-size:.373333rem;
-        font-family:"PingFang SC";
         font-weight:400;
         line-height:.533333rem;
-        color:rgba(153,153,153,1);
     }
    
 </style>
