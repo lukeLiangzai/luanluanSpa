@@ -1,10 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import enterElement from '@/components/enterElement'
-import ivfcalc from '@/components/layout/ivfcalc'
-import ivfcalcsucc from '@/components/layout/ivfcalcsucc'
-import login from '@/components/login/login'
-import hospitalShow from '@/components/hospital/hospitalShow'
+
+// import enterElement from '@/components/enterElement'
+// const enterElement=()=>import('@/components/enterElement')
+
+// import ivfcalc from '@/components/layout/ivfcalc'
+const ivfcalc=()=>import('@/components/layout/ivfcalc')
+
+// import ivfcalcsucc from '@/components/layout/ivfcalcsucc'
+const ivfcalcsucc=()=>import('@/components/layout/ivfcalcsucc')
+
+// import login from '@/components/login/login'
+const login=()=>import('@/components/login/login')
+
+// import hospitalShow from '@/components/hospital/hospitalShow'
+const hospitalShow=()=>import('@/components/hospital/hospitalShow')
+
 import informationShow from '@/components/information/informationShow'
 import serviceShow from '@/components/service/serviceShow'
 import orderList from '@/components/order/orderList'
@@ -26,7 +37,7 @@ const router = new Router({
     {
       path: '/',
       name: 'enterElement',
-      component: enterElement,
+      component: resolve => require.ensure([], () => resolve(require('@/components/enterElement')), 'demo')
     }
     ,{
       path: '/ivfcalc',

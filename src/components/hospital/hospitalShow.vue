@@ -132,7 +132,7 @@
             </div>
         </div>
         <div class="content flex align-center">
-            <div class="left-img img-box"><img src="../../assets/img/guwen-img2.png" alt=""></div>
+            <div class="left-img img-box"><img src="../../assets/img/guwen-img2-222.png" alt=""></div>
             <div class='right flex align-center flex-auto justify-between'>
                 <span>周顾问</span>
                 <p class='flex-auto'>拥有八年试管婴儿生育经验</p>
