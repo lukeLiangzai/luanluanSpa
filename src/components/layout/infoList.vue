@@ -36,13 +36,29 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.information-items{
-        width: calc(100vw - .8rem);
+    .information-items{
+        width: calc(100vw);
         background-color: #fff;
         margin:0 auto .32rem;
-        padding: .266667rem;
+        padding:  .266667rem .64rem;
         border-radius: .133333rem;
         display: block;
+        position:relative;
+        &:not(:last-child)::after{
+            position: absolute;
+            box-sizing: border-box;
+            content: ' ';
+            pointer-events: none;
+            top: -50%;
+            right: -50%;
+            bottom: -50%;
+            left: -50%;
+            border: 0 solid #ebedf0;
+            -webkit-transform: scale(.5);
+            transform: scale(.5);
+            z-index:1;
+            border-width:0 0 1px 0;
+        }
     }
     .information-items>p.title{
         display: block;

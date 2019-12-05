@@ -31,7 +31,7 @@ export default {
     ],
     data (){
         return {
-            
+
         }
     },
     methods:{
@@ -46,6 +46,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+
 a{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     text-decoration: none;
@@ -56,13 +58,29 @@ a:hover{
 }
 
     .list-items{
-        width: calc(100% - .8rem);
+        width: calc(100%);
         background-color: #fff;
-        border-radius: .133333rem;
+        // border-radius: .133333rem;
         min-height:2.4rem;
-        padding: .266667rem 0 .266667rem .32rem;
+        padding:  .266667rem .64rem;
         display: flex;
         margin:0 auto .32rem;
+        position:relative;
+        &:not(:last-child)::after{
+            position: absolute;
+            box-sizing: border-box;
+            content: ' ';
+            pointer-events: none;
+            top: -50%;
+            right: -50%;
+            bottom: -50%;
+            left: -50%;
+            border: 0 solid #ebedf0;
+            -webkit-transform: scale(.5);
+            transform: scale(.5);
+            z-index:1;
+            border-width:0 0 1px 0;
+        }
         .left-img{
             width: 2.933333rem;
             height: 1.866667rem;

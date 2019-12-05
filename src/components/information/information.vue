@@ -54,6 +54,11 @@ export default {
 
     },
     mounted(){
+        
+    },
+    created(){
+        
+        let sessionArticleData = JSON.parse(window.sessionStorage.getItem('articleData'))
 
         let sortFunc=function(cid,dataVal){
                 let artChildVal = []
@@ -64,20 +69,32 @@ export default {
                 });
                 return artChildVal;
             }
+        if(sessionArticleData != null){
 
-        this.$axios.get('/api/article')
-        .then( (response)=> {
-            this.articles = response.data.articles
+            this.articles = sessionArticleData.articles
 
-            this.articlesc1 = sortFunc(1,response.data.articles);
-            this.articlesc2 = sortFunc(2,response.data.articles);
-            this.articlesc3 = sortFunc(3,response.data.articles);
-            // console.log('end')
-        })
+            this.articlesc1 = sortFunc(1,sessionArticleData.articles);
+            this.articlesc2 = sortFunc(2,sessionArticleData.articles);
+            this.articlesc3 = sortFunc(3,sessionArticleData.articles);
 
-        .catch(function (error) {
-            console.log(error);
-        });
+        }else{
+            this.$axios.get('/api/article')
+            .then( (response)=> {
+
+                window.sessionStorage.setItem('articleData', JSON.stringify(response.data))
+
+                this.articles = response.data.articles
+
+                this.articlesc1 = sortFunc(1,response.data.articles);
+                this.articlesc2 = sortFunc(2,response.data.articles);
+                this.articlesc3 = sortFunc(3,response.data.articles);
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+
     }
 }
 </script>
@@ -119,15 +136,15 @@ export default {
     }
     .page1{
         width: 100%;
-        height:84vh;
-        background-color: #f7f5f5;
+        background-color: #ffffff;
         overflow-y: auto;
         padding-top: 1.466667rem;
+        padding-bottom: 1.466667rem;
     }
     .page2{
         width: 100%;
         height:84vh;
-        background-color: #f7f5f5;
+        background-color: #ffffff;
         overflow-y: auto;
         .message-items{
             width: calc(100% - .8rem);

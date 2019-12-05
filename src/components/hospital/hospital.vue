@@ -242,21 +242,34 @@ export default {
         window.removeEventListener("scroll",this.placeholderScroll,true)
     },
     created(){
-        this.$axios.get('api/hospital')
-        .then( (response)=> {
-            this.hosChild = response.data.hospitals
-            this.hosChildBat = response.data.hospitals
-        })
+        let sessionHospitalData = JSON.parse(window.sessionStorage.getItem('hospitalData'))
+        if(sessionHospitalData != null){
 
-        .catch(function (error) {
-            console.log(error);
-        });
+            this.hosChild = sessionHospitalData.hospitals
+            this.hosChildBat = sessionHospitalData.hospitals
+
+        }else{
+
+            this.$axios.get('api/hospital')
+            .then( (response)=> {
+
+                window.sessionStorage.setItem('hospitalData', JSON.stringify(response.data))
+                this.hosChild = response.data.hospitals
+                this.hosChildBat = response.data.hospitals
+
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+
     },
 }
 </script>
 <style lang="scss" scoped>
 .main{
-    background-color: #F7F5F5;
+    background-color: #ffffff;
     height: calc(100% - 1.466667rem);
     position: absolute;
     top:0;
@@ -274,6 +287,7 @@ export default {
             top: 1.333333rem;
             left: 0;
             width: 100%;
+            z-index:2;
         }
     }
 }
@@ -283,7 +297,7 @@ export default {
     padding: 0 .4rem;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     background-color: #fff;
     span{
         font-size:.64rem;

@@ -49,6 +49,8 @@
         <div class="title-recommended img-box"><img src="../../assets/img/title-recommended.png" alt=""></div>
         <titleListNav name='医院' value=1></titleListNav>
         <hosSerListLi :hosList="hospitalList"></hosSerListLi>
+        <!-- <van-skeleton title :row="3" animate/> -->
+
 
         <titleListNav name='服务' value=3></titleListNav>
         <div class="serve-card-itmes img-box" @click="serveShowTo(0)"><img src="../../assets/img/serve-card-itmes1.png" alt=""></div>
@@ -56,6 +58,7 @@
 
         <titleListNav name='咨询' value=2></titleListNav>
         <infoList :article='articleList'></infoList>
+    
     </div>
 </template>
 
@@ -97,9 +100,9 @@ export default {
                 this.imgIsshow = false
             }
             if(scrollNum < 98){
-                this.headOpacity = "rgba(250,250,250,"+scrollNum/100+")"
+                this.headOpacity = "rgba(255,255,255,"+scrollNum/100+")"
             }else if(scrollNum > 98){
-                this.headOpacity = "rgba(250,250,250,.98)"
+                this.headOpacity = "rgba(255,255,255,1)"
             }
         },
         jumpHos(){
@@ -160,16 +163,24 @@ export default {
         // console.log(sum(1,2,3,4,5))
     },
     created(){
-        this.$axios.get('/api/index')
-        .then( (response)=> {
-            this.hospitalList = response.data.hospitals
-            this.articleList = response.data.articles
-            // console.log(response.data.articles)
-        })
+        let sessionIndexData = JSON.parse(window.sessionStorage.getItem('indexData'))
+        if(sessionIndexData != null){
 
-        .catch(function (error) {
-            console.log(error);
-        });
+            this.hospitalList = sessionIndexData.hospitals
+            this.articleList = sessionIndexData.articles
+
+        }else{
+            this.$axios.get('/api/index').then( (response)=> {
+
+                window.sessionStorage.setItem('indexData', JSON.stringify(response.data))
+                this.hospitalList = response.data.hospitals
+                this.articleList = response.data.articles
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     },
     destroyed() {
         window.removeEventListener("scroll", this.handleScroll, true);
@@ -177,8 +188,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+.van-skeleton__row, .van-skeleton__title {
+    background-color: #ffffff!important;
+}
     .main{
-        background-color: #F7F5F5;
+        background-color: #ffffff;
         height: calc(100% - 1.466667rem);
         position: absolute;
         top:0;
