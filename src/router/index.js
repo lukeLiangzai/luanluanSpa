@@ -18,6 +18,8 @@ const coupon=()=>import('@/components/personal/coupon')
 const favorite=()=>import('@/components/personal/favorite')
 const info=()=>import('@/components/personal/info')
 
+const slidetest=()=>import('@/components/index/slidetest')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -121,6 +123,11 @@ const router = new Router({
       meta: {
         requireAuth: true 
       }
+    }
+    ,{
+      path: '/slidetest',
+      name: 'slidetest',
+      component: slidetest,
     }
   ]
 })

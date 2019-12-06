@@ -11,6 +11,11 @@ import store from './store'
 import { Lazyload } from 'vant';
 import { Dialog } from 'vant';
 
+
+import ElementUI from 'element-ui'	//手动变红
+import '../node_modules/element-ui/lib/theme-chalk/index.css'	//手动变红
+Vue.use(ElementUI)	//手动变红
+
 Vue.use(Dialog);
 
 Vue.use(Lazyload);

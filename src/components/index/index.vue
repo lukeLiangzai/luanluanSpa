@@ -58,7 +58,6 @@
 
         <titleListNav name='咨询' value=2></titleListNav>
         <infoList :article='articleList'></infoList>
-    
     </div>
 </template>
 
@@ -67,6 +66,8 @@ import { Swipe, SwipeItem } from 'vant'
 import hosSerListLi from "../layout/hosSerListLi"
 import titleListNav from "../layout/titleListNav"
 import infoList from "../layout/infoList"
+import { Toast } from 'vant'
+
 export default {
     name:"Index",
     components:{
@@ -163,15 +164,19 @@ export default {
         // console.log(sum(1,2,3,4,5))
     },
     created(){
+
+
+        
+
         let sessionIndexData = JSON.parse(window.sessionStorage.getItem('indexData'))
         if(sessionIndexData != null){
 
             this.hospitalList = sessionIndexData.hospitals
             this.articleList = sessionIndexData.articles
-
+            
         }else{
             this.$axios.get('/api/index').then( (response)=> {
-
+                
                 window.sessionStorage.setItem('indexData', JSON.stringify(response.data))
                 this.hospitalList = response.data.hospitals
                 this.articleList = response.data.articles

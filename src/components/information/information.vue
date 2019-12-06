@@ -36,7 +36,9 @@
 
 <script>
 import infoList from "../layout/infoList"
-export default {
+import { Toast } from 'vant'
+
+export default { 
     name:"Information",
     components:{
         infoList
@@ -57,7 +59,13 @@ export default {
         
     },
     created(){
-        
+
+        Toast.loading({
+            message: '加载中...',
+            forbidClick: true,
+            duration:0
+        });
+
         let sessionArticleData = JSON.parse(window.sessionStorage.getItem('articleData'))
 
         let sortFunc=function(cid,dataVal){
@@ -76,6 +84,9 @@ export default {
             this.articlesc1 = sortFunc(1,sessionArticleData.articles);
             this.articlesc2 = sortFunc(2,sessionArticleData.articles);
             this.articlesc3 = sortFunc(3,sessionArticleData.articles);
+            setTimeout(e=>{
+                Toast.clear();
+            },1500)
 
         }else{
             this.$axios.get('/api/article')
@@ -88,6 +99,11 @@ export default {
                 this.articlesc1 = sortFunc(1,response.data.articles);
                 this.articlesc2 = sortFunc(2,response.data.articles);
                 this.articlesc3 = sortFunc(3,response.data.articles);
+                
+                setTimeout(e=>{
+                    Toast.clear();
+                },1500)
+
             })
 
             .catch(function (error) {
