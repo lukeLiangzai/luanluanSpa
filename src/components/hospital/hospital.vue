@@ -199,7 +199,7 @@ export default {
             }
 
             this.hosChild = hosChildVal;
-
+            this.list = hosChildVal;
         },
        
         sortBy(attr,rev){ //价格排序
@@ -242,6 +242,7 @@ export default {
 
             if(idx == 0){
                 this.hosChild = this.hosChildBat
+                this.list = this.hosChildBat
                 this.value1 = 0
                 this.value2 = 0
                 this.value3 = 0
