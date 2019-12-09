@@ -61,7 +61,7 @@
 import hosSerListLi from "../layout/hosSerListLi"
 import { Toast } from 'vant'
 
-import { List } from 'vant';
+import { List } from 'vant'
 
 export default {
     name:'Hospital',
