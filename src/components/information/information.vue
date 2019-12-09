@@ -86,7 +86,7 @@ export default {
             this.articlesc3 = sortFunc(3,sessionArticleData.articles);
             setTimeout(e=>{
                 Toast.clear();
-            },1500)
+            },1000)
 
         }else{
             this.$axios.get('/api/article')
@@ -102,7 +102,7 @@ export default {
                 
                 setTimeout(e=>{
                     Toast.clear();
-                },1500)
+                },1000)
 
             })
 

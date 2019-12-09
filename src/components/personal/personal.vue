@@ -85,12 +85,13 @@ export default {
     created(){
 
         // 进入个人中心组件时  查看token是否存在 true——取出token存data  false——转到login
-        let tokre = this.$store.state.token
-        if(this.$store.state.token != null){
-            this.data = this.$store.state.user
-        }else{
-            this.$router.push({ path: '/login', query: { routeStr : 'EnterElement' , navBarNum : 4 }});
-        }
+        // let tokre = this.$store.state.token
+        // if(this.$store.state.token != null){
+        //     this.data = this.$store.state.user
+        // }else{
+        //     this.$router.push({ path: '/login', query: { routeStr : 'EnterElement' , navBarNum : 4 }});
+        // }
+        console.log(this.$session)
     }
 }
 </script>

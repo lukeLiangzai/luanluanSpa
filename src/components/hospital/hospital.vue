@@ -43,12 +43,26 @@
                     @close="dropClose(3)"/>
             </van-dropdown-menu>
         </div>
-        <hosSerListLi :hosList="hosChild"></hosSerListLi>
+        <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="没有更多了"
+        @load="onLoad"
+        >
+        <hosSerListLi :hosList="list"></hosSerListLi>
+
+        </van-list>
+
+        
     </div>
 </template>
 
 <script>
 import hosSerListLi from "../layout/hosSerListLi"
+import { Toast } from 'vant'
+
+import { List } from 'vant';
+
 export default {
     name:'Hospital',
     components:{
@@ -85,6 +99,9 @@ export default {
             ,hosChild:[]
             ,hosChildBat:[]
             ,navActive:[true,false,false,false]
+            ,list: []
+            ,loading: false
+            ,finished: false
         }
     },
     methods:{
@@ -233,6 +250,31 @@ export default {
         },
         touchStart(){
             event.preventDefault();//通知 Web 浏览器不要执行与事件关联的默认动作
+        },
+        onLoad() {
+            // 异步更新数据
+                // console.log(this.hosChild.length-this.list.length)
+                // console.log( this.list)
+            setTimeout(() => {
+                if(this.hosChild.length-this.list.length>=10){
+                    for (let i = 0; i < 10; i++) {
+                        this.list.push(this.hosChild[this.list.length]);
+                        // console.log(this.list.length)
+                    }
+                }else{
+                    for (let i = 0; i < this.hosChild.length-this.list.length; i++) {
+                        this.list.push(this.hosChild[this.list.length]);
+                        // console.log(this.list.length)
+                    }
+                }
+                // 加载状态结束
+                this.loading = false;
+
+                // 数据全部加载完成
+                if (this.list.length >= 47) {
+                    this.finished = true;
+                }
+            }, 500);
         }
     },
     mounted(){
@@ -242,11 +284,22 @@ export default {
         window.removeEventListener("scroll",this.placeholderScroll,true)
     },
     created(){
+
+        Toast.loading({
+            message: '加载中...',
+            forbidClick: true,
+            duration:0
+        });
+
         let sessionHospitalData = JSON.parse(window.sessionStorage.getItem('hospitalData'))
         if(sessionHospitalData != null){
 
             this.hosChild = sessionHospitalData.hospitals
             this.hosChildBat = sessionHospitalData.hospitals
+
+            setTimeout(e=>{
+                Toast.clear();
+            },1000)
 
         }else{
 
@@ -256,6 +309,10 @@ export default {
                 window.sessionStorage.setItem('hospitalData', JSON.stringify(response.data))
                 this.hosChild = response.data.hospitals
                 this.hosChildBat = response.data.hospitals
+
+                setTimeout(e=>{
+                    Toast.clear();
+                },1000)
 
             })
 

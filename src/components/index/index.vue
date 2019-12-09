@@ -165,14 +165,20 @@ export default {
     },
     created(){
 
-
-        
+        Toast.loading({
+            message: '加载中...',
+            forbidClick: true,
+            duration:0
+        });
 
         let sessionIndexData = JSON.parse(window.sessionStorage.getItem('indexData'))
         if(sessionIndexData != null){
 
             this.hospitalList = sessionIndexData.hospitals
             this.articleList = sessionIndexData.articles
+            setTimeout(e=>{
+                Toast.clear();
+            },1000)
             
         }else{
             this.$axios.get('/api/index').then( (response)=> {
@@ -180,6 +186,9 @@ export default {
                 window.sessionStorage.setItem('indexData', JSON.stringify(response.data))
                 this.hospitalList = response.data.hospitals
                 this.articleList = response.data.articles
+                setTimeout(e=>{
+                    Toast.clear();
+                },1000)
 
             })
             .catch(function (error) {
