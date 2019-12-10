@@ -5,20 +5,20 @@
             <div class='tab-nav-items' :class="{'active' : !isActive}" @click="isActive = false">动态</div>
         </div>
         <div class="page1" v-if="isActive">
-            <van-tabs  swipeable animated >
-                <van-tab title="推荐">
-                    <infoList :article='articles'></infoList>
-                </van-tab>
-                <van-tab title="成功案例">
-                    <infoList :article='articlesc1'></infoList>
-                </van-tab>
-                <van-tab title="常见问题">
-                    <infoList :article='articlesc2'></infoList>
-                </van-tab>
-                <van-tab title="试管资讯">
-                    <infoList :article='articlesc3'></infoList>
-                </van-tab>
-            </van-tabs>
+            <van-list
+                v-model="loading"
+                :finished="finished"
+                finished-text="没有更多了"
+                @load="onLoad"
+                :offset="20"
+                >
+                <!-- <infoList :article='list'></infoList> -->
+                <van-cell
+                    v-for="item in list"
+                    :key="item"
+                    :title="item"
+                />
+            </van-list>
         </div>
         <div class="page2" v-else-if="!isActive">
             <div class='message-items flex justify-between align-center' v-for="(index,idx) in 8" :key="idx">
@@ -36,7 +36,7 @@
 
 <script>
 import infoList from "../layout/infoList"
-import { Toast } from 'vant'
+import { List } from 'vant'
 
 export default { 
     name:"Information",
@@ -50,21 +50,43 @@ export default {
             articlesc1:[],
             articlesc2:[],
             articlesc3:[],
+            list: [],
+            loading: false,
+            finished: false,
         }
     },
     methods:{
+        onLoad() {
+            // 异步更新数据
+                // console.log( this.list)
+            setTimeout(() => {
+                // if(this.articles.length-this.list.length>=10){
+                //     for (let i = 0; i < 10; i++) {
+                //         this.list.push(this.articles[this.list.length]);
+                //     }
+                // }else{
+                //     for (let i = 0; i < this.articles.length-this.list.length; i++) {
+                //         this.list.push(this.articles[this.list.length]);
+                //     }
+                // }
+                for (let i = 0; i < 10; i++) {
+                    this.list.push(this.list.length + 1);
+                }
+                // 加载状态结束
+                this.loading = false;
 
+                // 数据全部加载完成
+                if (this.list.length >= this.articles.length) {
+                    this.finished = true;
+                }
+            }, 500);
+        }
     },
     mounted(){
         
     },
     created(){
 
-        Toast.loading({
-            message: '加载中...',
-            forbidClick: true,
-            duration:0
-        });
 
         let sessionArticleData = JSON.parse(window.sessionStorage.getItem('articleData'))
 
@@ -84,9 +106,6 @@ export default {
             this.articlesc1 = sortFunc(1,sessionArticleData.articles);
             this.articlesc2 = sortFunc(2,sessionArticleData.articles);
             this.articlesc3 = sortFunc(3,sessionArticleData.articles);
-            setTimeout(e=>{
-                Toast.clear();
-            },1000)
 
         }else{
             this.$axios.get('/api/article')
@@ -100,9 +119,6 @@ export default {
                 this.articlesc2 = sortFunc(2,response.data.articles);
                 this.articlesc3 = sortFunc(3,response.data.articles);
                 
-                setTimeout(e=>{
-                    Toast.clear();
-                },1000)
 
             })
 
@@ -117,7 +133,17 @@ export default {
 <style lang="scss" scoped>
     .main{
         padding-top: 1.466667rem;
+        background-color: #ffffff;
+        height: calc(100% - 1.466667rem);
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        overflow: auto;
     }
+
+    
     .tab-nav{
         font-size:.426667rem;
         color:rgba(153,153,153,1);
@@ -152,10 +178,10 @@ export default {
     }
     .page1{
         width: 100%;
+        min-height: 100%;
         background-color: #ffffff;
         overflow-y: auto;
-        padding-top: 1.466667rem;
-        padding-bottom: 1.466667rem;
+        // padding-top: 1.466667rem;
     }
     .page2{
         width: 100%;

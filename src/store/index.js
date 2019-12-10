@@ -6,8 +6,8 @@ Vue.use(Vuex);
 // 初始化时用sessionStore.getItem('token'),这样子刷新页面就无需重新登录
 const state = {
     showFooter: true,
-    changebleNum:0,
-    navBarNum:0,
+    changebleNum:2,
+    navBarNum:2,
 
     user: JSON.parse(window.sessionStorage.getItem('user')),
     token: JSON.parse(window.sessionStorage.getItem('token'))

@@ -59,8 +59,6 @@
 
 <script>
 import hosSerListLi from "../layout/hosSerListLi"
-import { Toast } from 'vant'
-
 import { List } from 'vant'
 
 export default {
@@ -286,21 +284,12 @@ export default {
     },
     created(){
 
-        Toast.loading({
-            message: '加载中...',
-            forbidClick: true,
-            duration:0
-        });
-
         let sessionHospitalData = JSON.parse(window.sessionStorage.getItem('hospitalData'))
         if(sessionHospitalData != null){
 
             this.hosChild = sessionHospitalData.hospitals
             this.hosChildBat = sessionHospitalData.hospitals
 
-            setTimeout(e=>{
-                Toast.clear();
-            },1000)
 
         }else{
 
@@ -311,9 +300,6 @@ export default {
                 this.hosChild = response.data.hospitals
                 this.hosChildBat = response.data.hospitals
 
-                setTimeout(e=>{
-                    Toast.clear();
-                },1000)
 
             })
 
