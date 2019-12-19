@@ -12,12 +12,12 @@
                 @load="onLoad"
                 :offset="20"
                 >
-                <!-- <infoList :article='list'></infoList> -->
-                <van-cell
+                <infoList :article='list'></infoList>
+                <!-- <van-cell
                     v-for="item in list"
                     :key="item"
                     :title="item"
-                />
+                /> -->
             </van-list>
         </div>
         <div class="page2" v-else-if="!isActive">
@@ -60,18 +60,18 @@ export default {
             // 异步更新数据
                 // console.log( this.list)
             setTimeout(() => {
-                // if(this.articles.length-this.list.length>=10){
-                //     for (let i = 0; i < 10; i++) {
-                //         this.list.push(this.articles[this.list.length]);
-                //     }
-                // }else{
-                //     for (let i = 0; i < this.articles.length-this.list.length; i++) {
-                //         this.list.push(this.articles[this.list.length]);
-                //     }
-                // }
-                for (let i = 0; i < 10; i++) {
-                    this.list.push(this.list.length + 1);
+                if(this.articles.length-this.list.length>=10){
+                    for (let i = 0; i < 10; i++) {
+                        this.list.push(this.articles[this.list.length]);
+                    }
+                }else{
+                    for (let i = 0; i < this.articles.length-this.list.length; i++) {
+                        this.list.push(this.articles[this.list.length]);
+                    }
                 }
+                // for (let i = 0; i < 10; i++) {
+                //     this.list.push(this.list.length + 1);
+                // }
                 // 加载状态结束
                 this.loading = false;
 
@@ -132,7 +132,6 @@ export default {
 </script>
 <style lang="scss" scoped>
     .main{
-        padding-top: 1.466667rem;
         background-color: #ffffff;
         height: calc(100% - 1.466667rem);
         position: absolute;
@@ -150,10 +149,6 @@ export default {
         width: 100%;
         height: 1.466667rem;
         padding-bottom: .4rem;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 2;
         background-color: #fff;
     }
     .tab-nav>.tab-nav-items{
@@ -178,10 +173,9 @@ export default {
     }
     .page1{
         width: 100%;
-        min-height: 100%;
         background-color: #ffffff;
         overflow-y: auto;
-        // padding-top: 1.466667rem;
+        height: calc(100vh - 2.933333rem );
     }
     .page2{
         width: 100%;
