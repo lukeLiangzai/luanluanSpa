@@ -116,7 +116,7 @@ export default {
      #information-show{
         width: 100%;
         min-height: 100vh;
-        background-color: #F7F5F5;
+        background-color: #fff;
         font-family:"PingFang SC";
         padding-bottom: 1.333333rem;
         box-sizing: border-box;
@@ -164,8 +164,8 @@ export default {
         font-weight:500;
         color:rgba(153,153,153,1);
         padding: 0 .4rem;
-
         box-shadow:0 -0.026667rem -.533333rem rgba(0,0,0,0.16);
+        border-top: 1px solid #f1f1f1;
     }
     .information-show-foo .block-icon{
         width:1.52rem;

@@ -270,7 +270,7 @@ export default {
                 this.loading = false;
 
                 // 数据全部加载完成
-                if (this.list.length >= 47) {
+                if (this.list.length >= this.hosChild.length && this.hosChild.length!=0) {
                     this.finished = true;
                 }
             }, 500);

@@ -5,7 +5,7 @@
             <div class='tab-nav-items' :class="{'active' : !isActive}" @click="isActive = false">动态</div>
         </div>
         <div class="page1" v-if="isActive">
-            <van-list
+            <!-- <van-list
                 v-model="loading"
                 :finished="finished"
                 finished-text="没有更多了"
@@ -13,12 +13,29 @@
                 :offset="20"
                 >
                 <infoList :article='list'></infoList>
-                <!-- <van-cell
-                    v-for="item in list"
-                    :key="item"
-                    :title="item"
-                /> -->
-            </van-list>
+            </van-list> -->
+            <van-tabs  swipeable animated >
+                <van-tab title="推荐">
+                    <van-list
+                    v-model="loading"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="onLoad"
+                    :offset="20"
+                    >
+                        <infoList :article='list'></infoList>
+                    </van-list>
+                </van-tab>
+                <van-tab title="成功案例">
+                    <infoList :article='articlesc1'></infoList>
+                </van-tab>
+                <van-tab title="常见问题">
+                    <infoList :article='articlesc2'></infoList>
+                </van-tab>
+                <van-tab title="试管资讯">
+                    <infoList :article='articlesc3'></infoList>
+                </van-tab>
+            </van-tabs>
         </div>
         <div class="page2" v-else-if="!isActive">
             <div class='message-items flex justify-between align-center' v-for="(index,idx) in 8" :key="idx">
@@ -59,27 +76,31 @@ export default {
         onLoad() {
             // 异步更新数据
                 // console.log( this.list)
-            setTimeout(() => {
-                if(this.articles.length-this.list.length>=10){
-                    for (let i = 0; i < 10; i++) {
-                        this.list.push(this.articles[this.list.length]);
-                    }
-                }else{
-                    for (let i = 0; i < this.articles.length-this.list.length; i++) {
-                        this.list.push(this.articles[this.list.length]);
-                    }
-                }
-                // for (let i = 0; i < 10; i++) {
-                //     this.list.push(this.list.length + 1);
-                // }
-                // 加载状态结束
-                this.loading = false;
+                // if(this.articles.length!=0){
 
-                // 数据全部加载完成
-                if (this.list.length >= this.articles.length) {
-                    this.finished = true;
-                }
-            }, 500);
+                    setTimeout(() => {
+                        if(this.articles.length-this.list.length>=10){
+                            for (let i = 0; i < 10; i++) {
+                                this.list.push(this.articles[this.list.length]);
+                            }
+                        }else{
+                            for (let i = 0; i < this.articles.length-this.list.length; i++) {
+                                this.list.push(this.articles[this.list.length]);
+                            }
+                        }
+                        // for (let i = 0; i < 10; i++) {
+                            //     this.list.push(this.list.length + 1);
+                        // }
+                        // 加载状态结束
+                        console.log(this.articles.length) 
+                        this.loading = false;
+
+                        // 数据全部加载完成
+                        if (this.list.length >= this.articles.length && this.articles.length!=0) {
+                            this.finished = true;
+                        }
+                    }, 500);
+                // }
         }
     },
     mounted(){
@@ -176,6 +197,7 @@ export default {
         background-color: #ffffff;
         overflow-y: auto;
         height: calc(100vh - 2.933333rem );
+        padding-top: 44px;
     }
     .page2{
         width: 100%;
