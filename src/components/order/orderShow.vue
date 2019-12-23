@@ -16,7 +16,7 @@
         </div>
         <div class="card-block order-card1">
             <div class='row-1 flex'>
-                <div class="left img-box"><img :src="orderable_obj.cover" alt=""></div>
+                <div class="left img-box"><img :src="'http:'+orderable_obj.cover" alt=""></div>
                 <div class="right">
                     <p class='title-name'>{{orderable_obj.name}}</p>
                     <div class='price-yen flex align-end'>

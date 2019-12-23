@@ -3,7 +3,7 @@
         <div class="information-items" v-for="(item,index) in article" :key="index" @click="informationTo(item.id)">
             <p class="title">{{item.title}}</p>
             <div class="flex">
-                <div class="left img-box"><img :src="item.cover" alt=""></div>
+                <div class="left img-box"><img :src="'http:'+item.cover" alt=""></div>
                 <div class="right flex flex-column flex-auto justify-between">
                     <div class="text">{{item.describe}}</div>
                     <div class="tag-box">

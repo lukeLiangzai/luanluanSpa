@@ -8,7 +8,7 @@
     </div>
     <div class='banner'>
         <van-swipe :autoplay="3000" indicator-color="white">
-            <van-swipe-item v-for="(bann,idx) in coverList" :key='idx'><img :src="bann.url" alt=""></van-swipe-item>
+            <van-swipe-item v-for="(bann,idx) in coverList" :key='idx'><img :src="'http:'+bann.url" alt=""></van-swipe-item>
         </van-swipe>
         <div class="heart-btn"><img src="https://m.luanluanhaiwai.com/assets/img/icon-heart.png" alt=""><i>{{hospitalData.visit_count}}</i></div>
     </div>
@@ -27,7 +27,7 @@
             <div class="right" @click="pricePopShow=true">官方价格</div>
 			<van-popup v-model="pricePopShow" position="bottom" closeable='true'>
 				<van-nav-bar title="官方价格"><van-icon name="close" slot="right"  color="#323233" @click="pricePopShow=false"/></van-nav-bar>
-				<img :src="hospitalData.price_introduce_images" alt="" style='width:calc(100% - 1.066667rem);margin:.533333rem auto;display:block'>
+				<img :src="'http:'+hospitalData.price_introduce_images" alt="" style='width:calc(100% - 1.066667rem);margin:.533333rem auto;display:block'>
 			</van-popup>
         </div>
 		<!--  -->
@@ -148,7 +148,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(doc,idx) in hospitalData.doctor" :key='idx'>
                     <div class="left img-box">
-                        <img :src="doc.cover" alt="">
+                        <img :src="'http:'+doc.cover" alt="">
                     </div>
                     <div class='right'>
                         <div class="row-name">
@@ -169,7 +169,7 @@
         </div>
         <div class="comments-items" v-for="(coms,idx) in hospitalData.comments" :key='idx' v-show="idx < 2">
             <div class="row-head flex">
-                <div class='img-box'><img :src="'//'+coms.user.avatar_url" alt=""></div>
+                <div class='img-box'><img :src="'http://'+coms.user.avatar_url" alt=""></div>
                 <div class='right flex flex-column'>
                     <p>{{coms.user.name}}</p>
                     <div class="stars flex">
@@ -282,8 +282,8 @@ export default {
 
             this._initSwiper_docList();
             this._initSwiper_banner();
-            this.hospitalData.introduce = escape2Html(this.hospitalData.introduce)
-            // console.log(this.hospitalData)
+            this.hospitalData.introduce = escape2Html(this.hospitalData.introduce);
+            this.hospitalData.google_map = this.hospitalData.google_map.replace(/src="/,'src="http:');
         })
 
         .catch(function (error) {
@@ -292,7 +292,8 @@ export default {
 
         function escape2Html(str) {
             var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
-            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+            var strhtml= str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+            return strhtml.split("src=\"").join('src="http:');
         }
     }
 

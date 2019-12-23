@@ -6,7 +6,7 @@
             </div>
             <div class='head-row2 flex align-center justify-center' :style="{opacity : headOpacity}"><span>文章详情</span></div>
         </div>
-        <div class="module-banner" :style="{backgroundImage: 'url(' + articleData.cover  + ')'}">
+        <div class="module-banner" :style="{backgroundImage: 'url(http:' + articleData.cover  + ')'}">
             <div class='title-box'>
                 <p>{{articleData.describe}}</p>
                 <div class="flex align-center"><img src="../../assets/img/luanluan-logo.png" alt="">{{articleData.category == null ? 0 : articleData.category.name}}</div>
