@@ -162,6 +162,17 @@ export default {
         // console.log('------------分割线-----------')
         // console.log(sum(1,2))
         // console.log(sum(1,2,3,4,5))
+        
+        var Container = function(x) {
+            this.__value = x;
+        }
+        Container.of = x => new Container(x);
+
+        //试试看
+        Container.of(1);
+        //=> Container(1)
+
+        Container.of('abcd');
     },
     created(){
 
