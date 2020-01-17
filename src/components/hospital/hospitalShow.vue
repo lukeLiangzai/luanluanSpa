@@ -52,7 +52,7 @@
         </div>
         <van-popup v-model="google_mapPopShow" position="bottom" closeable='true'>
             <van-nav-bar title="医院地址"><van-icon name="close" slot="right"  color="#323233" @click="google_mapPopShow=false"/></van-nav-bar>
-            <div class="mapContent"><div  v-html="hospitalData.google_map"></div></div>
+            <div class="mapContent"><div  v-html="escape2Html(hospitalData.google_map)" v-if="hospitalData.google_map"></div></div>
         </van-popup>
 
         <div class="row" @click="technology_PopShow=true">
@@ -88,7 +88,7 @@
         </div>
         <van-popup v-model="details_PopShow" position="bottom" closeable='true'>
             <van-nav-bar title="图文介绍"><van-icon name="close" slot="right"  color="#323233" @click="details_PopShow=false"/></van-nav-bar>
-            <div class="detailsContent" v-html="hospitalData.introduce"></div>
+            <div class="detailsContent" v-html="escape2Html(hospitalData.introduce)" v-if="hospitalData.introduce"></div>
         </van-popup>
 
         <div class="row" @click="calc_PopShow=true">
@@ -155,7 +155,7 @@
                             <img src="../../assets/img/icon-v.png" alt="">
                             <span>{{doc.name}}</span>
                         </div>
-                        <div class='row-text' v-html="doc.curriculum_vitae"></div>
+                        <div class='row-text' v-html="escape2Html(doc.curriculum_vitae)" v-if="doc.curriculum_vitae"></div>
                         <div class='row-btn'>预约</div>
                     </div>
                 </div>
@@ -261,7 +261,12 @@ export default {
 		activePop(idx){
             this.activePopShow = true
             this.activePopNum = idx
-		},
+        },
+        escape2Html(str) {
+            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+            var strhtml= str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+            return strhtml.split("src=\"").join('src="http:');
+        }
     },
     mounted(){
         window.addEventListener('scroll',this.hosScroll,true);
@@ -276,25 +281,13 @@ export default {
             this.hospitalData = response.data.hospital
             this.coverList = response.data.hospital.coverList
 
-            for(let res in this.hospitalData.doctor){
-                this.hospitalData.doctor[res].curriculum_vitae = escape2Html(this.hospitalData.doctor[res].curriculum_vitae)
-            }
-
             this._initSwiper_docList();
             this._initSwiper_banner();
-            this.hospitalData.introduce = escape2Html(this.hospitalData.introduce);
-            this.hospitalData.google_map = this.hospitalData.google_map.replace(/src="/,'src="http:');
         })
 
         .catch(function (error) {
             console.log(error);
         });
-
-        function escape2Html(str) {
-            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
-            var strhtml= str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
-            return strhtml.split("src=\"").join('src="http:');
-        }
     }
 
 }
